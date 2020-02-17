@@ -2,3 +2,7 @@ global-styling:
   css:
     base:
       dist/tailwind.css: {}
+    fonts:
+      dist/fonst.css: {}
+  js:
+    dist/app.js: {}

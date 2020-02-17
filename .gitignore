@@ -1,9 +1,11 @@
 /*.log
 /mix-manifest.json
 /node_modules/
+/comands
 
 # Ignore compiled assets.
 # /dist/
+src/test
 
 # Ignore lock files.
 /package-lock.json

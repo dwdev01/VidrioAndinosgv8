@@ -1,5 +1,5 @@
-name: Tailwind CSS Starter Kit
-description: A starter kit theme for Drupal 8 and Tailwind CSS.
+name: Branditt Theme
+description: A theme created by Brandiit S.A.S for Vidrio Andino
 # core: 8.x
 type: theme
 base theme: stable
@@ -11,3 +11,15 @@ version: '8.x-2.4'
 core: '8.x'
 project: 'tailwindcss'
 datestamp: 1560861196
+
+# Regions
+regions:
+  header: 'Header'
+  breadcrumb: 'Breadcrumb'
+  banner: 'Banner'
+  content: 'Content'
+  sidebar: 'Sidebar'
+  footer_firts: "Footer Firts"
+  footer_second: "Footer Second"
+  footer_third: "Footer Third"
+  footer: 'Footer'

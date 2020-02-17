@@ -1,0 +1,54 @@
+.vd-logo {
+  --width: auto;
+  --heigth: 70px;
+  width: var(--width);
+  height: var(--heigth);
+  border-radius: 10px 10px 0 0;
+  background-color: #fff;
+}
+
+@media (min-width: 1280px) {
+  .vd-logo {
+    --width: 157px;
+    --heigth: 118px;
+    background-color: transparent;
+  }
+  .vd-logo::before,
+  .vd-logo::after {
+    transition: all 0.3s;
+  }
+  .vd-logo:hover::before,
+  .vd-logo:hover::after {
+    background-color: #f3f3f3;
+  }
+  .vd-logo::before,
+  .vd-logo::after {
+    content: "";
+    display: block;
+    width: 157px;
+    position: absolute;
+    background: #fff;
+  }
+  .vd-logo::before {
+    height: 45px;
+    transform: skewY(-12deg);
+    top: 70px;
+    left: 0px;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    z-index: 10;
+  }
+  .vd-logo::after {
+    height: 86px;
+    top: 0;
+    left: 0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    z-index: 9;
+  }
+  .vd-logo-icon,
+  .vd-logo-text {
+    width: var(--width);
+  }
+}

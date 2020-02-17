@@ -10,16 +10,19 @@
  * @import "tailwindcss/base";
  */
 @tailwind base;
-
+@import "./base/base.css";
 /**
  * This injects any component classes registered by plugins.
  *
  * If using `postcss-import`, use this import instead:
  *
- * @import "tailwindcss/components";
+ * 
  */
 @tailwind components;
-
+@import "./components/logo.css";
+@import "./components/menu.css";
+@import "./components/icons.css";
+@import "./components/hamburger.css";
 /**
  * Here you would add any of your custom component classes; stuff that you'd
  * want loaded *before* the utilities so that the utilities could still
@@ -37,18 +40,18 @@
  */
 
 input {
-  @apply border border-gray-500
+  @apply border border-gray-500;
 }
 
 .block,
 .node {
-  @apply mb-4
+  @apply mb-4;
 }
 
 .node__content p,
 .node__content ul,
 .node__content ol {
-  @apply mb-4 leading-normal
+  @apply mb-4 leading-normal;
 }
 
 /**

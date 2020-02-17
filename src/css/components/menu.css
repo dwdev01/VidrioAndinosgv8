@@ -1,0 +1,35 @@
+header {
+  height: 70px;
+}
+
+.vd-menu {
+  @apply flex items-center;
+}
+
+.vd-menu li a {
+  @apply block  text-sm font-medium text-gray-800 transition-colors duration-300 border-b border-blue-500;
+  line-height: 50px;
+}
+
+.vd-menu li a:hover {
+  @apply bg-blue-500 text-white;
+}
+
+.vd-menu__container nav  {
+  @apply block w-full mb-0;
+}
+
+.vd-menu li {
+  @apply block w-full;
+}
+
+@media (min-width: 1280px) {
+  .vd-menu li {
+    width: auto;
+  }
+  .vd-menu li a {
+    padding: 0 1rem;
+    line-height: 70px;
+    border-bottom: none;
+  }
+}
