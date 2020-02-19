@@ -1,0 +1,76 @@
+.bn-mustard {
+  --bg: rgb(244, 184, 84);
+}
+.bn-orange {
+  --bg: rgb(234, 144, 67);
+}
+.bn-blue {
+  --bg: rgb(58, 174, 221);
+}
+.bn-purple {
+  --bg: rgb(164, 140, 186);
+}
+.bn-gray {
+  --bg: rgb(161, 168, 178);
+}
+.bn-green {
+  --bg: rgb(136, 186, 98);
+}
+.bn-magenta {
+  --bg: #e01063;
+}
+.bn-yellow {
+  --bg: #fecb2e;
+}
+.bn-darkpurple {
+  --bg: #8d5f9d;
+}
+.bn-darkblue {
+  --bg: #1694bd;
+}
+.bn-cards__container {
+  max-width: 955px;
+}
+.vd-beneficio__card {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  max-width: 468px;
+  height: 212px;
+}
+.vd-beneficio__card::before {
+  content: "";
+  @apply block w-full h-full absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.vd-beneficio__card::after {
+  content: "";
+  @apply block h-full transition-all duration-300 absolute;
+  background-color: var(--bg);
+  width: 45px;
+}
+.vd-beneficio__card:hover::after {
+  @apply w-full;
+}
+
+.vd-beneficio__card--container {
+  grid-template-columns: 45px 1fr 32px;
+}
+
+.vd-beneficio__card--firtsIcon img {
+  width: 30px;
+  height: 30px;
+}
+
+@media (min-width: 1024px) {
+  .vd-beneficio__card--container {
+    grid-template-columns: 73px 1fr 65px;
+  }
+  .vd-beneficio__card--firtsIcon img {
+    width: 50px;
+    height: 50px;
+  }
+  .vd-beneficio__card::after {
+    width: 70px;
+  }
+}
