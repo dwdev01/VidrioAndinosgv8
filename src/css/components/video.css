@@ -1,3 +1,13 @@
 .vd-video {
-  height: 587px;
+  height: 287px;
+}
+@media (min-width: 640px) {
+  .vd-video {
+    height: 430px;
+  }
+}
+@media (min-width: 1024px) {
+  .vd-video {
+    height: 587px;
+  }
 }
