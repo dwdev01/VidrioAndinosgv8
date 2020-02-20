@@ -1,0 +1,8 @@
+.bgColombia:before {
+  content: "";
+  @apply block w-full h-full absolute bg-blue-700 opacity-75;
+  z-index: -1;
+}
+.bgColombia {
+  z-index: -1;
+}
