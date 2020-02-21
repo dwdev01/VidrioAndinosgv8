@@ -5,7 +5,7 @@
 
 # Ignore compiled assets.
 # /dist/
-src/test
+
 
 # Ignore lock files.
 /package-lock.json
