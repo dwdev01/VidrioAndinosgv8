@@ -27,6 +27,7 @@
 @import "./components/video.css";
 @import "./components/bgColombia.css";
 @import "./components/menuTask.css";
+@import "./components/multiconfortColors.css";
 /**
  * Here you would add any of your custom component classes; stuff that you'd
  * want loaded *before* the utilities so that the utilities could still
