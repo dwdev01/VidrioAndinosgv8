@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>pestañaProducto</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/fontello.css" />
+    <link rel="stylesheet" href="./css/myStyles.css" />
+  </head>
+  <body>
+    <div class="accordion mb-2">
+      <div class="accordion__button" id="item1">Descripción</div>
+      <div class="accordion__content">
+        <ul class="p-6 pb-16 ">
+          <li>item 1</li>
+          <li>item 2</li>
+          <li>item 2</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion w-full mb-2">
+      <div class="accordion__button" id="item2">Caracteristicas</div>
+      <div class="accordion__content">
+        <ul class="p-6 pb-16 ">
+          <li>item 1</li>
+          <li>item 2</li>
+          <li>item 2</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion mb-2">
+      <div class="accordion__button" id="item3">Colores y Dimensiones</div>
+      <div class="accordion__content">
+        <ul class="p-6 pb-16 ">
+          <li>Disponible en bronce claro y verde: 330 m x 2:40 m.</li>
+          <li>Bronce y azul: 3.21 m x 2.25 m.</li>
+          <li>Espesores: 4,5 y 6 m.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion mb-2">
+      <div class="accordion__button" id="item4">Ventajas</div>
+      <div class="accordion__content">
+        <ul class="p-6 pb-16 ">
+          <li>item 1</li>
+          <li>item 2</li>
+          <li>item 2</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion mb-2">
+      <div class="accordion__button" id="item5">Aplicaciones</div>
+      <div class="accordion__content">
+        <ul class="p-6 pb-16 ">
+          <li>item 1</li>
+          <li>item 2</li>
+          <li>item 2</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".accordion__button").forEach(button => {
+        button.addEventListener("click", e => {
+          const accordionContent = e.target.nextElementSibling;
+
+          if (e.target.classList.contains("accordion__button--active")) {
+            e.target.classList.remove("accordion__button--active");
+            e.target.nextElementSibling.style.maxHeight = 0;
+          } else {
+            document
+              .querySelectorAll(".accordion__button")
+              .forEach(removeClass => {
+                if (
+                  removeClass.classList.contains("accordion__button--active")
+                ) {
+                  removeClass.classList.remove("accordion__button--active");
+                  removeClass.nextElementSibling.style.maxHeight = 0;
+                }
+              });
+            e.target.classList.add("accordion__button--active");
+
+            if (e.target.classList.contains("accordion__button--active")) {
+              accordionContent.style.maxHeight =
+                accordionContent.scrollHeight + "px";
+            } else {
+              accordionContent.style.maxHeight = 0;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,184 @@
+.accordion__button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: #f0f0f0;
+  color: black;
+  text-align: left;
+  transition: background 0.3s;
+  box-shadow: none;
+}
+
+.accordion__button::after {
+  content: "\e801";
+  float: right;
+  font-family: "fontello";
+}
+
+#item1::before {
+  content: "\e800";
+  font-family: "fontello";
+  float: left;
+  margin-right: 15px;
+}
+#item2::before {
+  content: "\e804";
+  font-family: "fontello";
+  float: left;
+  margin-right: 15px;
+}
+#item3::before {
+  content: "\e805";
+  font-family: "fontello";
+  float: left;
+  margin-right: 15px;
+}
+#item4::before {
+  content: "\e803";
+  font-family: "fontello";
+  float: left;
+  margin-right: 15px;
+}
+#item5::before {
+  content: "\f256";
+  font-family: "fontello";
+  float: left;
+  margin-right: 15px;
+}
+
+.accordion__button--active {
+  background: #1680c0;
+  color: white;
+  box-shadow: none;
+  outline: none;
+}
+.accordion__button--active::after {
+  content: "\e802";
+  color: white;
+  font-family: "fontello";
+}
+
+.accordion__button--active::before {
+  color: white;
+}
+
+.accordion__content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s;
+  padding: 0 15px;
+  background-color: #1680c0;
+  color: white;
+}
+
+/* Página de carreras */
+
+#textborder1 {
+  color: #ffffff;
+  background: #ffffff;
+  text-shadow: 2px 2px 0 #69686bff, 2px -2px 0 #69686bff, -2px 2px 0 #69686bff,
+    -2px -2px 0 #69686bff, 2px 0px 0 #69686bff, 0px 2px 0 #69686bff,
+    -2px 0px 0 #69686bff, 0px -2px 0 #69686bff;
+  color: #ffffff;
+  background: #ffffff;
+  transition: color, 0.4s;
+  transition: text-shadow, 0.4s;
+}
+
+.contenedor1:hover > #textborder1 {
+  color: #1680c0ff;
+}
+
+#textborder2 {
+  color: #ffffff;
+  background: #ffffff;
+  text-shadow: 2px 2px 0 #69686bff, 2px -2px 0 #69686bff, -2px 2px 0 #69686bff,
+    -2px -2px 0 #69686bff, 2px 0px 0 #69686bff, 0px 2px 0 #69686bff,
+    -2px 0px 0 #69686bff, 0px -2px 0 #69686bff;
+  color: #ffffff;
+  background: #ffffff;
+  transition: color, 0.4s;
+  transition: text-shadow, 0.4s;
+}
+.contenedor2:hover > #textborder2 {
+  color: #f4bd00;
+}
+#textborder3 {
+  color: #ffffff;
+  background: #ffffff;
+  text-shadow: 2px 2px 0 #69686bff, 2px -2px 0 #69686bff, -2px 2px 0 #69686bff,
+    -2px -2px 0 #69686bff, 2px 0px 0 #69686bff, 0px 2px 0 #69686bff,
+    -2px 0px 0 #69686bff, 0px -2px 0 #69686bff;
+  color: #ffffff;
+  background: #ffffff;
+}
+.contenedor3:hover > #textborder3 {
+  color: #00a8df;
+}
+#textborder4 {
+  color: #ffffff;
+  background: #ffffff;
+  text-shadow: 2px 2px 0 #69686bff, 2px -2px 0 #69686bff, -2px 2px 0 #69686bff,
+    -2px -2px 0 #69686bff, 2px 0px 0 #69686bff, 0px 2px 0 #69686bff,
+    -2px 0px 0 #69686bff, 0px -2px 0 #69686bff;
+  color: #ffffff;
+  background: #ffffff;
+}
+.contenedor4:hover > #textborder4 {
+  color: #d42b1e;
+}
+#textborder5 {
+  color: #ffffff;
+  background: #ffffff;
+  text-shadow: 2px 2px 0 #69686bff, 2px -2px 0 #69686bff, -2px 2px 0 #69686bff,
+    -2px -2px 0 #69686bff, 2px 0px 0 #69686bff, 0px 2px 0 #69686bff,
+    -2px 0px 0 #69686bff, 0px -2px 0 #69686bff;
+  color: #ffffff;
+  background: #ffffff;
+}
+.contenedor5:hover > #textborder5 {
+  color: #ffa000;
+}
+
+/*CARRERAS*/
+
+.testimony {
+  position: relative;
+  padding-bottom: 40px;
+}
+.testimony::after {
+  content: "";  
+  display: block; /* X */
+  width: 40px; /* X */
+  height: 40px; /* X */
+  background-color: #edf2f7; /* X */
+  position: absolute; /* X */
+  margin-left: 40px; /* X */
+  border-radius: 2px; /* X */
+  top: calc(100% - 20px);
+  transform: rotate(45deg); /* X */
+  /* @apply block w-10 h-10 bg-gray-200 absolute ml-10 rounded-sm rotate-45*/
+}
+
+
+.fa-chevron-left:before{
+
+  margin-left: 5px;
+
+
+}
+
+@media only screen and (max-width: 600px) {
+  .glider-prev{
+
+    background: #d42b1e;
+    left: -5px;
+  }
+
+
+}
+
+
