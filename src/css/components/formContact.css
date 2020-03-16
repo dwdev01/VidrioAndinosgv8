@@ -1,0 +1,23 @@
+.vd-formContact {
+  @apply w-2/3 mx-auto;
+}
+.vd-formContact > div {
+  @apply flex flex-col mb-3;
+}
+.vd-formContact > div > label {
+  @apply text-white;
+}
+.vd-formContact > div > div > textarea,
+.vd-formContact > div > div > input,
+.vd-formContact > div > select,
+.vd-formContact > div > input {
+  @apply block border-0 appearance-none rounded py-2 px-4 text-gray-800 bg-white w-full;
+}
+
+.vd-formContact > div > input[type="submit"] {
+  @apply bg-orange-500 text-white transition duration-300 font-medium;
+}
+
+.vd-formContact > div > input[type="submit"]:hover {
+  @apply bg-orange-400;
+}

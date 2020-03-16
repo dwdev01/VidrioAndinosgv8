@@ -1,0 +1,38 @@
+.vd-formYourProjecy form  {
+  @apply grid gap-2;
+}
+
+@media (min-width: 420px) {
+  .vd-formYourProjecy form  {
+    @apply grid-cols-2;
+  }
+  .vd-formYourProjecy div:nth-child(5),
+  .vd-formYourProjecy div:nth-child(6) {
+    @apply col-span-2;
+  }
+}
+.vd-formYourProjecy div {
+  @apply flex flex-col;
+}
+
+.vd-formYourProjecy label {
+  @apply text-white;
+}
+.vd-formYourProjecy select,
+.vd-formYourProjecy input {
+  @apply block appearance-none w-full py-2 px-4 pr-8 rounded leading-tight bg-white;
+}
+
+.vd-formYourProjecy input[type="submit"] {
+  @apply bg-orange-500 uppercase text-white font-medium cursor-pointer transition duration-300;
+}
+
+.vd-formYourProjecy input[type="submit"]:hover {
+  @apply bg-orange-400;
+}
+.vd-formYourProjecy textarea {
+  @apply rounded bg-white px-4 py-2 w-full;
+  height: 120px;
+  min-height: 120px;
+  max-height: 120px;
+}

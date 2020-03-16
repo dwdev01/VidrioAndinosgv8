@@ -1,0 +1,129 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template in this directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - messages: Status and error messages. Should be displayed prominently.
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.breadcrumb: Items for the breadcrumb region. 
+ * - page.banner: Items for the banner region.
+ * - page.content: The main content of the current page.
+ * - page.sidebar: Items for the sidebar.
+ * - page.footer-first: Items for the footer first region.
+ * - page.footer-second: Items for the footer second region.
+ * - page.footer-third: Items for the footer third region.
+ * - page.footer: Items for the footer region.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ *
+ * @ingroup themeable
+ */
+#}
+
+<header role="header" class="shadow-md transition-all duration-300 fixed w-full bg-white z-50">
+  {{ page.header }}
+</header>
+
+<div style="padding-top: 70px;">
+
+  {% if page.breadcrumb %}
+  <div class="container mt-16 p-6 bg-gray-200 mb-10">
+    {{ page.breadcrumb }}
+  </div>
+  <div class="hidden">
+    <p id="breadcrumbTitle">Noticias</p>
+    <p id="breadcrumbDescription">Entérate de nuestros últimos acontecimientos.</p>
+  </div>
+  {% endif %}
+
+  <main role="main" id="vd-noticias">
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+    <div class="container vd-noticias__container">
+      <div class="opacity-0 transition-all duration-300" id="myHidden">
+        {{ page.content }}
+      </div>{# /.layout-content #}
+      {% if page.sidebar %}
+      <aside class="vd-noticias__aside" role="complementary">
+        {{ page.sidebar }}
+      </aside>
+      {% endif %}
+    </div>
+
+  </main>
+
+
+
+  {# {% if page.footer %} #}
+  <footer role="footer" class="py-6 bg-gray-900 text-white">
+    <div class="container px-6 py-6 md:px-4 sm:flex sm:flex-col md:grid md:grid-cols-3 md:gap-24">
+      <div class="pb-6">
+        {{ page.footer_firts }}
+      </div>
+      <div class="pb-6">
+        {{ page.footer_second }}
+      </div>
+      <div>
+        {{ page.footer_third }}
+      </div>
+    </div>
+    {{ page.footer }}
+  </footer>
+  {# {% endif %} #}
+
+</div>{# /.layout-container #}
+<script src="https://unpkg.com/colcade@0/colcade.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('aside').classList.add('sticky')
+    document.querySelector('aside').style.top = '100px';
+    document.getElementById('block-tailwindcss-content').firstElementChild.firstElementChild.classList.add('noticias-masonry', 'grid-container', 'grid', 'sm:grid-cols-2', 'md:grid-cols-3', 'gap-5', 'mb-8', 'px-6', 'sm:px-0')
+    document.getElementById('block-tailwindcss-content').firstElementChild.firstElementChild.innerHTML += `
+        <div class="grid-col grid-cols--1 flex flex-col items-center"></div>
+        <div class="grid-col grid-cols--2 flex flex-col hidden sm:block items-center"></div>
+        <div class="grid-col grid-cols--3 flex flex-col hidden md:block items-center"></div>
+    `
+    document.querySelectorAll('.grid-container .views-row').forEach(element => {
+      element.classList.add('vd-noticiasCard', 'grid-item')
+    });
+    const grid = document.querySelector('.grid-container');
+    const colc = new Colcade(grid, {
+      columns: '.grid-col',
+      items: '.grid-item'
+    });
+
+    // Hidden Title
+    if (document.querySelector('.js-quickedit-page-title') != null) {
+      document.querySelector('.js-quickedit-page-title').classList.add('hidden')
+    }
+
+    setTimeout(function() {
+      document.getElementById('myHidden').classList.remove('opacity-0')
+    }, 300)
+  })
+</script>

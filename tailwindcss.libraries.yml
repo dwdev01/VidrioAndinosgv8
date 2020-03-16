@@ -4,5 +4,7 @@ global-styling:
       dist/tailwind.css: {}
     fonts:
       dist/fonst.css: {}
+      dist/glider.min.css: {}
   js:
     dist/app.js: {}
+    dist/glider.min.js: {}
