@@ -173,12 +173,30 @@
 
 @media only screen and (max-width: 600px) {
   .glider-prev{
-
-    background: #d42b1e;
     left: -5px;
+  }
+  .glider-next{
+    right: 0px;
+  }
+
+}
+@media only screen and (max-width: 800px) {
+  .glider-prev{
+    left: 0px;
+  }
+  .glider-next{
+    right: 0px;
+  }
+
+}
+@media only screen and (min-width: 1000px) {
+  .glider-prev{
+    display: none;
+  }
+  .glider-next{
+    display: none;
   }
 
 
 }
-
 
