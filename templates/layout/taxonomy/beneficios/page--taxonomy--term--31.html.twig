@@ -52,11 +52,12 @@
 <div style="padding-top: 70px;">
 
   {% if page.breadcrumb %}
-  <div class="container mt-16 p-6 bg-gray-200 mb-10">
+  <div id="breadcrumbContainer" class="container mt-16 p-6 bg-gray-200 mb-10 opacity-0 transition-all duration-300">
     {{ page.breadcrumb }}
   </div>
-  <div class="">
-    <p id="breadcrumbDescription">Entérate de nuestros últimos acontecimientos.</p>
+  <div class="hidden">
+    <p id="breadcrumbTitle">Protección UV</p>
+    <p id="breadcrumbDescription">Ser referencia de innovación y servicio en el mercado del vidrio plano.</p>
   </div>
   {% endif %}
 
@@ -109,8 +110,18 @@
       product.appendChild(item.parentElement)
       products.appendChild(product)
     })
-
     document.querySelector('.grid-container').appendChild(products)
+
+    if (document.getElementById('breadProductos') == null) {
+      const breadcrumbList = document.getElementById('breadcrumbList')
+      const breadBase = document.createElement('li');
+
+      breadBase.innerHTML = `
+          <a href="/productos" id="breadProductos" class="hover:text-blue-500" tabindex="-1">Productos</a>
+          <i class="icon-right-big mr-1"></i>
+    `
+      breadcrumbList.insertBefore(breadBase, document.getElementById('breadcrumbList').lastElementChild)
+    }
 
     setTimeout(function() {
       document.querySelector('.opacity-0').classList.remove('opacity-0')

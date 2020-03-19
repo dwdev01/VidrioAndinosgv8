@@ -15,7 +15,7 @@ export default function breadCrumb() {
 
   const breadcrumbTitle =
     document.getElementById("breadcrumbTitle") != null
-      ? document.getElementById("breadcrumbTitle").innerText
+      ? document.getElementById("breadcrumbTitle").innerHTML
       : pathTitle;
 
   if (breadcrumbList) {
@@ -40,14 +40,14 @@ export default function breadCrumb() {
 
   if (breadcrumbContent) {
     if (breadcrumbTitle) {
-      breadcrumbContent.firstElementChild.innerText = breadcrumbTitle;
+      breadcrumbContent.firstElementChild.innerHTML = breadcrumbTitle;
     } else {
       breadcrumbContent.firstElementChild.classList.add("hidden");
     }
 
     if (breadcrumbDescription) {
-      breadcrumbContent.lastElementChild.innerText =
-        breadcrumbDescription.innerText;
+      breadcrumbContent.lastElementChild.innerHTML =
+        breadcrumbDescription.innerHTML;
       breadcrumbDescription.parentElement.classList.add("hidden");
     } else {
       breadcrumbContent.lastElementChild.classList.add("hidden");
@@ -55,4 +55,12 @@ export default function breadCrumb() {
   } else {
     document.getElementById("breadcrumbContent").classList.add("hidden");
   }
+}
+
+if (document.getElementById("breadcrumbContainer") != null) {
+  setTimeout(function() {
+    document
+      .getElementById("breadcrumbContainer")
+      .classList.remove("opacity-0");
+  }, 100);
 }
