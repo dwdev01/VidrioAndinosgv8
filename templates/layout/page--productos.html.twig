@@ -112,11 +112,11 @@
       products.appendChild(product)
     })
 
-    document.querySelector('.grid-container').appendChild(products)
+    await document.querySelector('.grid-container').appendChild(products)
 
     setTimeout(function() {
       document.querySelector('.opacity-0').classList.remove('opacity-0')
-    }, 100)
+    }, 300)
 
   })
 </script>

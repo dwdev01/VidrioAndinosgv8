@@ -1,0 +1,22 @@
+#block-views-block-transformacion-filter-producto-block-1,
+#block-views-block-beneficios-filter-productos-block-1,
+#block-views-block-aplicaciones-producto-block-1 {
+  @apply mb-4;
+}
+#block-views-block-transformacion-filter-producto-block-1 h2,
+#block-views-block-beneficios-filter-productos-block-1 h2,
+#block-views-block-aplicaciones-producto-block-1 h2 {
+  @apply uppercase text-orange-500 border-b border-orange-500 pb-2 font-bold mb-4;
+}
+
+#block-views-block-transformacion-filter-producto-block-1 .views-row,
+#block-views-block-beneficios-filter-productos-block-1 .views-row,
+#block-views-block-aplicaciones-producto-block-1 .views-row {
+  @apply flex mb-2 text-gray-500 text-sm;
+}
+
+#block-views-block-beneficios-filter-productos-block-1 .views-field-name,
+#block-views-block-transformacion-filter-producto-block-1 .views-field-name,
+#block-views-block-aplicaciones-producto-block-1 .views-field-name {
+  @apply mr-2 text-gray-800;
+}
