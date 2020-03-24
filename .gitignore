@@ -2,7 +2,7 @@
 /mix-manifest.json
 /node_modules/
 /comands
-
+src/test
 # Ignore compiled assets.
 # /dist/
 

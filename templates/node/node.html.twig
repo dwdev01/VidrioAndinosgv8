@@ -70,28 +70,28 @@
  *   in different view modes.
  */
 #}
-<article{{ attributes.addClass('node') }}>
+<article class="my-0" {{ attributes.addClass('node') }}>
 
   {{ title_prefix }}
   {% if not page %}
-    <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+  <h2{{ title_attributes }}>
+    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
     </h2>
-  {% endif %}
-  {{ title_suffix }}
+    {% endif %}
+    {{ title_suffix }}
 
-  {% if display_submitted %}
+    {% if display_submitted %}
     <footer>
       {{ author_picture }}
       <div{{ author_attributes }}>
         {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
         {{ metadata }}
-      </div>
+        </div>
     </footer>
-  {% endif %}
+    {% endif %}
 
-  <div{{ content_attributes.addClass('node-content') }}>
-    {{ content }}
-  </div>
+    <div{{ content_attributes.addClass('node-content') }}>
+      {{ content }}
+      </div>
 
 </article>

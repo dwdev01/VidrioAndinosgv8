@@ -27,6 +27,21 @@
 @import "./components/video.css";
 @import "./components/bgColombia.css";
 @import "./components/menuTask.css";
+@import "./components/multiconfortColors.css";
+@import "./components/formComic.css";
+@import "./components/modal.css";
+@import "./components/formYourProject.css";
+@import "./components/noticiasCard.css";
+@import "./components/noticiasMasonry.css";
+@import "./components/newsTags.css";
+@import "./components/newsCategories.css";
+@import "./components/newPost.css";
+@import "./components/accordion.css";
+@import "./components/formProduct.css";
+@import "./components/productos.css";
+@import "./components/formContact.css";
+@import "./components/filterProductos.css";
+@import "./components/carrerasStyles.css";
 /**
  * Here you would add any of your custom component classes; stuff that you'd
  * want loaded *before* the utilities so that the utilities could still

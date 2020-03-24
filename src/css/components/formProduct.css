@@ -1,0 +1,19 @@
+.vd-formProduct form {
+  @apply w-2/3 mx-auto;
+}
+
+.vd-formProduct form div {
+  @apply flex flex-col;
+}
+.vd-formProduct form div label {
+  @apply font-normal text-white;
+}
+.vd-formProduct form div input {
+  @apply border-none py-2 px-6 bg-white text-gray-900 mb-3 rounded;
+}
+.vd-formProduct form input[type="submit"] {
+  @apply mt-4 text-white font-medium bg-orange-500 transition duration-300 cursor-pointer;
+}
+.vd-formProduct form input[type="submit"]:hover {
+  @apply bg-orange-600;
+}

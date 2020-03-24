@@ -1,0 +1,67 @@
+#block-views-block-tags-block-1 {
+  @apply w-full;
+}
+#block-views-block-tags-block-1 h2 {
+  @apply uppercase text-orange-500 border-b border-orange-500 pb-2 font-bold mb-4;
+}
+#block-views-block-tags-block-1 > div > div {
+  @apply flex flex-wrap;
+}
+#block-views-block-tags-block-1
+  > div
+  > div
+  > .views-row
+  > .views-field-name
+  > .field-content
+  > a {
+  @apply text-sm rounded-full bg-gray-200 text-gray-900 px-4 py-2 mr-2 mb-4 block transition duration-300;
+}
+#block-views-block-tags-block-1
+  > div
+  > div
+  > .views-row
+  > .views-field-name
+  > .field-content
+  > a:hover {
+  @apply bg-gray-400;
+}
+#block-views-block-tags-block-1
+  > div
+  > div
+  > .views-row
+  > .views-field-name
+  > .field-content
+  a[href="/noticias/bienestar"],
+.field-content a[href="/noticias/bienestar"] {
+  @apply bg-orange-500 text-white font-medium;
+}
+#block-views-block-tags-block-1
+  > div
+  > div
+  > .views-row
+  > .views-field-name
+  > .field-content
+  a[href="/noticias/bienestar"]:hover,
+.field-content a[href="/noticias/bienestar"]:hover {
+  @apply bg-orange-400;
+}
+#block-views-block-tags-block-1
+  > div
+  > div
+  > .views-row
+  > .views-field-name
+  > .field-content
+  a[href="/noticias/vidrio-andino"],
+.field-content a[href="/noticias/vidrio-andino"] {
+  @apply bg-blue-500 text-white font-medium;
+}
+#block-views-block-tags-block-1
+  > div
+  > div
+  > .views-row
+  > .views-field-name
+  > .field-content
+  a[href="/noticias/vidrio-andino"]:hover,
+.field-content a[href="/noticias/vidrio-andino"]:hover {
+  @apply bg-blue-400;
+}

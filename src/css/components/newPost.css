@@ -1,0 +1,56 @@
+.newPost {
+  grid-template-columns: 680px 1fr;
+}
+/* Image */
+.newPost > article > .node-content > div > img {
+  @apply w-full;
+}
+/* Description */
+.newPost > article > .node-content > div:nth-of-type(2) {
+  @apply mb-2 text-lg leading-relaxed;
+}
+/* Date */
+.newPost > article > .node-content > div:nth-of-type(3) {
+  @apply mb-3 text-gray-700;
+}
+/* Tags */
+.newPost > article > .node-content > div:nth-of-type(4) {
+  @apply mb-8 flex;
+}
+.newPost > article > .node-content > div:nth-of-type(4) > div {
+  @apply mr-2;
+}
+.newPost > article > .node-content > div:nth-of-type(4) > div > a {
+  @apply block px-3 py-1 bg-gray-300 text-sm rounded-full text-gray-900 transition duration-300;
+}
+.newPost > article > .node-content > div:nth-of-type(4) > div > a:hover {
+  @apply bg-gray-400;
+}
+/* Body */
+.newPost > article > .node-content > div:nth-of-type(5) {
+  @apply text-base text-gray-700 leading-loose mb-8;
+}
+.newPost > article > .node-content > div:nth-of-type(5) p {
+  @apply mb-4;
+}
+/* Commnets */
+.comment-form label {
+  @apply hidden;
+}
+.comment-form input,
+.comment-form textarea {
+  @apply shadow appearance-none mb-3 border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight bg-white;
+}
+.comment-form input:focus,
+.comment-form textarea:focus {
+  @apply outline-none shadow-outline;
+}
+.comment-form #edit-submit {
+  @apply bg-blue-500 font-bold text-white transition duration-300;
+}
+.comment-form #edit-submit:hover {
+  @apply bg-blue-400;
+}
+.comment-form #edit-preview {
+  @apply border-none shadow-none text-sm;
+}

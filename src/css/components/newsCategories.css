@@ -1,0 +1,16 @@
+#block-views-block-news-categories-block-1 {
+  @apply mb-4;
+}
+#block-views-block-news-categories-block-1 h2 {
+  @apply uppercase text-orange-500 border-b border-orange-500 pb-2 font-bold mb-4;
+}
+#block-views-block-news-categories-block-1 > div > div > .views-row {
+  @apply flex mb-2;
+}
+#block-views-block-news-categories-block-1
+  > div
+  > div
+  > .views-row
+  > .views-field-name {
+  @apply mr-2;
+}

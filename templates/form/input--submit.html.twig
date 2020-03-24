@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+<input{{ attributes }} />{{ children }}
+<script>
+  if (document.getElementById('edit-submit') != null) {
+    document.getElementById('edit-submit').value = "Enviar"
+  }
+  if (document.getElementById('edit-preview') != null) {
+    document.getElementById('edit-preview').value = "Previsualizar"
+  }
+</script>

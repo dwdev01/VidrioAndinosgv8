@@ -1,0 +1,31 @@
+.vd-productos .views-row {
+  @apply flex flex-col w-full mx-auto relative overflow-hidden;
+  max-width: 250px;
+}
+
+.vd-productos .views-row .views-field-title {
+  @apply text-center text-white font-medium py-2 bg-blue-500 z-10 transition duration-300;
+}
+.vd-productos .views-row:hover .views-field-title {
+  @apply bg-blue-400;
+}
+
+.vd-productos .views-row .views-field-field-front-description {
+  @apply absolute top-0 px-4 py-6 text-white text-sm leading-relaxed opacity-0 transition-all duration-300 flex justify-center items-center;
+  height: 250px;
+  background-color: hsla(0, 0%, 0%, 0.5);
+}
+.vd-productos .views-row .views-field-field-front-description .field-content {
+  @apply px-4;
+}
+.vd-productos .views-row:hover .views-field-field-front-description {
+  @apply opacity-100;
+}
+.vd-productos .views-row .views-field-field-portada .field-content img {
+  @apply transition-all duration-300;
+}
+
+.vd-productos .views-row:hover .views-field-field-portada .field-content img {
+  @apply transform scale-150;
+  filter: blur(5px);
+}

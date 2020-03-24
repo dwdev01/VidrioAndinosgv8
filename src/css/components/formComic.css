@@ -1,0 +1,25 @@
+.vd-formComic {
+  @apply w-full block  mx-auto bg-blue-600 rounded p-6;
+  max-width: 550px;
+}
+.vd-formComic form {
+  @apply w-2/3 mx-auto;
+}
+@media (min-width: 640px) {
+  .vd-formComic form {
+    @apply w-1/2;
+  }
+}
+.vd-formComic label  {
+  @apply text-base text-white;
+}
+.vd-formComic input {
+  @apply h-8 bg-white w-full border-none rounded mb-2 px-3;
+}
+
+.vd-formComic input[type="submit"] {
+  @apply mt-2 uppercase bg-orange-500 text-base cursor-pointer text-white font-medium text-center py-1 transition duration-300;
+}
+.vd-formComic input[type="submit"]:hover {
+  @apply bg-orange-400;
+}

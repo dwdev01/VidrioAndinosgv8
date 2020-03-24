@@ -4,7 +4,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?38362811#fontello') format('svg');
+    src: url('../font/fontello.svg?92660004#fontello') format('svg');
   }
 }
 */
@@ -45,21 +45,33 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-right-big:before {
+.icon-calendar:before {
   content: "\e800";
 } /* '' */
-.icon-phone:before {
+.icon-right-big:before {
   content: "\e801";
 } /* '' */
-.icon-home:before {
+.icon-phone:before {
   content: "\e802";
 } /* '' */
-.icon-instagram:before {
+.icon-home:before {
   content: "\e803";
 } /* '' */
 .icon-ok-circled:before {
   content: "\e804";
 } /* '' */
+.icon-th-list:before {
+  content: "\e805";
+} /* '' */
+.icon-down-open:before {
+  content: "\e806";
+} /* '' */
+.icon-up-open:before {
+  content: "\e807";
+} /* '' */
+.icon-thumbs-up:before {
+  content: "\e808";
+} /* '' */
 .icon-facebook:before {
   content: "\f09a";
 } /* '' */
@@ -72,6 +84,18 @@
 .icon-youtube-play:before {
   content: "\f16a";
 } /* '' */
+.icon-instagram:before {
+  content: "\f16d";
+} /* '' */
+.icon-brush:before {
+  content: "\f1fc";
+} /* '' */
+.icon-whatsapp:before {
+  content: "\f232";
+} /* '' */
+.icon-hand-paper-o:before {
+  content: "\f256";
+} /* '' */
 .icon-map:before {
   content: "\f279";
 } /* '' */
