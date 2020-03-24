@@ -8,86 +8,239 @@
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./css/myStyles.css" />
   </head>
   <body>
-    <div class="grid grid-rows-3 grid-cols-4">
-      <img
-        class="w-full h-3/4 col-start-1 col-end-5 row-start-1 row-end-5 "
-        src="./Images/baby-touching-woman-s-face-1257110.jpg"
-        alt=""
-      />
-      <div class="flex z-10 mt-0 col-start-2 col-end-5 row-start-3 row-end-4">
-        <div class="bg-teal-500 w-24 h-16 p-4 text-white text-base">
+    <!-- Foto princial con texto acompañante  -->
+    <div
+      class="  bg-local bg-cover bg-no-repeat  sm:bg-center"
+      style="background-image: url('./Images/baby-touching-woman-s-face-1257110.jpg')"
+    >
+      <div
+        class="flex  pt-40  pb-8 sm:pb-16 lg:pl-12 xl:pt-56 xl:pl-48 xl:pb-32 "
+      >
+        <div
+          class="bg-teal-500 w-24 h-16 p-4 text-white text-base lg:text-2xl lg:px-6 lg:py-8 lg:h-24 lg:w-32"
+        >
           Respirar
         </div>
         <div
-          class="h-16 p-2 text-white text-base  "
+          class="h-16 p-2 text-white text-base md:py-4 md:px-2 lg:text-2xl lg:px-2 lg:py-4 lg:h-24"
           style="background-color: rgba(31, 146, 128, 0.5); "
         >
-          CALIDAD DEL AIRE INTERIOR
+          <p class="pt-2  lg:ml-2 lg:mr-4">CALIDAD DEL AIRE INTERIOR</p>
         </div>
       </div>
     </div>
-    <div class="bg-gray-200 w-full text-gray-700 p-6">
-      Sin embargo, a menudo no pensamos en la calidad del aire como un factor en
-      el diseño de edificios. En los edificios MULTI COMFORT, el aire interior
-      se mantiene fresco y limpio, mientras que se reducen los contaminantes
-      nocivos.
+    <div class="bg-gray-200 w-full text-gray-700 p-6  ">
+      <div class="container lg:p-16 xl:px-40 xl:mx-auto">
+        Sin embargo, a menudo no pensamos en la calidad del aire como un factor
+        en el diseño de edificios. En los edificios MULTI COMFORT, el aire
+        interior se mantiene fresco y limpio, mientras que se reducen los
+        contaminantes nocivos.
+      </div>
     </div>
-    <div class="container">
-      <h2 class="border-l-4 border-teal-500 pl-4 m-6">
+    <!-- Inicio de contenido seccion 1 -->
+    <div class="container lg:px-16 lg:mb-32 xl:px-20 xl:mx-auto ">
+      <h2 class="border-l-4 border-teal-500 pl-4 m-6 md:text-xl lg:mb-12">
         ¿Qué es la COMODIDAD TÉRMICA?
       </h2>
-      <img
-        class="w-2/4 mx-auto rounded shadow-md"
-        src="./Images/aire.png"
-        alt=""
-      />
-      <p class="text-gray-700 p-8">
-        La CALIDAD DEL AIRE INTERIOR hace referencia a la cantidad correcta de
-        aire fresco proporcionado de acuerdo con la tasa de ocupación y el tipo
-        de actividad y también tiene tres dimensiones:
-      </p>
-
-      <div class="border-b-2 border-t-2 border-gray-500 h-2 my-6" ></div>
-
-      <div class=" mt-4 px-8">
-        <p class="text-gray-800 font-semibold">
-          EL ASPECTO FISIOLÓGICO
-        </p>
-        <p class="text-gray-700">
-          de la calidad del aire interior
+      <div class="hidden lg:inline-block lg:z-10  ">
+        <img src="./Images/imagenGrandeAire1.png" alt="" />
+      </div>
+      <div
+        class="w-2/4 mx-auto rounded shadow-md lg:w-1/4 lg:z-20 lg:inline-block lg:ml-64 lg:-ml-32 lg:pt-32 lg:absolute "
+      >
+        <img src="./Images/aire1a.png" alt="" />
+      </div>
+      <div
+        class="lg:inline-block lg:w-2/5 lg:ml-2 lg:-mt-8  lg:absolute textoSeccion1 "
+      >
+        <p class="text-gray-700 p-8 lg:p-8">
+          La CALIDAD DEL AIRE INTERIOR hace referencia a la cantidad correcta de
+          aire fresco proporcionado de acuerdo con la tasa de ocupación y el
+          tipo de actividad y también tiene tres dimensiones:
         </p>
       </div>
-      <p class="text-gray-700 px-8 py-2">
-        Inhalamos y exhalamos un promedio de 12000 litros de aire por día.
-        Nuestra capacidad para evaluar la calidad de este aire generalmente
-        implica dos sentidos: olfato y el sentido químico común.
-      </p>
-      <img
-      class="w-2/4 mx-auto rounded shadow-md"
-      src="./Images/aire2.png"
-      alt=""
-    />
-    <div class="border-b-2 border-t-2 border-gray-500 h-2 my-6" ></div> 
-    <div class="mt-4 px-8">
-        <p class="text-gray-800 font-semibold">
-          EL ASPECTO FÌSICO
+    </div>
+    <!-- Inicio de contenido seccion 2 -->
+    <div class="container lg:px-16 xl:px-20 xl:mx-auto  ">
+      <div
+        class="border-b-2 border-t-2 border-gray-500 h-2 my-6 xl:mt-48 "
+      ></div>
+
+      <div class="lg:mx-32">
+        <div class=" mt-4 px-8 md:text-xl lg:hidden">
+          <p class="text-gray-800 font-semibold">
+            EL ASPECTO FISIOLÓGICO
+          </p>
+          <p class="text-gray-700">
+            de la calidad del aire interior
+          </p>
+        </div>
+        <div class="hidden lg:inline-block lg:w-64">
+          <img
+            class="w-full"
+            src="./Images/aspecto-fisiologico-aire.png"
+            alt=""
+          />
+        </div>
+
+        <p
+          class="text-gray-700 px-8 py-2 lg:inline-block lg:w-2/4 lg:ml-12 lg:mb-4 lg:p-0"
+        >
+          Inhalamos y exhalamos un promedio de 12000 litros de aire por día.
+          Nuestra capacidad para evaluar la calidad de este aire generalmente
+          implica dos sentidos: olfato y el sentido químico común.
         </p>
-        <p class="text-gray-700">
-          de la calidad del aire interior
+        <div class="hidden lg:inline-block">
+          <img src="./Images/fisiologico-aire-2.png" alt="" />
+        </div>
+        <div class="w-2/4 mx-auto rounded shadow-md lg:inline-block lg:pb-24">
+          <img src="./Images/aire2a.png" alt="" />
+        </div>
+      </div>
+      <!-- Inicio de contenido seccion 3 -->
+      <div class="border-b-2 border-t-2 border-gray-500 h-2 my-6"></div>
+      <div class="lg:mx-32">
+        <div class="hidden lg:inline-block lg:w-64 lg:pb-12">
+          <img class="w-full" src="./Images/aspecto-fisico-aire.png" alt="" />
+        </div>
+
+        <div class="mt-4 px-8 md:text-xl lg:hidden">
+          <p class="text-gray-800 font-semibold">
+            EL ASPECTO FÌSICO
+          </p>
+          <p class="text-gray-700">
+            de la calidad del aire interior
+          </p>
+        </div>
+        <div
+          class="w-3/4 mx-auto rounded shadow-md lg:w-1/2 lg:inline-block lg:ml-12"
+        >
+          <img src="./Images/aire3.png" alt="" />
+        </div>
+        <div class="flex">
+          <div class="hidden lg:inline-block lg:w-1/2">
+            <img src="./Images/fisico-aire-2.png" alt="" />
+          </div>
+          <div
+            class="text-gray-700 px-8 py-8 lg:inline-block lg:w-3/4 lg:mt-2 xl:mt-12 "
+          >
+            <p class="">
+              Inhalamos y exhalamos un promedio de 12000 litros de aire por día.
+              Nuestra capacidad para evaluar la calidad de este aire
+              generalmente implica dos sentidos: olfato y el sentido químico
+              común.
+            </p>
+          </div>
+        </div>
+      </div>
+     
+        <div class="lg:ml-32">
+          <div class="w-3/4 mx-auto rounded shadow-md lg:w-2/5 lg:inline-block">
+            <img class="w-full" src="./Images/aire5.png" alt="" />
+          </div>
+          <div class="w-3/4 mx-auto rounded shadow-md lg:w-2/5
+          lg:inline-block">
+          <img class="w-full" src="./Images/aire6.png" alt="" />
+        </div>
+      </div>
+      <div class="lg:flex lg:mx-32">
+        <p class="text-gray-700 px-8 py-6 my-8 lg:w-2/4 xl:mt-12">
+          El control por el usuario y la posibilidad de contacto con el exterior
+          son claves para sentirse confortable.
+        </p>
+        <div class="w-3/4 mx-auto rounded shadow-md lg:w-2/4">
+          <img class="w-full" src="./Images/aire7.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- Inicio de contenido seccion fondo verde -->
+    <div class="bg-teal-500 py-8 my-8">
+      <div class="container lg:flex xl:mx-auto">
+        <p class="text-white px-8 py-2 lg:w-1/2">
+          La investigación ha demostrado que la mala calidad del aire (y las
+          termeraturas elevadas) reducen constanatemente el rendimiento de los
+          trabajadores de oficina hasta en un 10%, en medidad como la velocidad
+          de mecanografía.
+        </p>
+
+        <p class="text-white px-8 py-2 lg:w-1/2">
+          La mayoría de las personas sienten que la calidad del aire es
+          importante para su bienestar cotidiano. En una encuesta danesa, cuando
+          se le preguntó sobre las palabras que describen los factores que
+          contribuyen a la comodidad, el 21% de las respuestas se relacionó con
+          'aire fresco / limpio y olor', justo después de 'luz, sol' (46%) y
+          'temperatura, calor '(35%)
         </p>
       </div>
-      <p class="text-gray-700 px-8 py-2">
-        Inhalamos y exhalamos un promedio de 12000 litros de aire por día.
-        Nuestra capacidad para evaluar la calidad de este aire generalmente
-        implica dos sentidos: olfato y el sentido químico común.
-      </p>
-      <img
-      class="w-3/4 mx-auto rounded shadow-md"
-      src="./Images/aire3.png"
-      alt=""
-    />
+    </div>
+    <!-- Inicio de contenido seccion 4 -->
+    <div class="container xl:px-20 xl:mx-auto ">
+      <h2 class="border-l-4 border-teal-500 pl-4 m-6 md:text-xl">
+        ¿QUÉ CONTRIBUYE AL COMODIDAD DEL AIRE INTERIOR?
+      </h2>
+      <div class="lg:flex">
+        <div class="lg:w-1/2 lg:pt-16 xl:pt-12">
+          <img class="w-full" src="./Images/aire8.jpg" alt="" />
+        </div>
+
+        <div class="lg:w-1/2">
+          <p class="text-gray-700 px-8 mt-6 py-2">
+            Contaminantes que pudieran afectar la salud de las personas. Sin
+            embargo, hoy aparecen otros parámetros al evaluar la calidad del
+            aire interior, que también son importantes para la comodidad y el
+            bienestar de los ocupantes: la ausencia de malos olores,
+            irritaciones sensoriales y congestión (dolor de cabeza y fatiga). El
+            comfort del aire está determinado por:
+          </p>
+          <div class="text-gray-700 px-8 py-2">
+            <p class="my-2">- Calidad del aire interior</p>
+            <p class="my-2">- Suministro de aire fresco</p>
+            <p class="my-2">- Ausencia de contaminantes internos</p>
+            <p class="my-2">- Control de olores</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full bg-gray-800 p-8 my-8 text-white">
+      <div class="container lg:mx-auto">
+        <h2 class="my-2 font-bold">
+          Diseñando para la CALIDAD DEL AIRE INTERIOR?
+        </h2>
+        <p class="my-2">
+          CONFORT DE AIRE INTERIOR es un elemento clave en el proceso de diseño
+          y planificación de cualquier proyecto nuevo de construcción o
+          renovación. El primer paso para controlar la contaminación del aire
+          interior es eliminar o minimizar las emisiones de contaminantes
+          primarios y secundarios en la fuente.
+        </p>
+        <div class="lg:flex ">
+          <div class="lg:w-1/2 lg:mx-4">
+            <p class="my-4 font-bold">Ventilación:</p>
+            <p class="my-2">
+              Un flujo óptimo de aire fresco requiere una cierta cantidad de
+              cambios de aire por hora, dependiendo del tamaño de la habitación,
+              los niveles de ocupación y el tipo de actividad. Los sistemas de
+              ventilación automatizados son los más eficientes, pero la
+              ventilación natural (esencialmente, la apertura manual o
+              automática de ventanas) elimina la necesidad de conductos, con
+              ahorros de costos iniciales, menores costos de funcionamiento y
+              beneficios para la salud .
+            </p>
+          </div>
+          <div class="lg:w-1/2 lg:mx-4">
+            <p class="my-4 font-bold">Purificación de aire</p>
+            <p class="my-2">
+              Filtrar el aire entrante y saliente ayuda a eliminar las
+              partículas nocivas. Sin embargo, los filtros de aire deben
+              mantenerse para evitar que el sistema de ventilación se convierta
+              en una fuente de contaminación, en lugar de ser la solución.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

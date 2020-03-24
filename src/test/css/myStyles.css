@@ -189,14 +189,38 @@
   }
 
 }
-@media only screen and (min-width: 1000px) {
+@media only screen and (max-width: 1024px) {
+  .glider-prev{
+    left: 0px;
+  }
+  .glider-next{
+    right: 0px;
+  }
+  /* .imagenCover{
+    height: 450px;
+  } */
+
+}
+@media only screen and (min-width: 1280px) {
   .glider-prev{
     display: none;
   }
   .glider-next{
     display: none;
   }
+  /* .imagenCover{
+    height: 650px;
+  } */
 
+}
+
+@media only screen and (min-width: 1400px) {
+ 
+  .textoSeccion1{
+    padding-right: 16rem;
+  }
+
+}
 
 }
 
