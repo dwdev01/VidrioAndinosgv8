@@ -21,11 +21,15 @@
   <body>
     <div class="mx-auto my-2 container">
       <div class="w-full  px-auto flex h-auto ">
-        <img
-          class="hidden  md:block  md:w-2/4 lg:w-2/4 lg:h-full md:h-64  xl:h-auto "
-          src="./Images/grupo colaboradores.png"
-          alt="Empleado"
-        />
+        <div
+          class="hidden md:block md:w-2/4 lg:w-2/4 lg:h-full md:h-64  xl:h-auto "
+        >
+          <img
+            src="./Images/grupo colaboradores.png"
+            class="object-cover w-full"
+            alt="Empleado"
+          />
+        </div>
         <div
           class="w-full  md:w-2/4 lg:w-2/4  lg:h-auto bg-blue-700 p-10  md:p-6 md:h-64 lg:py-12 lg:px-12 xl:py-10 xl:px-12 xl:h-auto xl:py-24"
         >
@@ -70,14 +74,16 @@
             </div>
 
             <div class="flex">
-              <img
-                src="./Images/colaborador2.png"
-                alt="trabajador"
-                class="rounded-full w-16 ml-10 mt-10 border-2 border-blue-500 "
-              />
+              <div
+                class="rounded-full w-16 ml-10 mt-10 border-2 border-blue-500 overflow-hidden"
+              >
+                <img src="./Images/colaborador2.png" alt="trabajador" />
+              </div>
               <div class="mt-16 ml-4 flex flex-col leading-none">
-                <span class="text-lg font-bold">Celmira Sánchez</span>
-                <span class="text-base font-light"
+                <span class="text-base sm:text-lg font-bold"
+                  >Celmira Sánchez</span
+                >
+                <span class="text-sm sm:text-base font-light"
                   >Gerente Recursos Humanos</span
                 >
               </div>
@@ -95,14 +101,16 @@
             </p>
           </div>
           <div class="flex">
-            <img
-              src="./Images/colaborador1.png"
-              alt="trabajador"
-              class="rounded-full w-16 ml-10 mt-10 border-2 border-blue-500 "
-            />
+            <div
+              class="rounded-full w-16 ml-10 mt-10 border-2 border-blue-500 overflow-hidden"
+            >
+              <img src="./Images/colaborador1.png" alt="trabajador" />
+            </div>
             <div class="mt-16 ml-4 flex flex-col leading-none">
-              <span class="text-lg font-bold">Daniel Prada</span>
-              <span class="text-base font-light">Bricklayer Senior </span>
+              <span class="text-base sm:text-lg  font-bold">Daniel Prada</span>
+              <span class="text-sm sm:text-base font-light"
+                >Bricklayer Senior
+              </span>
             </div>
           </div>
         </div>
@@ -118,14 +126,18 @@
             </p>
           </div>
           <div class="flex">
-            <img
-              src="./Images/colaborador3.jpg"
-              alt="trabajador"
-              class="rounded-full w-16 ml-10 mt-10 border-2 border-blue-500 "
-            />
+            <div
+              class="rounded-full w-16 ml-10 mt-10 border-2 border-blue-500 overflow-hidden"
+            >
+              <img src="./Images/colaborador3.jpg" alt="trabajador" />
+            </div>
             <div class="mt-16 ml-4 flex flex-col leading-none">
-              <span class="text-lg font-bold">Sandra Patricia López</span>
-              <span class="text-base font-light">Auxiliar logístico </span>
+              <span class="text-base sm:text-lg font-bold"
+                >Sandra Patricia López</span
+              >
+              <span class="text-sm sm:text-base font-light"
+                >Auxiliar logístico
+              </span>
             </div>
           </div>
         </div>
@@ -142,35 +154,37 @@
         class=" mx-auto mb-12 lg:border-r lg:border-blue-600 lg:pr-12 leading-none"
       >
         <div class="mb-8">
-          <h2 class=" px-4 text-blue-700 text-4xl text-center mr-12">
+          <h2
+            class="px-4 text-blue-700 text-3xl sm:text-4xl text-center mx-auto"
+          >
             PRINCIPIOS
           </h2>
           <h2
-            class="px-4 text-4xl bg-blue-800 text-white text-center rounded-lg mr-12"
+            class="px-4 text-3xl sm:text-4xl bg-blue-800 text-white text-center rounded-lg mx-auto"
           >
             DE CONDUCTA
           </h2>
         </div>
-        <div class="contenedor1 mb-2 flex ">
+        <div class="contenedor1 mb-2 flex justify-center">
           <span class="mx-2 " style="font-size: 100px;" id="textborder1"
             >1</span
           >
 
           <div class="  flex flex-col justify-center leading-none ">
-            <span class="text-5xl text-gray-700">
+            <span class="text-4xl sm:text-5xl text-gray-700">
               Compromiso
             </span>
-            <span class="text-4xl text-gray-700 font-light">
+            <span class="text-3xl sm:text-4xl text-gray-700 font-light">
               profesional
             </span>
           </div>
         </div>
-        <div class="contenedor2 mb-2 flex ">
+        <div class="contenedor2 mb-2 flex justify-center">
           <div class="  flex flex-col justify-center leading-none ">
-            <span class="text-5xl text-gray-700">
+            <span class="text-4xl sm:text-5xl text-gray-700">
               Respeto por
             </span>
-            <span class="text-4xl text-gray-700 font-light">
+            <span class="text-3xl sm:text-4xl text-gray-700 font-light">
               las personas
             </span>
           </div>
@@ -178,19 +192,19 @@
             >2</span
           >
         </div>
-        <div class="contenedor3  mb-2 flex ">
+        <div class="contenedor3  mb-2 flex justify-center">
           <span class="mx-2 " style="font-size: 100px;" id="textborder3"
             >3</span
           >
           <div class="  flex flex-col justify-center leading-none ">
-            <span class="text-5xl text-gray-700">
+            <span class="text-4xl sm:text-5xl text-gray-700">
               Integridad
             </span>
           </div>
         </div>
-        <div class="contenedor4 mb-2 flex ">
-          <div class="  flex flex-col justify-center leading-none ">
-            <span class="text-6xl text-gray-700 mx-6">
+        <div class="contenedor4 mb-2 flex justify-center">
+          <div class="flex flex-col justify-center leading-none">
+            <span class="text-5xl sm:text-6xl text-gray-700 mx-6">
               Lealtad
             </span>
           </div>
@@ -198,12 +212,12 @@
             >4</span
           >
         </div>
-        <div class="contenedor5 mb-2 flex ">
+        <div class="contenedor5 mb-2 flex justify-center">
           <span class="mx-2 " style="font-size: 100px;" id="textborder5"
             >5</span
           >
           <div class="  flex flex-col justify-center leading-none ">
-            <span class="text-5xl text-gray-700">
+            <span class="text-4xl sm:text-5xl text-gray-700">
               Solidaridad
             </span>
           </div>
@@ -211,23 +225,23 @@
       </div>
       <div class="lg:pl-32 leading-none mx-auto ">
         <div class="mb-8">
-          <h2 class=" px-4 text-blue-700 text-4xl text-center mr-12">
+          <h2 class=" px-4 text-blue-700 text-4xl text-center mx-auto">
             PRINCIPIOS
           </h2>
           <h2
-            class="px-4 text-4xl bg-blue-800 text-white text-center rounded-lg mr-12"
+            class="px-4 text-3xl sm:text-4xl bg-blue-800 text-white text-center rounded-lg mx-auto"
           >
             DE ACTUACIÓN
           </h2>
         </div>
 
-        <div class="contenedor1 mb-2 flex ">
+        <div class="contenedor1 mb-2 flex justify-center">
           <span class="mx-2 " style="font-size: 100px;" id="textborder1"
             >1</span
           >
 
           <div class="  flex flex-col justify-center leading-none ">
-            <span class="text-4xl text-gray-700 font-light">
+            <span class="text-3xl sm:text-4xl text-gray-700 font-light">
               Respeto a la
             </span>
             <span class="text-5xl text-gray-700 ">
@@ -235,12 +249,12 @@
             </span>
           </div>
         </div>
-        <div class="contenedor2 mb-2 flex ">
-          <div class="  flex flex-col justify-center leading-none ">
-            <span class="text-5xl text-gray-700">
+        <div class="contenedor2 mb-2 flex justify-center">
+          <div class="flex flex-col justify-center leading-none">
+            <span class="text-4xl sm:text-5xl text-gray-700">
               Respeto al
             </span>
-            <span class="text-4xl text-gray-700 font-light">
+            <span class="text-3xl sm:text-4xl text-gray-700 font-light">
               <i> Medio ambiente </i>
             </span>
           </div>
@@ -248,34 +262,34 @@
             >2</span
           >
         </div>
-        <div class="contenedor3  mb-2 flex ">
+        <div class="contenedor3 mb-2 flex justify-center">
           <span class="mx-2 " style="font-size: 100px;" id="textborder3"
             >3</span
           >
-          <div class="  flex flex-col justify-center leading-none ">
-            <span class="text-5xl text-gray-700">
+          <div class="flex flex-col justify-center leading-none">
+            <span class="text-4xl sm:text-5xl text-gray-700">
               Respeto a la
             </span>
-            <span class="text-2xl text-gray-700 mt-2">
+            <span class="text-xl sm:text-2xl text-gray-700 mt-2">
               HIGIENE Y SEGURIDAD
             </span>
-            <span class="text-5xl text-gray-700 font-light">
+            <span class="text-4xl sm:text-5xl text-gray-700 font-light">
               <i> en el trabajo </i>
             </span>
           </div>
         </div>
-        <div class="contenedor4 mb-2 flex ">
-          <div class="  flex flex-col justify-center leading-none ">
-            <span class="text-6xl text-gray-700">
+        <div class="contenedor4 mb-2 flex justify-center">
+          <div class="flex flex-col justify-center leading-none">
+            <span class="text-4xl sm:text-6xl text-gray-700">
               Respeto
             </span>
-            <span class="text-4xl text-gray-700 font-light">
+            <span class="text-2xl sm:text-4xl text-gray-700 font-light">
               a los <i>DERECHOS</i>
             </span>
-            <span class="text-4xl text-gray-700 text-center">
+            <span class="text-2xl sm:text-4xl text-gray-700 text-center">
               de los
             </span>
-            <span class="text-4xl text-gray-700 text-center">
+            <span class="text-2xl sm:text-4xl text-gray-700 text-center">
               TRABAJADORES
             </span>
           </div>
@@ -293,7 +307,8 @@
       <div class="mx-auto my-2  container p-0 ms:p-4 ">
         <div class="my-4 pt-4 sm:my-6 ">
           <h1
-            class=" text-2xl sm:ml-6 lg:text-4xl border-r border-white-600 pl-2 pr-2 pt-4 w-64 mt-2 xl:mt-2 text-white">
+            class=" text-2xl sm:ml-6 lg:text-4xl border-r border-white-600 pl-2 pr-2 pt-4 w-64 mt-2 xl:mt-2 text-white"
+          >
             Top employer
           </h1>
         </div>
@@ -321,21 +336,15 @@
           <div
             class="flex flex-row flex-wrap sm:mb-4 md:mb-12 lg:flex-col  items-center justify-center lg:w-full"
           >
-            <img
-              src="./Images/Grupo 3297.png"
-              alt=""
-              class=" mt-2 mx-4  sm:mt-4"
-            />
-            <img
-              src="./Images/Grupo 3298.png"
-              alt=""
-              class="mt-2 mx-4  sm:mt-4"
-            />
-            <img
-              src="./Images/Grupo 3299.png"
-              alt=""
-              class="mt-2 mx-4  sm:mt-4"
-            />
+            <div class=" mt-2 mx-4 sm:mt-4">
+              <img src="./Images/Grupo 3297.png" alt="vaina 1" />
+            </div>
+            <div class="mt-2 mx-4 sm:mt-4">
+              <img src="./Images/Grupo 3298.png" alt="vaina 2" />
+            </div>
+            <div class="mt-2 mx-4 sm:mt-4">
+              <img src="./Images/Grupo 3299.png" alt="" />
+            </div>
           </div>
         </div>
       </div>
