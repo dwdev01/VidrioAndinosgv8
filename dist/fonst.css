@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'fontello';
-  src: url('../font/fontello.eot?92660004');
-  src: url('../font/fontello.eot?92660004#iefix') format('embedded-opentype'),
-       url('../font/fontello.woff2?92660004') format('woff2'),
-       url('../font/fontello.woff?92660004') format('woff'),
-       url('../font/fontello.ttf?92660004') format('truetype'),
-       url('../font/fontello.svg?92660004#fontello') format('svg');
+  font-family: 'calendar';
+  src: url('../font/calendar.eot?90599776');
+  src: url('../font/calendar.eot?90599776#iefix') format('embedded-opentype'),
+    url('../font/calendar.woff2?90599776') format('woff2'),
+    url('../font/calendar.woff?90599776') format('woff'),
+    url('../font/calendar.ttf?90599776') format('truetype'),
+    url('../font/calendar.svg?90599776#calendar') format('svg');
   font-weight: normal;
   font-style: normal;
 }

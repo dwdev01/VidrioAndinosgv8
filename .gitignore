@@ -1,7 +1,7 @@
 /*.log
 /mix-manifest.json
 /node_modules/
-/comands
+/command
 src/test
 # Ignore compiled assets.
 # /dist/
@@ -10,3 +10,4 @@ src/test
 # Ignore lock files.
 /package-lock.json
 /yarn.lock
+/server_commands

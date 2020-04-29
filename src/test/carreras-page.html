@@ -8,26 +8,29 @@
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="./css/glider.min.css" />
+    <link rel="stylesheet" href="./../../dist/tailwind.css" />
+    <title>Document</title>
+  </head>
+  <body>
     <link
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       rel="stylesheet"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/glider.min.css" />
-    <link rel="stylesheet" href="./css/myStyles.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="mx-auto my-2 container">
+    <div class="my-2 container">
       <div class="w-full  px-auto flex h-auto ">
         <div
-          class="hidden md:block md:w-2/4 lg:w-2/4 lg:h-full md:h-64  xl:h-auto "
+          class="hidden md:block md:w-2/4 lg:w-2/4 lg:h-full md:h-64 xl:h-auto "
         >
           <img
-            src="./Images/grupo colaboradores.png"
+            alt="Team Vidrioandino"
             class="object-cover w-full"
-            alt="Empleado"
+            data-entity-type="file"
+            data-entity-uuid="64a6516c-967a-49c6-b33e-c6b04cd2c78b"
+            src="/sites/sgva.master/files/inline-images/teamVA.jpeg"
           />
         </div>
         <div
@@ -50,15 +53,19 @@
 
       <!-- gider.------ -->
       <div class="glider-contain multiple container">
-        <button class="glider-prev bg-blue-500 rounded p-3 text-xl text-white">
-          <i class="fa fa-chevron-left"></i>
+        <button
+          class="glider-prev cr-prev bg-blue-500 rounded p-3 text-xl text-white"
+        >
+          <i class="fa cr-left fa-chevron-left"></i>
         </button>
-        <button class="glider-next bg-blue-500 rounded p-3 text-xl text-white">
-          <i class="fa fa-chevron-right"></i>
+        <button
+          class="glider-next cr-next bg-blue-500 rounded p-3 text-xl text-white"
+        >
+          <i class="fa cr-right fa-chevron-right"></i>
         </button>
 
         <!-- content -->
-        <div class=" glider  multiple flex w-full ">
+        <div class=" glider multiple flex w-full ">
           <div class="mt-8 mx-12 md:ml-32 lg:ml-0">
             <div
               class="testimony bg-gray-200 max-w-md min-h-56 p-4 text-sm border-l-4 border-blue-300 rounded-lg sm:ml-12"
@@ -77,7 +84,12 @@
               <div
                 class="rounded-full w-16 ml-10 mt-10 border-2 border-blue-500 overflow-hidden"
               >
-                <img src="./Images/colaborador2.png" alt="trabajador" />
+                <img
+                  alt="Colaborador 2"
+                  data-entity-type="file"
+                  data-entity-uuid="4095c496-1413-4bcd-96fd-f6114ce9c3ff"
+                  src="/sites/sgva.master/files/inline-images/colaborador2.png"
+                />
               </div>
               <div class="mt-16 ml-4 flex flex-col leading-none">
                 <span class="text-base sm:text-lg font-bold"
@@ -104,7 +116,12 @@
             <div
               class="rounded-full w-16 ml-10 mt-10 border-2 border-blue-500 overflow-hidden"
             >
-              <img src="./Images/colaborador1.png" alt="trabajador" />
+              <img
+                alt="Colaborador 1"
+                data-entity-type="file"
+                data-entity-uuid="123cbb44-14c2-44e1-b2bb-75bd88a3b058"
+                src="/sites/sgva.master/files/inline-images/colaborador1.png"
+              />
             </div>
             <div class="mt-16 ml-4 flex flex-col leading-none">
               <span class="text-base sm:text-lg  font-bold">Daniel Prada</span>
@@ -129,7 +146,12 @@
             <div
               class="rounded-full w-16 ml-10 mt-10 border-2 border-blue-500 overflow-hidden"
             >
-              <img src="./Images/colaborador3.jpg" alt="trabajador" />
+              <img
+                alt="Colaborador 3"
+                data-entity-type="file"
+                data-entity-uuid="5475fb90-0b5e-41ed-8912-1c1b66e64436"
+                src="/sites/sgva.master/files/inline-images/colaborador3.jpg"
+              />
             </div>
             <div class="mt-16 ml-4 flex flex-col leading-none">
               <span class="text-base sm:text-lg font-bold"
@@ -301,10 +323,10 @@
     </div>
 
     <div
-      class=" mt-12 w-full h-full lg:h-auto p-0 pt-0 lg:p-2 lg:p-8 xl:p-8* mt-2 lg:mt-32 xl:h-auto bg-no-repeat"
+      class=" mt-12 w-full h-full lg:h-auto p-0 bg-cover pt-0 lg:p-2 lg:p-8 xl:p-8* mt-2 lg:mt-32 xl:h-auto bg-no-repeat"
       style="background-image: url('./Images/Grupo 3368.png') ;"
     >
-      <div class="mx-auto my-2  container p-0 ms:p-4 ">
+      <div class="my-2 container p-0 ms:p-4 ">
         <div class="my-4 pt-4 sm:my-6 ">
           <h1
             class=" text-2xl sm:ml-6 lg:text-4xl border-r border-white-600 pl-2 pr-2 pt-4 w-64 mt-2 xl:mt-2 text-white"

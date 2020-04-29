@@ -1,0 +1,177 @@
+{#     
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - node.getCreatedTime() will return the node creation timestamp.
+ *   - node.hasField('field_example') returns TRUE if the node bundle includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   - node.isPublished() will return whether the node is published or not.
+ *   Calling other methods, such as node.delete(), will result in an exception.
+ *   See \Drupal\node\Entity\Node for a full list of public properties and
+ *   methods for the node object.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+<article class="my-0" {{ attributes.addClass('node') }}>
+  {{ title_prefix }}
+  {% if not page %}
+    <h2 {{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if display_submitted %}
+    <footer>
+      {{ author_picture }}
+      <div {{ author_attributes }}>
+        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        {{ metadata }}
+      </div>
+    </footer>
+  {% endif %}
+
+  <div {{ content_attributes.addClass('node-content', 'hidden') }}>
+    {{ content }}
+  </div>
+ <div class="container grid grid-cols-7 gap-8">
+    <div class="col-span-1 pt-16">
+      <h6 class="text-sm font-medium text-gray-600 mb-3">Compartir:</h6>
+      <a id="shareFB" target="_blanck" href="https://www.facebook.com/sharer/sharer.php?u=" class="bg-blue-800 hover:bg-blue-700 block text-white text-sm font-medium px-2 py-1 mb-2">
+        <i class="icon-facebook"></i>
+        <span>Facebook</span>
+      </a>
+      <a id="shareWP" target="_blanck" href="https://api.whatsapp.com/send?text=" class="bg-green-500 hover:bg-green-600 block text-white text-sm font-medium px-2 py-1 mb-2">
+        <i class="icon-whatsapp"></i>
+        <span>Whatsapp</span>
+      </a>
+      <a id="shareLK" target="_blanck" href="https://www.linkedin.com/shareArticle?mini=true&url=" class="bg-blue-600 hover:bg-blue-500 block text-white text-sm font-medium px-2 py-1 mb-2">
+        <i class="icon-linkedin"></i>
+        <span>Likedin</span>
+      </a>
+    </div>
+    <div id="postContent" class="col-span-4">
+      <div id="postHeader" class="flex justify-between">
+        <div id="postAvatar" class="flex flex-row-reverse justify-end items-center">
+          <div id="postAvatarText" class="ml-3">
+            <div id="postAvatarName" class="text-base font-medium text-gray-700 leading-none"></div>
+            <div id="postAvatarProfession" class="text-sm text-gray-600"></div>
+          </div>
+        </div>
+        <div id="postDate" class="flex text-gray-600">
+          <i class="icon-calendar mr-2"></i>
+        </div>
+      </div>
+      <div id="postCover" class="mt-6"></div>
+      <div id="postBody" class="mt-6 leading-relaxed text-gray-700"></div>
+    </div>
+    <div id="postAside" class="col-span-2">
+    </div>
+ </div>
+</article>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => { 
+    const content = document.querySelector('.node-content');
+    const postContent = document.getElementById('postContent');
+    // Content
+    const post = {
+      image: content.firstElementChild,
+      name: content.children[1],
+      profession: content.children[2],
+      date: content.children[3],
+      cover: content.children[4],
+      body: content.children[5]
+    }
+
+    // Avatar insert
+    const postAvatar = document.getElementById('postAvatar')
+    postAvatar.appendChild(post.image)
+    const postAvatarName = document.getElementById('postAvatarName')
+    const postAvatarProfession = document.getElementById('postAvatarProfession')
+    postAvatarName.appendChild(post.name)
+    postAvatarProfession.appendChild(post.profession)
+    // Date insert
+    const postDate = document.getElementById('postDate')
+    postDate.appendChild(post.date)
+    // Cover insert 
+    const postCover = document.getElementById('postCover')
+    postCover.appendChild(post.cover)
+    // Body Insert
+    const postBody = document.getElementById('postBody')
+    postBody.appendChild(post.body)
+    // Aside insert
+    const postAside = document.getElementById('postAside')
+    const asideFragment = document.createDocumentFragment('')
+    asideFragment.appendChild(document.querySelector('aside'))
+    postAside.appendChild(asideFragment)
+    // Share buttons
+    const shareFB = document.getElementById('shareFB'),
+      shareWP = document.getElementById('shareWP'),
+      shareLK = document.getElementById('shareLK')
+    
+    const shareButtons = [shareFB, shareWP, shareLK]
+    shareButtons.forEach(button => {
+      const direction = button.href
+      button.href=`${direction + window.location.href}`
+    })
+  })
+</script>

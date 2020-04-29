@@ -1,0 +1,23 @@
+#formCarrerasContainer form {
+  @apply w-2/3 mx-auto;
+}
+#formCarrerasContainer > form > div {
+  @apply flex flex-col mb-3;
+}
+#formCarrerasContainer > form > div > label {
+  @apply text-white;
+}
+#formCarrerasContainer > form > div > div > textarea,
+#formCarrerasContainer > form > div > div > input,
+#formCarrerasContainer > form > div > select,
+#formCarrerasContainer > form > div > input {
+  @apply block border-0 appearance-none rounded py-2 px-4 text-gray-800 bg-white w-full;
+}
+
+#formCarrerasContainer > form > div > input[type="submit"] {
+  @apply bg-orange-500 text-white transition duration-300 font-medium;
+}
+
+#formCarrerasContainer > form > div > input[type="submit"]:hover {
+  @apply bg-orange-400;
+}
