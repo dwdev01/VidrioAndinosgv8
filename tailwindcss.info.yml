@@ -18,6 +18,8 @@ regions:
   breadcrumb: 'Breadcrumb'
   banner: 'Banner'
   content: 'Content'
+  filter_content: 'Filter Content'
+  recommended_content: "Recommended Content"
   sidebar: 'Sidebar'
   footer_firts: "Footer Firts"
   footer_second: "Footer Second"

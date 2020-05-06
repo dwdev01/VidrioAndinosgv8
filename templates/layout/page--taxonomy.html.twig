@@ -93,7 +93,7 @@
   <main role="main" class="col-span-9">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
     <div>
-      {{ page.content }}
+      {{ page.filter_content }}
     </div>
     {# /.layout-content #}
   </main>
@@ -162,16 +162,6 @@
           this.errored = true
         })
         .finally(() => this.loading = false)
-
-      document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(function() {
-          if (app.posts === null) {
-            document.getElementById('errorMsg').classList.remove('opacity-0')
-            app.errored = true
-          }
-        }, 500)
-
-      })
     },
     methods: {
       read: function(content) {

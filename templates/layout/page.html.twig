@@ -58,22 +58,33 @@
   </div>
   {% endif %}
 
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-
-    <div class="md:tw-flex tw--mx-4">
-      <div class="md:tw-flex-1 tw-p-4">
+  <div class="grid grid-cols-12 gap-4 pb-24">
+    {% if page.sidebar %}
+    <main role="main" class="col-span-9">
+      <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+      <div>
         {{ page.content }}
-      </div>{# /.layout-content #}
-    </div>
+      </div>
+      {# /.layout-content #}
+    </main>
+    <aside class="col-span-3" role="complementary">
+      {{ page.sidebar }}
+    </aside>
 
-  </main>
+    {% else %}
+    <main role="main" class="col-span-12">
+      <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+      <div>
+        {{ page.content }}
+      </div>
+      {# /.layout-content #}
+    </main>
+    {% endif %}
+  </div>
 
-  {% if page.sidebar %}
-  <aside class="md:tw-w-1/4 tw-p-4" role="complementary">
-    {{ page.sidebar }}
-  </aside>
-  {% endif %}
+  {# {% if page.recommended_content %} #}
+  {{page.recommended_content}}
+  {# {% endif %} #}
 
   {# {% if page.footer %} #}
   <footer role="footer" class="py-6 bg-gray-900 text-white">

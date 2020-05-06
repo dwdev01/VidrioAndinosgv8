@@ -1,0 +1,40 @@
+<div id="bannerBlog">
+  <div class="bg-gray-500 glider h-screen overflow-hidden w-full" style="max-height: 600px" v-if="content == null">
+    &nbsp;</div>
+
+  <div class="glider-contain h-screen" style="max-height: 600px" v-else="">
+    <div class="glider">
+      <div :style="{'background-image': 'url(' + content[index].field_header_image[0].url + ')', 'max-height': '600px'}"
+        class="item relative h-screen bg-center bg-no-repeat flex items-end justify-center bg-cover w-full">
+        <transition name="fade">
+          <div class="container font-semibold absolute pb-12 mx-auto flex flex-col text-white" v-if="index == 0"><span
+              class="text-xl mb-4"><i class="icon-right-dir text-2xl"></i>Ultimo Post</span>
+
+            <p class="text-4xl mb-4 w-2/3">{{content[index].field_description_blog[0].value}}</p>
+            <a :href="url + content[index].path[0].alias"
+              class="inline-block px-4 py-2 border hover:bg-orange-500 transition duration-200 border-white hover:border-orange-500 text-xl rounded-full center uppercase"
+              style="width: max-content;">Sigue leyendo</a>
+          </div>
+        </transition>
+        <transition name="fade">
+          <div class="container font-semibold absolute pb-12 mx-auto flex flex-col text-white" v-if="index == 1"><span
+              class="text-xl mb-4"><i class="icon-right-dir text-2xl"></i>Post Seleccionado</span>
+
+            <p class="text-4xl mb-4 w-2/3">{{content[index].field_description_blog[0].value}}</p>
+            <a :href="url + content[index].path[0].alias"
+              class="inline-block px-4 py-2 border hover:bg-orange-500 transition duration-200 border-white hover:border-orange-500 text-xl rounded-full center uppercase"
+              style="width: max-content;">Sigue leyendo</a>
+          </div>
+        </transition>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 right-0 m-8 text-white"><button
+        :class="[index == 0 ? 'opacity-50' : '' ,'slide-prev', 'rounded-full', 'bg-orange-500', 'h-12', 'w-12', 'outline-none', 'mr-4', 'transform', 'rotate-180']"
+        aria-label="Previous" role="button" v-on:click="subIndex"><i class="icon-right-open"></i></button><button
+        :class="[index == 1 ? 'opacity-50' : '', 'slide-next', 'bg-orange-500', 'rounded-full', 'h-12', 'w-12', 'outline-none']"
+        aria-label="Next" role="button" v-on:click="addIndex"><i class="icon-right-open"></i></button></div>
+  </div>
+</div>
+
+:

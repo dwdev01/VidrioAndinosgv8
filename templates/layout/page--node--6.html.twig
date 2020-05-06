@@ -311,6 +311,19 @@
         index: 0
       }
     },
+    mounted() {
+      axios
+        .get("https://sgvad8.vidrioandino.com/api/blog_post?_format=json")
+        .then(response => {
+          let randomNumber = Math.floor(Math.random() * response.data.length)
+          randomNumber = randomNumber === 0 ? 1 : randomNumber
+          this.content = [response.data[0], response.data[randomNumber]]
+
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
     methods: {
       addIndex: function() {
         if (this.index == 0) {
