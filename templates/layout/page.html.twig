@@ -58,8 +58,8 @@
   </div>
   {% endif %}
 
-  <div class="grid grid-cols-12 gap-4 pb-24">
-    {% if page.sidebar %}
+  {% if page.sidebar %}
+  <div class="container grid grid-cols-12 gap-4 pb-24">
     <main role="main" class="col-span-9">
       <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
       <div>
@@ -70,9 +70,8 @@
     <aside class="col-span-3" role="complementary">
       {{ page.sidebar }}
     </aside>
-
     {% else %}
-    <main role="main" class="col-span-12">
+    <main role="main" class="w-full">
       <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
       <div>
         {{ page.content }}
