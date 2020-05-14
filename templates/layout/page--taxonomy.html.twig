@@ -82,7 +82,22 @@
   .fade-leave-to {
     opacity: 0
   }
+
+  .productoDescription {
+    max-height: 0;
+    overflow-y: hidden;
+  }
+
+  .productoLink:hover .productoDescription {
+    max-height: 10000px;
+    padding-bottom: 1rem;
+  }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
 
 <header role="header" class="shadow-md transition-all duration-300 fixed w-full bg-white z-50">
   {{ page.header }}
@@ -120,61 +135,3 @@
   {{ page.footer }}
 </footer>
 {# {% endif %} #}
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
-<script>
-  // Vuejs app
-  let app = new Vue({
-    el: "#app",
-    data() {
-      return {
-        posts: null,
-        url: window.location.origin,
-        loading: true,
-        errored: false
-      }
-    },
-    mounted() {
-      axios
-        .get("https://sgvad8.vidrioandino.com/api/blog_post?_format=json")
-        .then(response => {
-          const taxonomy = window.location.pathname.split('/')[2]
-          let filter = response.data.filter(filter => {
-            let isTrue = false
-            filter[`field_${taxonomy}`].map(category => {
-              if (category.url == window.location.pathname) {
-                isTrue = true
-              }
-            })
-            if (isTrue) {
-              return filter
-            }
-          })
-          this.posts = filter
-        })
-        .catch(error => {
-          console.log(error)
-          this.errored = true
-        })
-        .finally(() => this.loading = false)
-    },
-    methods: {
-      read: function(content) {
-        const readPromedio = 250
-        const readValue = content.body[0].processed.split(' ').length
-        const readResult = Math.ceil(readValue / readPromedio)
-
-        return readResult
-      },
-      formatDate: function(date) {
-        moment.locale('es')
-        return moment(date).format("MMM DD YYYY");
-      }
-    }
-  });
-</script>
