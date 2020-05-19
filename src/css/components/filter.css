@@ -1,0 +1,32 @@
+#block-views-block-tags-blog-block-1,
+#block-views-block-categorias-blog-block-1,
+#block-views-block-secciones-block-1,
+#block-views-block-tipo-de-vidrio-block-1 {
+    @apply mb-4;
+}
+
+#block-views-block-tipo-de-vidrio-block-1 h2,
+#block-views-block-tags-blog-block-1 h2,
+#block-views-block-categorias-blog-block-1 h2,
+#block-views-block-secciones-block-1 h2 {
+    @apply uppercase text-orange-500 border-b border-orange-500 pb-2 font-bold mb-4;
+}
+
+#block-views-block-tipo-de-vidrio-block-1 .views-row #block-views-block-categorias-blog-block-1 .views-row,
+#block-views-block-secciones-block-1 .views-row {
+    @apply flex text-sm text-gray-700 mb-2;
+}
+
+#block-views-block-tags-blog-block-1 .views-row {
+    @apply inline-block bg-gray-200 text-sm mr-2 mb-4 px-2 py-1 transition duration-200 rounded-full cursor-pointer;
+}
+
+#block-views-block-tags-blog-block-1 .views-row:hover {
+    @apply bg-gray-300;
+}
+
+#block-views-block-tipo-de-vidrio-block-1 .views-row .views-field-name-1,
+#block-views-block-categorias-blog-block-1 .views-row .views-field-name-1,
+#block-views-block-secciones-block-1 .views-row .views-field-name-1 {
+    @apply text-gray-600 ml-2;
+}

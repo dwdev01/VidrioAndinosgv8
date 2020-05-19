@@ -9,8 +9,10 @@
  *
  * @import "tailwindcss/base";
  */
+
 @tailwind base;
 @import "./base/base.css";
+
 /**
  * This injects any component classes registered by plugins.
  *
@@ -18,6 +20,7 @@
  *
  * 
  */
+
 @tailwind components;
 @import "./components/logo.css";
 @import "./components/menu.css";
@@ -43,7 +46,8 @@
 @import "./components/filterProductos.css";
 @import "./components/carrerasStyles.css";
 @import "./components/formCarreras.css";
-@import "./components/filterBlog.css";
+@import "./components/filter.css";
+
 /**
  * Here you would add any of your custom component classes; stuff that you'd
  * want loaded *before* the utilities so that the utilities could still
@@ -61,19 +65,20 @@
  */
 
 input {
-  @apply border border-gray-500;
+    @apply border border-gray-500;
 }
 
 .block,
 .node {
-  @apply mb-4;
+    @apply mb-4;
 }
 
 .node__content p,
 .node__content ul,
 .node__content ol {
-  @apply mb-4 leading-normal;
+    @apply mb-4 leading-normal;
 }
+
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
@@ -83,6 +88,7 @@ input {
  *
  * @import "tailwindcss/utilities";
  */
+
 @tailwind utilities;
 
 /**
