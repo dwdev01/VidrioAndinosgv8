@@ -44,6 +44,38 @@
  * @ingroup themeable
  */
 #}
+<style>
+  .activeBtn {
+    background-color: #ed8936;
+    color: #fff;
+  }
+
+  @media (max-width: 1024px) {
+    .asideContent {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    .asideContentActive {
+      max-height: 100000px !important;
+      opacity: 1;
+    }
+
+    .filterContent {
+      max-height: 0;
+      opacity: 0;
+      transition: all .3s;
+      overflow: hidden;
+    }
+
+    .filterContentActive {
+      max-height: 10000px !important;
+      opacity: 1;
+    }
+  }
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -58,22 +90,25 @@
   {{ page.banner }}
 
   {% if page.breadcrumb %}
-  <div id="breadcrumbContainer" class="container opacity-0 transition-all duration-300 mt-16 p-6 bg-gray-200 mb-10">
+  <div id="breadcrumbContainer" class="container opacity-0 transition-all duration-300 mt-16 p-6 bg-gray-200 mb-10 hidden md:block">
     {{ page.breadcrumb }}
   </div>
   {% endif %}
 
   {% if page.sidebar %}
-  <div class="container grid grid-cols-12 gap-4 pb-24">
-    <main role="main" class="col-span-9">
+  <div class="container flex flex-col-reverse lg:grid lg:grid-cols-12 gap-4 pb-24">
+    <main role="main" class="lg:col-span-9">
       <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
       <div>
         {{ page.content }}
       </div>
       {# /.layout-content #}
     </main>
-    <aside class="col-span-3" role="complementary">
-      {{ page.sidebar }}
+    <aside class="lg:col-span-3" role="complementary">
+      <button id="btnFilter" class="lg:hidden block w-32 outline-none p-2 text-xl font-medium bg-gray-200 rounded">Filtrar</button>
+      <div id="asideContent" class="asideContent transition-all duration-300">
+        {{ page.sidebar }}
+      </div>
     </aside>
     {% else %}
     <main role="main" class="w-full">
@@ -108,3 +143,28 @@
   {# {% endif %} #}
 
 </div>{# /.layout-container #}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnFilter = document.getElementById('btnFilter'),
+      asideContent = document.getElementById('asideContent');
+    document.querySelectorAll('aside .views-element-container').forEach(item => {
+      item.classList.add('filterItem')
+
+      item.addEventListener('click', (e) => {
+        if (document.querySelector('.filterContentActive') && document.querySelector('.filterContentActive').parentElement.parentElement.id != item.id) {
+          document.querySelector('.filterContentActive').classList.remove('filterContentActive')
+        }
+        document.querySelector(`#${item.id} .filterContent`).classList.toggle('filterContentActive')
+      })
+    })
+    document.querySelectorAll('.filterItem div .contextual-region').forEach(item => item.classList.add('filterContent'))
+
+    btnFilter.addEventListener('click', (e) => {
+      e.target.classList.toggle('activeBtn')
+      e.target.classList.toggle('bg-gray-200')
+
+      asideContent.classList.toggle('asideContentActive')
+    })
+  })
+</script>
