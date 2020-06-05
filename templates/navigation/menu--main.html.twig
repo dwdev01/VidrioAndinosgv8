@@ -30,18 +30,53 @@
 {% import _self as menus %}
 {% if items %}
 {% if menu_level == 0 %}
-<ul{{ attributes }} class="vd-menu flex-col xl:flex-row items-start xl:items-center px-6 xl:px-0">
+<style>
+  #linkProducts {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .2s;
+  }
+
+  .subActive {
+    max-height: 1000000px !important;
+    opacity: 1 !important;
+  }
+
+  .subLink:hover>a {
+    background-color: #4299e1 !important;
+    color: white !important;
+  }
+
+  @media (min-width: 1280px) {
+    #linkProducts {
+      transform: translateY(420px);
+    }
+
+    .subLink:hover #linkProducts {
+      max-height: 1000000px !important;
+      opacity: 1 !important;
+    }
+  }
+</style>
+<ul{{ attributes }} class="vd-menu relative flex-col xl:flex-row items-start xl:items-center px-6 xl:px-0">
   {% else %}
   <ul class="vd-menu flex-col xl:flex-row items-start xl:items-center">
     {% endif %}
 
-    <a href="#" class="vd-menu__icon p-1 text-gray-800 hover:text-blue-500 text-sm">
+    <a href="/noticias" class="vd-menu__icon p-1 text-gray-800 hover:text-blue-500 text-sm">
       <i class="icon-rss"></i>
     </a>
     <a href="/" class="vd-menu__icon p-1 text-gray-800 hover:text-blue-500 text-sm">
       <i class="icon-home"></i>
     </a>
+    <li class="relative xl:static subLink block m-0">
+      <a href="/productos">Productos</a>
+      <button id="btnSub" class="xl:hidden absolute right-0 top-0 p-3 outline-none border-0"><i class="icon-down-open"></i></button>
+      <div id="linkProducts" class="xl:absolute trasition-all duration-200 bottom-0 bg-white grid w-full xl:grid-cols-4">
 
+      </div>
+    </li>
     {% for item in items %}
     <li{{ item.attributes }}>
       {{ link(item.title, item.url) }}
@@ -53,3 +88,31 @@
   </ul>
   {% endif %}
   {% endmacro %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const linkFragment = document.createDocumentFragment()
+      axios({
+          method: "GET",
+          url: `${window.location.origin}/api/productos?_format=json`,
+        })
+        .then((res) => {
+          const data = res.data
+          data.map(item => {
+            const link = document.createElement('a')
+            link.classList.add('block', 'm-0', 'transition', 'duration-200', 'hover:bg-blue-500', 'hover:text-white')
+            link.setAttribute('href', item.path[0].alias)
+            link.textContent = item.title[0].value
+            linkFragment.appendChild(link)
+          })
+          document.getElementById('linkProducts').appendChild(linkFragment)
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+
+      document.getElementById('btnSub').addEventListener('click', () => {
+        document.querySelector('#linkProducts').classList.toggle('subActive')
+      })
+    })
+  </script>

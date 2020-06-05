@@ -159,12 +159,18 @@
       })
     })
     document.querySelectorAll('.filterItem div .contextual-region').forEach(item => item.classList.add('filterContent'))
+    if (document.getElementById('disableBread')) {
+      document.getElementById('breadcrumbContainer').classList.add('hidden')
+      document.getElementById('breadcrumbContainer').classList.remove('md:block')
+    }
 
-    btnFilter.addEventListener('click', (e) => {
-      e.target.classList.toggle('activeBtn')
-      e.target.classList.toggle('bg-gray-200')
+    if (btnFilter) {
+      btnFilter.addEventListener('click', (e) => {
+        e.target.classList.toggle('activeBtn')
+        e.target.classList.toggle('bg-gray-200')
 
-      asideContent.classList.toggle('asideContentActive')
-    })
+        asideContent.classList.toggle('asideContentActive')
+      })
+    }
   })
 </script>
