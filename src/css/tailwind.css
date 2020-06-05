@@ -47,6 +47,7 @@
 @import "./components/carrerasStyles.css";
 @import "./components/formCarreras.css";
 @import "./components/filter.css";
+@import "./components/formVecinos.css";
 
 /**
  * Here you would add any of your custom component classes; stuff that you'd

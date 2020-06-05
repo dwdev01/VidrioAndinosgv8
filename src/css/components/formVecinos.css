@@ -1,0 +1,91 @@
+/* Input Nombre del negocio */
+
+#webform-submission-vecinos-bienestar-node-170-add-form {
+    @apply px-4 py-12;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-nombre-del-negocio {
+    @apply flex flex-col mb-3;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-nombre-del-negocio label {
+    @apply text-base text-gray-700 font-bold mb-1;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-nombre-del-negocio input {
+    @apply border-orange-500 text-base rounded shadow px-4 py-2;
+}
+
+
+/* Input Cómo entraste al programa */
+
+#webform-submission-vecinos-bienestar-node-170-add-form #edit-como-te-enterastes-del-programa---wrapper {
+    @apply mb-3;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form #edit-como-te-enterastes-del-programa---wrapper legend span {
+    @apply text-base text-gray-700 font-bold mb-1 block;
+}
+
+
+/* Input principales proveedores */
+
+#webform-submission-vecinos-bienestar-node-170-add-form label[for='edit-dinos-cuales-son-tus-3-principales-proveedores-de-vidrio-'] {
+    @apply text-base text-gray-700 font-bold mb-1 block;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-proveedor-1,
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-proveedor-2,
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-proveedor-3 {
+    @apply flex flex-col mb-2;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-proveedor-1 label,
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-proveedor-2 label,
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-proveedor-3 label {
+    @apply text-sm text-gray-700 font-medium block mb-1;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-proveedor-1 input,
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-proveedor-2 input,
+#webform-submission-vecinos-bienestar-node-170-add-form .form-item-proveedor-3 input {
+    @apply border-orange-500 text-base rounded shadow px-4 py-2;
+}
+
+
+/* Nombre, apellido, correo, telefono */
+
+#webform-submission-vecinos-bienestar-node-170-add-form .webform-flexbox {
+    @apply mt-1 mb-3 grid gap-4;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .webform-flexbox>div {
+    @apply flex flex-col;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .webform-flexbox div label {
+    @apply mt-1 mb-3 text-base text-gray-700 font-bold mb-1 block;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .webform-flexbox div input {
+    @apply border-orange-500 text-base rounded shadow px-4 py-2 block w-full;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form .webform-flexbox #edit-telefono {
+    padding-left: 52px;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form input[type='submit'] {
+    background-color: #fbb90b;
+    @apply p-4 mt-6 text-gray-700 border-none rounded font-bold transition-all duration-200;
+}
+
+#webform-submission-vecinos-bienestar-node-170-add-form input[type='submit']:hover {
+    background-color: hsl(44, 97%, 46%);
+}
+
+@media (min-width: 640px) {
+    #webform-submission-vecinos-bienestar-node-170-add-form .webform-flexbox {
+        @apply grid-cols-2;
+    }
+}
