@@ -5,6 +5,8 @@ global-styling:
     fonts:
       dist/fonst.css: {}
       dist/glider.min.css: {}
+      dist/glide.core.min.css: {}
+      dist/glide.theme.min.css: {}
   js:
     dist/app.js: {}
     dist/glider.min.js: {}
