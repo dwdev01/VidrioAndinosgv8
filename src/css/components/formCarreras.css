@@ -21,3 +21,12 @@
 #formCarrerasContainer > form > div > input[type="submit"]:hover {
   @apply bg-orange-400;
 }
+
+#edit-adjuntar-curriculum-pdf---label {
+  @apply inline-block px-3 py-1 bg-gray-200 text-gray-800 font-medium rounded;
+}
+
+#edit-adjuntar-curriculum-pdf---description,
+#edit-adjuntar-curriculum-pdf-upload {
+  @apply hidden;
+}
