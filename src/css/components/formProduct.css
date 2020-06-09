@@ -17,3 +17,6 @@
 .vd-formProduct form input[type="submit"]:hover {
   @apply bg-orange-600;
 }
+.webform-submission-form-product-form {
+  @apply hidden;
+}
