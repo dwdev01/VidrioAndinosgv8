@@ -26,7 +26,7 @@ export default function breadCrumb() {
     breadcrumbChilds.forEach(child => {
       child.innerHTML += `<i class="icon-right-big mr-1"></i>`;
     });
-    breadcrumbList.innerHTML += `<li class="capitalize">Página Actual</li>`;
+    breadcrumbList.innerHTML += `<li class="capitalize">${breadcrumbTitle}</li>`;
   }
   const breadcrumbDescription =
     document.getElementById("breadcrumbDescription") != null
