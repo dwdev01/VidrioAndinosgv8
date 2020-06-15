@@ -1,26 +1,51 @@
 <div id="recommendedPost" class="py-12 bg-gray-200">
   <transition name="fade">
-    <div class="container" v-if="content !== null">
-      <h6 class="border-b-2 border-gray-500 text-gray-600 py-1 text-base mb-6">Más de Vidrio Andino</h6>
-      <div class=" grid grid-cols-3 gap-6">
-        <div class="w-full mx-auto" style="max-width: 442px" v-for="(post, index) in content">
-          <div class="rounded overflow-hidden"><img :alt="post.field_header_image[0].url"
-              :src="post.field_header_image[0].url" :title="post.field_header_image[0].title"
-              class="object-cover h-64 w-full" /></div>
+    <div class="container px-4" v-if="content !== null">
+      <h6 class="border-b-2 border-gray-500 text-gray-600 py-1 text-base mb-6">
+        Descubre otros artículos
+      </h6>
+      <div class="grid lg:grid-cols-3 gap-4 lg:gap-6">
+        <div
+          class="w-full mx-auto"
+          style="max-width: 442px"
+          v-for="(post, index) in content"
+        >
+          <div class="rounded overflow-hidden h-48 lg:h-auto">
+            <img
+              :alt="post.field_header_image[0].url"
+              :src="post.field_header_image[0].url"
+              :title="post.field_header_image[0].title"
+              class="object-cover h-64 w-full"
+            />
+          </div>
 
           <div class="p-4">
-            <h3 class="font-extrabold text-2xl text-gray-800 uppercase">{{post.title[0].value}}</h3>
+            <h3
+              class="font-extrabold text-xl lg:text-2xl text-gray-800 uppercase"
+            >
+              {{post.title[0].value}}
+            </h3>
 
-            <p class="mt-2 text-sm text-gray-600">{{post.field_description_blog[0].value}}</p>
+            <p class="mt-2 text-sm text-gray-600">
+              {{post.field_description_blog[0].value}}
+            </p>
 
-            <div class="text-base text-gray-700 font-medium mt-2 flex"><i class="icon-star mr-1"></i>{{read(post.body[0])}} min de lectura
+            <div class="text-base text-gray-700 font-medium mt-2 flex">
+              {{read(post.body[0])}} min de lectura
             </div>
 
-            <div class="flex justify-between items-center mt-3"><time :datetime="post.field_date[0].value"
-                class="text-gray-600 text-sm capitalize"><i class="icon-calendar mr-1"></i>{{formatDate(post.field_date[0])}} </time> <a
+            <div class="flex justify-between items-center mt-3">
+              <time
+                :datetime="post.field_date[0].value"
+                class="text-gray-600 text-sm capitalize"
+                >{{formatDate(post.field_date[0])}}
+              </time>
+              <a
                 :href="url + post.path[0].alias"
-                class="text-base text-blue-500 hover:text-white hover:bg-orange-500 uppercase rounded py-2 px-3 transition duration-200">Leer
-                más <i class="icon-right-open ml-1"></i></a></div>
+                class="text-base text-blue-500 hover:text-white hover:bg-orange-500 uppercase rounded py-2 px-3 transition duration-200"
+                >Leer más
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -29,16 +54,16 @@
 </div>
 <script>
   let recommendedPost = new Vue({
-    el: '#recommendedPost',
+    el: "#recommendedPost",
     data() {
       return {
         content: null,
         url: window.location.origin
-      }
+      };
     },
     mounted() {
       axios
-        .get("https://sgvad8.vidrioandino.com/api/blog_post?_format=json")
+        .get(`${window.location.origin}/api/blog_post?_format=json`)
         .then(response => {
           const data = response.data;
 
@@ -61,7 +86,7 @@
             }
           }
 
-          while (post.length < (cantidadPost - 1)) {
+          while (post.length < cantidadPost - 1) {
             let indice = myArray[i];
             if (data[indice].path[0].alias !== window.location.pathname) {
               post.push(data[indice]);
@@ -80,17 +105,17 @@
         .finally(() => (this.loading = false));
     },
     methods: {
-      read: function (body) {
+      read: function(body) {
         const readPromedio = 250;
         const readValue = body.processed.split(" ").length;
         const readResult = Math.ceil(readValue / readPromedio);
 
         return readResult;
       },
-      formatDate: function (date) {
+      formatDate: function(date) {
         moment.locale("es");
         return moment(date.value).format("MMM DD YYYY");
       }
     }
-  })
+  });
 </script>

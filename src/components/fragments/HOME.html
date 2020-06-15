@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<style>
+    .container {
+        max-width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<style>
+    .videoVecinos {
+        height: 250px;
+    }
+    
+    @media (min-width: 640px) {
+        .videoVecinos {
+            height: 515px;
+        }
+    }
+</style>
+
+<body>
+    <!-- HERO -->
+    <div id="disableBread" class="bg-center bg-cover" style="
+        background-image: url('https://vidriosbienestar.com/wp-content/uploads/2019/04/background-hero.png?id=1212');
+      ">
+        <div class="container px-4 py-6 sm:py-0 grid sm:grid-cols-2">
+            <div>
+                <div class="flex justify-center">
+                    <img src="https://vidriosbienestar.com/wp-content/uploads/2019/04/clarita-hero-478x478.png" alt="tipa" />
+                </div>
+            </div>
+            <div class="flex justify-center items-center">
+                <p class="block text-xl md:text-2xl font-bold text-gray-800 border-4 rounded p-4 border-white leading-relax">
+                    Te damos la BIENVENIDA a este espacio donde encontrarás todo lo que necesitas saber sobre el programa vecinos BienEstar y cómo ganar premios con AndiPuntos.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- PARTE 1 -->
+    <div class="container px-4 grid gap-6 md:grid-cols-2 my-12 items-center">
+        <div>
+            <div class="rounded overflow-hidden flex justify-center">
+                <img src="https://vidriosbienestar.com/wp-content/uploads/2019/04/ganadores-2x.png" alt="" />
+            </div>
+        </div>
+        <div>
+            <h2 class="font-extrabold text-lg md:text-2xl text-gray-800 uppercase">
+                ¿CÓMO GANAN LOS VECINOS BIENESTAR?
+            </h2>
+            <p class="mt-2 text-sm md:text-base text-gray-600 leading-relax">
+                Ser vecino BienEstar es tener el privilegio de ganar puntos por cada metro cuadrado de vidrio BienEstar que compas a tu distribuidor autorizado.
+            </p>
+            <p class="mt-2 text-sm md:text-base text-gray-600 leading-relax">
+                Esos puntos pueden cambiarse por cualquiera de los premios disponibles en AndiPuntos, los cuales encuentras en el catálogo de premios al final de la página. Para empezar a disfrutar de estos y otros beneficios, debes suscribirte al programa dejando tus
+                datos en el formulario de contacto.
+            </p>
+        </div>
+    </div>
+    <!-- PARTE 2 -->
+    <div class="container px-4 grid gap-6 md:grid-cols-2 my-12 items-center">
+        <div>
+            <h2 class="font-extrabold text-lg md:text-2xl text-gray-800 uppercase">
+                ¿CÓMO HACER QUE LOS VIDRIOS BIENESTAR SIEMPRE SE VEAN COMO NUEVOS?
+            </h2>
+            <p class="mt-2 text-sm md:text-base text-gray-600 leading-relax">
+                Para asegurar que los vidrios cumplan con todas las características y brinden los beneficios adecuados, es importante tener en cuenta la guía con las recomendaciones de instalación y limpieza.
+            </p>
+        </div>
+        <div>
+            <div class="rounded overflow-hidden flex justify-center">
+                <img src="https://vidriosbienestar.com/wp-content/uploads/2019/04/clarita-2-425x425.png" alt="" />
+            </div>
+        </div>
+    </div>
+    <!-- PARTE 3 -->
+    <div class="bg-gray-200 py-12">
+        <div class="container px-4">
+            <h2 class="font-extrabold text-lg md:text-2xl text-gray-800 uppercase text-center">
+                TRAS EL CRISTAL
+            </h2>
+            <div class="py-8 flex justify-center">
+                <iframe width="100%" class="videoVecinos" src="https://www.youtube.com/embed/TpXyPOtuXbw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- PARTE 4 -->
+    <div style="background-color: #fbb90b;">
+        <div class="container px-4 py-12 flex flex-col sm:flex-row justify-center items-center">
+            <a href="http://andipuntos.vidriosbienestar.com/" target="_black" rel="nofollow noreopen" class="block transition-all duration-200 transform hover:scale-105">
+                <img src="https://vidriosbienestar.com/wp-content/uploads/2019/04/img-andipuntos-300x246.png" alt="" />
+            </a>
+            <div>
+                <h2 class="font-extrabold text-lg md:text-2xl text-gray-800 uppercase text-center">
+                    ¿ERES VECINO BIENESTAR?
+                </h2>
+                <p class="mt-2 text-base text-red-700 font-medium leading-relax text-center">
+                    Ingresa a tu programa de reconocimientos AndiPuntos
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

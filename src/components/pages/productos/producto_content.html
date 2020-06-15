@@ -1,0 +1,669 @@
+<style type="text/css">
+  #container-loading {
+    height: 100%;
+    width: 100%;
+    transition: all 1s ease;
+  }
+
+  #loading {
+    border: 15px solid #e2e8f0;
+    border-top-color: #ed8936;
+    border-top-style: groove;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    margin: 0 auto;
+    animation: girar 1.5s linear infinite;
+  }
+
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  .faq .question {
+    position: relative;
+    transition: all 0.4s linear;
+  }
+
+  .icon-down-open {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%) rotate(0deg);
+    transition: all 0.4s ease-out;
+  }
+
+  .faq .answer {
+    opacity: 0;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all 0.4s ease-out;
+  }
+
+  .open .question,
+  .answer p,
+  .answer li {
+    margin-bottom: 1rem;
+  }
+
+  .open .icon-down-open {
+    transform: translateY(-50%) rotate(-180deg);
+  }
+
+  .open .answer {
+    opacity: 1;
+    max-height: 10000px;
+  }
+
+  .videoYT {
+    width: 100%;
+    max-width: 560px;
+    height: 100%;
+    min-height: 160px;
+    max-height: 315px;
+  }
+
+  @media (min-width: 640px) {
+    .videoYT {
+      min-height: 315px;
+    }
+  }
+
+  .productoDescription {
+    max-height: 0;
+    overflow-y: hidden;
+  }
+
+  .productoLink:hover .productoDescription {
+    max-height: 10000px;
+    padding-bottom: 1rem;
+  }
+</style>
+<section id="app">
+  <transition name="fade">
+    <section v-if="errored">
+      <p class="center">
+        Lo sentimos, no es posible obtener la información en este momento, por
+        favor intente nuevamente mas tarde
+      </p>
+    </section>
+  </transition>
+
+  <div v-if="!errored">
+    <div id="container-loading" v-if="loading">
+      <div id="loading">&nbsp;</div>
+    </div>
+    <transition name="fade">
+      <div v-if="!loading">
+        <div class="flex justify-center">
+          <span
+            class="text-xl font-medium border-b-2 border-blue-500 rounded-sm pb-1"
+            >{{content.title[0].value}}</span
+          >
+        </div>
+
+        <div class="container grid lg:grid-cols-2 gap-6 mt-12">
+          <div>
+            <!-- Slider de imagenes -->
+            <div
+              :style="'max-height:' + slideMaxH + 'px'"
+              class="slides w-full overflow-hidden relative mb-6"
+            >
+              <ul
+                :style="'width: ' + content.field_slider.length * 100 + '%;' + 'margin-left: -' + slideIndex + '%'"
+                class="slides-inner flex transition-all duration-300"
+              >
+                <li
+                  :style="'max-height:' + slideMaxH + 'px'"
+                  class="slide flex justify-center items-center w-full"
+                  v-for="slide in content.field_slider"
+                >
+                  <img :src="slide.url" alt="1" />
+                </li>
+              </ul>
+
+              <div
+                class="absolute z-10 top-0 bottom-0 flex justify-between items-center px-4 w-full"
+              >
+                <span
+                  :class="[this.slideIndex === 0 ? 'opacity-50' : '','p-4 text-xl bg-blue-500 hover:bg-blue-600 transitin duration-200 transform rotate-180 text-white rounded']"
+                  v-on:click="goToPrev"
+                  ><i class="icon-right-open"></i
+                ></span>
+                <span
+                  :class="[this.slideIndex / 100 === this.content.field_slider.length - 1 ? 'opacity-50' : '','p-4 text-xl bg-blue-500 hover:bg-blue-600 transitin duration-200 transform text-white rounded']"
+                  v-on:click="goToNext"
+                  ><i class="icon-right-open"></i
+                ></span>
+              </div>
+            </div>
+            <!-- Posibilidades de transformación -->
+            <div class="p-4 border-b-2 boder-gray-400 mb-6">
+              <h3 class="text-lg font-bold mb-4">
+                Posibilidades de Transformación
+              </h3>
+
+              <ul class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4">
+                <li
+                  class="block w-full"
+                  v-for="item in content.field_transformacion"
+                >
+                  <a
+                    :href="item.url"
+                    class="flex mx-auto flex-col items-center text-gray-900 hover:text-blue-500"
+                  >
+                    <img
+                      :alt="item.url.split('-')[2]"
+                      :src="'/sites/sgva.master/files/inline-images/' + item.url.split('/')[3] + '.png'"
+                      class="w-16"
+                    />
+                    <span class="capitalize mt-2 text-sm font-medium"
+                      >{{item.url.split('/')[3]}}</span
+                    >
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- Beneficios -->
+
+            <div class="p-4 mb-6">
+              <h3 class="text-lg font-bold mb-4">Beneficios</h3>
+
+              <ul class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4">
+                <li
+                  class="flex flex-col items-center mx-auto"
+                  v-for="item in content.field_beneficios"
+                >
+                  <a
+                    :href="item.url"
+                    class="flex flex-col items-center text-gray-900 hover:text-blue-500"
+                  >
+                  </a>
+
+                  <div
+                    :class="[beneficios['b' + item.target_id].color, 'p-4 w-24 flex justify-center items-center mb-3 rounded']"
+                    style="background-color: var(--bg);"
+                  >
+                    <a
+                      :href="item.url"
+                      class="flex flex-col items-center text-gray-900 hover:text-blue-500"
+                      ><img
+                        :src="beneficios['b' + item.target_id].image"
+                        class="object-contain"
+                      />
+                    </a>
+                  </div>
+                  <a
+                    :href="item.url"
+                    class="flex flex-col items-center text-gray-900 hover:text-blue-500"
+                  >
+                    <span class="text-sm font-medium text-center"
+                      >{{ beneficios['b' + item.target_id].name }}</span
+                    >
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- Descargas -->
+
+            <div
+              class="p-4 border-t-2 boder-gray-400 mb-6"
+              v-if="content.field_articulos_de_prensa[0] || content.field_ficha_tecnica[0]"
+            >
+              <h3 class="text-lg font-bold mb-4">Descargas</h3>
+
+              <ul class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4">
+                <li class="block mx-auto" v-if="content.field_ficha_tecnica[0]">
+                  <a
+                    :href="content.field_ficha_tecnica[0].url"
+                    class="flex flex-col justify-center items-center text-sm text-gray-900 hover:text-blue-500 font-medium"
+                    download=""
+                  >
+                    <img
+                      alt="Artículos de prensa"
+                      class="object-contain"
+                      src="/sites/sgva.master/files/inline-images/ficha-icon.png"
+                    />
+                    <span class="mt-3 text-center"
+                      >Guía práctica de instalación y limpieza</span
+                    >
+                  </a>
+                </li>
+                <li
+                  class="block mx-auto"
+                  v-if="content.field_articulos_de_prensa[0]"
+                >
+                  <a
+                    :href="content.field_articulos_de_prensa[0].url"
+                    class="flex flex-col justify-center items-center text-sm text-gray-900 hover:text-blue-500 font-medium"
+                    download=""
+                  >
+                    <img
+                      alt="Artículos de prensa"
+                      class="object-contain"
+                      src="/sites/sgva.master/files/inline-images/article-icon.png"
+                    />
+                    <span class="mt-3 text-center">Artículos de prensa</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <!-- Descripcion -->
+            <div
+              :class="[acordion[0].open ? 'open' : '' ,'faq  mb-4']"
+              v-on:click=" toggleOpen(0)"
+            >
+              <h3
+                class="question m-0 text-lg font-semibold block py-6 bg-gray-200 px-4"
+              >
+                <i class="icon-th-list mr-1"></i> {{acordion[0].title}}
+              </h3>
+
+              <div class="answer">
+                <div
+                  class="text-base px-4 bg-blue-500 py-4 text-white leading-relaxed"
+                  v-html="acordion[0].content"
+                >
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+            <!-- Ventajas -->
+
+            <div
+              :class="[acordion[1].open ? 'open' : '' ,'faq mb-4']"
+              v-on:click=" toggleOpen(1)"
+            >
+              <h3
+                class="question m-0 text-lg font-semibold block py-6 bg-gray-200 px-4"
+              >
+                <i class="icon-thumbs-up mr-1"></i> {{acordion[1].title}}
+              </h3>
+
+              <div class="answer">
+                <ul class="block px-4 py-4 bg-blue-500 text-white text-base">
+                  <li
+                    :key="i"
+                    class="flex"
+                    v-for="(item, i) in acordion[1].content"
+                  >
+                    <i class="icon-ok-circled mr-1"></i>
+                    <span>{{item.value}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Aplicaciones -->
+
+            <div
+              :class="[acordion[2].open ? 'open' : '' ,'faq mb-6']"
+              v-on:click=" toggleOpen(2)"
+            >
+              <h3
+                class="question m-0 text-lg font-semibold block py-6 bg-gray-200 px-4"
+              >
+                <i class="icon-hand-paper-o mr-1"></i> {{acordion[2].title}}
+              </h3>
+
+              <div class="answer">
+                <ul class="block px-4 py-4 bg-blue-500 text-white text-base">
+                  <li
+                    :key="i"
+                    class="flex"
+                    v-for="(item, i) in acordion[2].content"
+                  >
+                    <i class="icon-ok-circled mr-1"></i>
+                    <span>{{item.value}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Formulario -->
+
+            <div class="bg-blue-500 p-4 mb-6">
+              <h4 class="text-white text-center text-xl font-bold">
+                ¿Quieres más información?
+              </h4>
+
+              <h4 class="text-white text-center text-xl font-bold">
+                ¡Escribenos!
+              </h4>
+
+              <div class="mt-4 w-2/3 mx-auto">
+                <div class="flex flex-col mb-3">
+                  <label class="text-white text-lg mb-1" for="formName"
+                    >Nombre</label
+                  >
+                  <input
+                    class="border-none rounded py-3 px-4 text-black"
+                    id="formName"
+                    required=""
+                    type="text"
+                    v-model="form.nombre"
+                  />
+                </div>
+
+                <div class="flex flex-col mb-3">
+                  <label class="text-white text-lg mb-1" for="formEmail"
+                    >Correo Electrónico</label
+                  >
+                  <input
+                    class="border-none rounded py-3 px-4 text-black"
+                    id="formEmail"
+                    required=""
+                    type="email"
+                    v-model="form.email"
+                  />
+                </div>
+
+                <div class="mb-4">
+                  <label class="text-white text-lg mb-1" for="formMenssaje"
+                    >Cuéntanos más</label
+                  >
+
+                  <div>
+                    <textarea
+                      class="border-none rounded text-black px-4 py-3 h-24 w-full"
+                      required=""
+                      v-model="form.mensaje"
+                    ></textarea>
+                  </div>
+                </div>
+                <button
+                  class="block w-full py-3 bg-orange-500 hover:bg-orange-600 text-center text-white font-medium text-base uppercase transition duration-200 mb-3"
+                  v-on:click="sendMessaje()"
+                >
+                  Enviar</button
+                ><span
+                  class="block w-full mb-2 text-center text-white text-base font-medium"
+                  >También puedes
+                  <a
+                    class="text-orange-300 hover:text-orange-400"
+                    href="/contacto"
+                    >contactarnos aquí</a
+                  ></span
+                >
+              </div>
+            </div>
+            <!-- Share Buttons -->
+            <div class="my-6 ml-4 sm:ml-0">
+              <span class="block text-lg text-black font-medium mb-4"
+                >Compartir:</span
+              >
+              <div class="text-white">
+                <a
+                  class="bg-blue-700 hover:bg-blue-800 transition duration-200 p-2 mr-2 text-2xl rounded"
+                  :href="'https://www.facebook.com/sharer/sharer.php?u=' + urlOrigin"
+                  target="_blank"
+                  ><i class="icon-facebook"></i
+                ></a>
+                <a
+                  class="bg-green-500 hover:bg-green-600 transition duration-200 p-2 mr-2 text-2xl rounded"
+                  :href="'https://api.whatsapp.com/send?text=' + urlOrigin"
+                  target="_blank"
+                  ><i class="icon-whatsapp"></i
+                ></a>
+                <a
+                  class="bg-blue-500 hover:bg-blue-600 transition duration-200 p-2 mr-2 text-2xl rounded"
+                  :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + urlOrigin"
+                  target="_blank"
+                  ><i class="icon-linkedin"></i
+                ></a>
+              </div>
+            </div>
+            <!-- Bienestar -->
+
+            <div v-if="content.field_categoria[0].value === 'Bienestar'">
+              <div class="bg-blue-500 w-full p-4">
+                <h3 class="text-white font-bold text-xl text-center">
+                  ¿Tienes un negocio de vidrio?
+                </h3>
+
+                <h3 class="text-white font-bold text-xl text-center">
+                  ¡Haz parte de nuestra comunidad!
+                </h3>
+                <a class="flex justify-center mt-3" href="/vecinos"
+                  ><img
+                    alt="Vecinos Bienestar"
+                    src="/sites/sgva.master/files/inline-images/Vecinos-Bienestar-lg.png"
+                  />
+                </a>
+              </div>
+
+              <div class="bg-orange-500 w-full p-4 my-6">
+                <h3 class="text-white font-bold text-xl text-center">
+                  ¿Eres Vecino Bienestar?
+                </h3>
+
+                <h3 class="text-white font-bold text-xl text-center">
+                  Ingresa a tu programa de reconocimientos AndiPuntos
+                </h3>
+                <a
+                  class="flex justify-center mt-3"
+                  target="_blanck"
+                  rel="noreferrer noopener"
+                  href="http://andipuntos.vidriosbienestar.com/"
+                  ><img
+                    alt="Andipuntos"
+                    class="h-48"
+                    src="/sites/sgva.master/files/inline-images/img-andipuntos_0.png"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Video Tutorial -->
+        <div
+          :style="'background-image: url(' + tutorialBg + ');'"
+          class="bg-center bg-no-repeat bg-cover bg-gray-200 py-12 mt-8"
+          v-if="content.field_video_tutorial[0]"
+        >
+          <div class="container">
+            <div class="px-6 flex items-center">
+              <div class="sm:border-r border-gray-800 sm:pr-4">
+                <h3
+                  class="uppercase text-gray-800 font-medium text-lg sm:text-2xl"
+                >
+                  Vidrio Andino
+                </h3>
+
+                <p
+                  class="ml-16 uppercase text-gray-800 font-medium text-xl sm:text-3xl"
+                >
+                  Tutoriales
+                </p>
+              </div>
+
+              <div class="ml-4">
+                <p
+                  class="text-normal font-normal text-gray-800 hidden sm:block"
+                >
+                  Vidrios Corporativos
+                </p>
+              </div>
+            </div>
+
+            <div class="flex justify-center mt-8 px-4">
+              <iframe
+                :src="content.field_video_tutorial[0].value"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen=""
+                class="videoYT"
+                frameborder="0"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+  </div>
+</section>
+<script>
+  let app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        content: null,
+        acordion: null,
+        loading: true,
+        errored: false,
+        urlOrigin: window.location.href,
+        beneficios: {
+          b30: {
+            name: "Confort Térmico",
+            color: "bn-mustard",
+            image:
+              "/sites/sgva.master/files/inline-images/icon-confort-termico.png"
+          },
+          b31: {
+            name: "Protección UV",
+            color: "bn-orange",
+            image: "/sites/sgva.master/files/inline-images/icon-proteccion.png"
+          },
+          b32: {
+            name: "Confort Visual",
+            color: "bn-blue",
+            image: "/sites/sgva.master/files/inline-images/Confort%20Visual.png"
+          },
+          b33: {
+            name: "Confort Acústico",
+            color: "bn-purple",
+            image:
+              "/sites/sgva.master/files/inline-images/Confort%20Acu%CC%81stico.png"
+          },
+          b34: {
+            name: "Ahorro Energético",
+            color: "bn-darkblue",
+            image:
+              "/sites/sgva.master/files/inline-images/Ahorro%20Energe%CC%81tico.png"
+          },
+          b35: {
+            name: "Medio Ambiente",
+            color: "bn-green",
+            image:
+              "/sites/sgva.master/files/inline-images/Proteccio%CC%81n%20del%20medio%20ambiente.png"
+          },
+          b36: {
+            name: "Seguridad",
+            color: "bn-magenta",
+            image: "/sites/sgva.master/files/inline-images/Seguridad.png"
+          },
+          b37: {
+            name: "Privacidad",
+            color: "bn-gray",
+            image: "/sites/sgva.master/files/inline-images/Privacidad.png"
+          },
+          b38: {
+            name: "Diseño Estético",
+            color: "bn-darkpurple",
+            image:
+              "/sites/sgva.master/files/inline-images/Disen%CC%83o%20Este%CC%81tico.png"
+          },
+          b39: {
+            name: "Protección contra el fuego",
+            color: "bn-yellow",
+            image:
+              "/sites/sgva.master/files/inline-images/Proteccio%CC%81n%20contra%20el%20fuego.png"
+          }
+        },
+        form: {
+          nombre: null,
+          email: null,
+          mensaje: null
+        },
+        slideIndex: 0,
+        slideMaxH: 420,
+        tutorialBg:
+          "https://sgvad8.vidrioandino.com/sites/sgva.master/files/inline-images/background-paises%20%281%29.png"
+      };
+    },
+    mounted() {
+      axios
+        .get(`${window.location.origin}/api/productos?_format=json`)
+        .then(response => {
+          const data = response.data;
+
+          const contentData = data.find(
+            item => item.path[0].alias == window.location.pathname
+          );
+          this.content = contentData;
+          this.acordion = [
+            {
+              title: `Descripción`,
+              icon: "",
+              content: contentData.field_description[0].processed,
+              open: false
+            },
+            {
+              title: "Ventajas",
+              icon: "",
+              content: contentData.field_ventajas,
+              open: false
+            },
+            {
+              title: "Aplicaciones",
+              icon: "",
+              content: contentData.field_aplicaciones,
+              open: false
+            }
+          ];
+        })
+        .catch(error => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+    methods: {
+      toggleOpen: function(index) {
+        this.acordion = this.acordion.map((item, i) => {
+          if (index === i) {
+            item.open = !item.open;
+          } else {
+            item.open = false;
+          }
+          return item;
+        });
+      },
+      sendMessaje: function() {
+        document.getElementById("edit-nombre").value = this.form.nombre;
+        document.getElementById(
+          "edit-correo-electronico"
+        ).value = this.form.email;
+        document.getElementById("edit-cuentanos-mas").value = this.form.mensaje;
+        return document.forms[0].submit();
+      },
+      goToPrev: function() {
+        if (this.slideIndex === 0) {
+          return;
+        }
+        this.slideIndex -= 100;
+      },
+      goToNext: function() {
+        if (this.slideIndex / 100 === this.content.field_slider.length - 1) {
+          return;
+        }
+        this.slideIndex += 100;
+      }
+    }
+  });
+</script>

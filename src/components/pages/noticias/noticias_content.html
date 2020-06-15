@@ -1,0 +1,199 @@
+<style type="text/css">
+  .noticiaContent p {
+    margin-bottom: 1.5rem;
+  }
+
+  .noticiaContent h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .noticiaContent li {
+    list-style-type: disc;
+    margin-bottom: 1rem;
+  }
+
+  .noticiaContent a {
+    color: #4299e1;
+  }
+
+  .fb-comments textarea {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 100px !important;
+  }
+
+  #loading {
+    border: 15px solid #e2e8f0;
+    border-top-color: #ed8936;
+    border-top-style: groove;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    margin: 0 auto;
+    animation: girar 1.5s linear infinite;
+  }
+
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+</style>
+
+<section id="app">
+  <transition name="fade">
+    <section v-if="errored">
+      <p class="center">
+        Lo sentimos, no es posible obtener la información en este momento, por
+        favor intente nuevamente mas tarde
+      </p>
+    </section>
+  </transition>
+
+  <div v-if="!errored">
+    <div id="container-loading" v-if="loading">
+      <div id="loading"></div>
+    </div>
+    <transition name="fade">
+      <div v-if="!loading" class="px-4 sm:px-0">
+        <div class="flex justify-center items-center">
+          <img
+            :src="content.field_image[0].url"
+            alt="content.field_image[0].alt"
+          />
+        </div>
+        <h1 class="block mt-4 text-xl sm:text-2xl font-bold mb-1">
+          {{content.title[0].value}}
+        </h1>
+        <p class="text-base sm:text-lg text-gray-700 leading-relax mb-3">
+          {{content.field_article_description[0].value}}
+        </p>
+        <div class="flex flex-wrap items-center justify-between">
+          <time
+            :datetime="content.field_article_date[0].value"
+            class="block text-gray-600 text-base capitalize mb-3"
+            ><i class="icon-calendar mr-1"></i
+            >{{formatDate(content.field_article_date[0].value)}}
+          </time>
+          <div class="text-white mb-3">
+            <a
+              class="bg-blue-700 hover:bg-blue-800 transition duration-200 p-2 mr-2 text-2xl rounded"
+              :href="'https://www.facebook.com/sharer/sharer.php?u=' + urlOrigin"
+              target="_blank"
+              ><i class="icon-facebook"></i
+            ></a>
+            <a
+              class="bg-green-500 hover:bg-green-600 transition duration-200 p-2 mr-2 text-2xl rounded"
+              :href="'https://api.whatsapp.com/send?text=' + urlOrigin"
+              target="_blank"
+              ><i class="icon-whatsapp"></i
+            ></a>
+            <a
+              class="bg-blue-500 hover:bg-blue-600 transition duration-200 p-2 mr-2 text-2xl rounded"
+              :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + urlOrigin"
+              target="_blank"
+              ><i class="icon-linkedin"></i
+            ></a>
+          </div>
+        </div>
+        <div class="flex flex-wrap">
+          <a
+            :class="['text-sm text-white mr-2 inline-block rounded-full px-4 py-2 mb-3 ',
+            tagsColor['tagColor' + item.target_id] !== undefined ? tagsColor['tagColor' + item.target_id]: 'bg-gray-500 hover:bg-gray-600']
+            "
+            :href="item.url"
+            v-for="(item, index) in content.field_tags"
+            :key="index"
+          >
+            {{tags['tag' + item.target_id]}}
+          </a>
+        </div>
+        <div
+          class="noticiaContent mt-6 leading-7 text-base text-gray-600"
+          v-html="content.body[0].processed"
+        ></div>
+      </div>
+    </transition>
+  </div>
+</section>
+<div id="fb-root"></div>
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v6.0&appId=1650946001891209&autoLogAppEvents=1"
+></script>
+<div class="fb-comments" data-numposts="5" data-width="100%"></div>
+<script>
+  let app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        errored: null,
+        loading: true,
+        content: null,
+        urlOrigin: window.location.href,
+        tags: {
+          tag9: "Bienestar",
+          tag10: "Vidrio Andino",
+          tag11: "Decoración",
+          tag12: "Interiores",
+          tag13: "Proyectos",
+          tag14: "Cocinas",
+          tag15: "Vecinos Bienestar"
+        },
+        tagsColor: {
+          tagColor9: "bg-orange-500  hover:bg-orange-600",
+          tagColor10: "bg-blue-600 hover:bg-blue-700"
+        }
+      };
+    },
+    mounted() {
+      axios
+        .get(`${window.location.origin}/api/noticias?_format=json`)
+        .then(response => {
+          const data = response.data;
+
+          const contentData = data.find(
+            item => item.path[0].alias == window.location.pathname
+          );
+
+          this.content = contentData;
+        })
+        .catch(error => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+    methods: {
+      formatDate: function(date) {
+        moment.locale("es");
+        return moment(date).format("MMM DD YYYY");
+      }
+    }
+  });
+  document.addEventListener("load", () => {
+    document
+      .querySelector(".fb-comments")
+      .setAttribute("data-href", window.location.href);
+  });
+</script>

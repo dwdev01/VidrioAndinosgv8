@@ -1,0 +1,82 @@
+<style>
+  #formSubcripcion form .js-form-type-email {
+    display: flex;
+    flex-direction: column;
+  }
+  #formSubcripcion form .js-form-type-email label {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  #formSubcripcion form #edit-actions--3 input,
+  #formSubcripcion form .js-form-type-email input {
+    font-size: 1rem;
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+    outline: none;
+  }
+  #formSubcripcion form #edit-actions--3 input {
+    background-color: #3182ce !important;
+    color: #fff;
+    transition: all duration 0.3s;
+  }
+  #formSubcripcion form #edit-actions--3 input:hover {
+    background-color: hsl(209, 62%, 45%) !important;
+    color: #fff;
+  }
+  #formSubcripcion form #edit-actions--3 {
+    display: flex;
+    justify-content: center;
+  }
+  #formSubcripcion form #edit-actions--3 input {
+    margin: 1rem auto 0;
+  }
+  @media (min-width: 1024px) {
+    #formSubcripcion form {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      align-items: end;
+      grid-gap: 1rem;
+    }
+    #formSubcripcion form #edit-actions--3 {
+      justify-content: start;
+    }
+    #formSubcripcion form #edit-actions--3 input {
+      margin: 0;
+    }
+  }
+</style>
+<div style="background-color: #01AFA8">
+  <div class="container grid lg:grid-cols-2 py-6 justify-center px-4">
+    <div class="flex items-center">
+      <p
+        class="flex items-center mx-auto text-sm md:text-base w-64 text-center text-white font-semibold mb-3 lg:mb-0"
+      >
+        ¡Actualízate! Descubre las últimas tendencias y novedades
+      </p>
+    </div>
+    <div>
+      <div id="formSubcripcion"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const subscriptionFragment = document.createDocumentFragment();
+    subscriptionFragment.appendChild(
+      document.getElementById(
+        "webform-submission-suscripcion-node-168-add-form"
+      )
+    );
+    document
+      .getElementById("formSubcripcion")
+      .appendChild(subscriptionFragment);
+
+    document
+      .getElementById("edit-suscribete-envianos-tu-correo-electronico")
+      .removeAttribute("size");
+  });
+</script>

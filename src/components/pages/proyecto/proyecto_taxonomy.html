@@ -1,0 +1,149 @@
+<style>
+  .project__card {
+    width: 100%;
+    max-width: 450px;
+    height: 240px;
+  }
+
+  .project__more--circle {
+    transform: translate(50%, -50%) scale(0);
+    opacity: 0;
+  }
+
+  .project__more--text {
+    opacity: 0;
+  }
+
+  .project__card:hover .project__more--text {
+    opacity: 1;
+  }
+
+  .project__card:hover .project__more--circle {
+    transform: translate(50%, -50%) scale(1.25);
+    opacity: 1;
+  }
+
+  .project__card:hover img {
+    transform: rotate(15deg) scale(1.3);
+    filter: saturate(30%);
+  }
+
+  #loading {
+    border: 15px solid #e2e8f0;
+    border-top-color: #ed8936;
+    border-top-style: groove;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    margin: 0 auto;
+    animation: girar 1.5s linear infinite;
+  }
+
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+</style>
+<section id="app">
+  <transition name="fade">
+    <section v-if="errored">
+      <p class="center">
+        Lo sentimos, no es posible obtener la información en este momento, por
+        favor intente nuevamente mas tarde
+      </p>
+    </section>
+  </transition>
+
+  <div v-if="!errored">
+    <div id="container-loading" v-if="loading">
+      <div id="loading">&nbsp;</div>
+    </div>
+    <transition name="fade">
+      <ul class="grid md:grid-cols-2 gap-4 mt-8 px-4 sm:px-0">
+        <li
+          class="block my-0 mx-auto relative overflow-hidden rounded w-full h-40 lg:h-56 xl:h-full"
+          style="max-height: 240px; max-width: 450px;"
+          v-for="project in projects"
+        >
+          <a
+            :href="project.path[0].alias"
+            class="project__card block m-0 overflow-hidden cursor-pointer"
+          >
+            <img
+              class="block transition-all duration-300 object-cover m-0"
+              :src="project.field_cover_proyecto[0].url"
+              :alt="project.field_cover_proyecto[0].alt"
+            />
+            <div
+              class="absolute w-full bg-black pl-6 text-white p-2 opacity-75 text-lg font-medium bottom-0"
+            >
+              <h3 class="font-bold uppercase">{{ project.title[0].value }}</h3>
+            </div>
+            <button
+              class="project__more--text absolute font-bold inline-block text-sm top-0 right-0 transition-all duration-300 text-white mr-2 z-10 mt-6"
+            >
+              Ver más
+            </button>
+            <div
+              class="project__more--circle absolute top-0 right-0 w-32 h-32 transition-all duration-300 bg-blue-500 rounded-full shadow-lg"
+            ></div>
+          </a>
+        </li>
+      </ul>
+    </transition>
+  </div>
+</section>
+<script>
+  // Vuejs app
+  let app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        projects: null,
+        loading: true,
+        errored: false
+      };
+    },
+    mounted() {
+      axios
+        .get(`${window.location.origin}/api/proyectos?_format=json`)
+        .then(response => {
+          const taxonomy =
+            window.location.pathname.split("/")[2] === "aplicacion"
+              ? "aplicaciones"
+              : window.location.pathname.split("/")[2];
+          let filter = response.data.filter(filter => {
+            let isTrue = false;
+            filter[`field_${taxonomy}_proyecto`].map(category => {
+              if (category.url == window.location.pathname) {
+                isTrue = true;
+              }
+            });
+            if (isTrue) {
+              return filter;
+            }
+          });
+          this.projects = filter;
+        })
+        .catch(error => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    }
+  });
+</script>

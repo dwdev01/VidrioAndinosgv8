@@ -1,0 +1,235 @@
+<style type="text/css">
+  .postContent p {
+    margin-bottom: 1.5rem;
+  }
+  .postContent h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .postContent li {
+    list-style-type: disc;
+    margin-bottom: 1rem;
+  }
+  .postContent a {
+    color: #4299e1;
+  }
+  .fb-comments textarea {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 100px !important;
+  }
+
+  #container-loading {
+    height: 100%;
+    width: 100%;
+    transition: all 1s ease;
+  }
+
+  #loading {
+    border: 15px solid #e2e8f0;
+    border-top-color: #ed8936;
+    border-top-style: groove;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    margin: 0 auto;
+    animation: girar 1.5s linear infinite;
+  }
+
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+</style>
+<div id="app">
+  <div id="container-loading" v-if="loading">
+    <div id="loading">&nbsp;</div>
+  </div>
+  <transition name="fade">
+    <article class="px-4" v-if="!loading">
+      <span class="text-gray-700 font-extrabold text-2xl sm:text-4xl"
+        >{{content.title[0].value}}</span
+      >
+
+      <p class="text-gray-600 leading-relaxed text-lg sm:text-2xl">
+        {{content.field_description_blog[0].value}}
+      </p>
+
+      <div class="flex items-center justify-between mt-6 flex-wrap">
+        <div class="flex items-center">
+          <img
+            :src="content.field_avatar[0].url"
+            alt="content.field_avatar[0].alt"
+            class="inline-block object-cover w-12 h-12 rounded-full m-0"
+          />
+          <div class="ml-4">
+            <span class="text-base text-gray-700"
+              >{{content.field_avatar_name[0].value}}</span
+            >
+
+            <div class="flex items-center">
+              <span class="capitalize text-sm text-gray-600"
+                >{{ formatDate() }}</span
+              >
+              <i class="icon-star mx-1 text-xs text-gray-700"></i>
+              <span class="text-sm text-gray-600"
+                >{{ read() }} min de lectura</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="text-white h-16 flex items-center">
+          <a
+            target="_blanck"
+            rel="noopener noreferrer"
+            :href="'https://www.facebook.com/sharer/sharer.php?u=' + urlOrigin"
+            class="p-2 rounded mr-1 transition duration-200 hover:bg-blue-900 bg-blue-700"
+            ><i class="icon-facebook"></i
+          ></a>
+          <a
+            target="_blanck"
+            rel="noopener noreferrer"
+            :href="'https://api.whatsapp.com/send?text=' + urlOrigin"
+            class="p-2 rounded mr-1 transition duration-200 hover:bg-green-600 bg-green-500"
+            ><i class="icon-whatsapp"></i
+          ></a>
+          <a
+            target="_blanck"
+            rel="noopener noreferrer"
+            :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + urlOrigin"
+            class="p-2 rounded mr-2 transition duration-200 hover:bg-blue-600 bg-blue-500"
+            ><i class="icon-linkedin"></i
+          ></a>
+        </div>
+      </div>
+      <img
+        :alt="content.field_header_image[0].alt"
+        :src="content.field_header_image[0].url"
+        class="block w-full mx-auto mt-6"
+      />
+      <div
+        class="postContent mt-6 leading-7 text-base text-gray-600"
+        v-html="content.body[0].processed"
+      >
+        &nbsp;
+      </div>
+
+      <div class="flex items-center justify-between px-0 mt-16 mb-12 flex-wrap">
+        <div class="flex items-center">
+          <img
+            :src="content.field_avatar[0].url"
+            class="inline-block object-cover w-12 h-12 rounded-full m-0"
+          />
+          <div class="ml-4 flex flex-col">
+            <span class="text-base text-gray-700"
+              >{{content.field_avatar_name[0].value}}</span
+            >
+            <span class="text-sm text-gray-600"
+              >{{content.field_avatar_profession[0].value}}</span
+            >
+          </div>
+        </div>
+        <div class="text-white h-16 flex items-center">
+          <a
+            target="_blanck"
+            rel="noopener noreferrer"
+            :href="'https://www.facebook.com/sharer/sharer.php?u=' + urlOrigin"
+            class="p-2 rounded mr-1 transition duration-200 hover:bg-blue-900 bg-blue-700"
+            ><i class="icon-facebook"></i
+          ></a>
+          <a
+            target="_blanck"
+            rel="noopener noreferrer"
+            :href="'https://api.whatsapp.com/send?text=' + urlOrigin"
+            class="p-2 rounded mr-1 transition duration-200 hover:bg-green-600 bg-green-500"
+            ><i class="icon-whatsapp"></i
+          ></a>
+          <a
+            target="_blanck"
+            rel="noopener noreferrer"
+            :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + urlOrigin"
+            class="p-2 rounded mr-2 transition duration-200 hover:bg-blue-600 bg-blue-500"
+            ><i class="icon-linkedin"></i
+          ></a>
+        </div>
+      </div>
+    </article>
+  </transition>
+</div>
+
+<div id="fb-root">&nbsp;</div>
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v6.0&appId=1650946001891209&autoLogAppEvents=1"
+></script>
+
+<div class="fb-comments" data-numposts="5" data-width="100%">&nbsp;</div>
+<script>
+  let app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        content: null,
+        loading: true,
+        errored: false,
+        urlOrigin: window.location.href
+      };
+    },
+    mounted() {
+      axios
+        .get(`${window.location.origin}/api/blog_post?_format=json`)
+        .then(response => {
+          const data = response.data;
+
+          this.content = data.find(
+            item => item.path[0].alias == window.location.pathname
+          );
+        })
+        .catch(error => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+    methods: {
+      read: function() {
+        const readPromedio = 250;
+        const readValue = this.content.body[0].processed.split(" ").length;
+        const readResult = Math.ceil(readValue / readPromedio);
+
+        return readResult;
+      },
+      formatDate: function(date) {
+        moment.locale("es");
+        return moment(this.content.field_date[0].value).format("MMM DD");
+      }
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document
+      .querySelector(".fb-comments")
+      .setAttribute("data-href", window.location.href);
+  });
+</script>

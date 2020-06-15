@@ -1,0 +1,103 @@
+<style>
+    .pImg::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(253, 160, 40, 1) 100%
+      );
+      position: absolute;
+      transition: all 0.3s;
+    }
+
+    .pLink:hover .pImg::before {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(28, 124, 213, 1) 100%
+      );
+    }
+    .pImg img {
+      display: block;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    @media (min-width: 640px) {
+      .pImg img {
+        height: 500px;
+      }
+    }
+  </style>
+  <div class="container px-4 my-12">
+    <!-- Title -->
+    <div class="px-6 flex items-center my-12">
+      <div class="sm:border-r border-gray-800 sm:pr-4">
+        <h3 class="uppercase text-gray-800 font-medium text-lg sm:text-2xl">
+          Vidrio Andino
+        </h3>
+
+        <p
+          class="ml-16 uppercase text-gray-800 font-medium text-xl sm:text-3xl"
+        >
+          ¿Que estas buscando?
+        </p>
+      </div>
+
+      <div class="ml-4">
+        <p class="text-normal font-normal text-gray-800 hidden sm:block">
+          Nuestras aplicaciones
+        </p>
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-3 my-6">
+      <a
+        href="/productos/aplicaciones/ventanas-para-el-hogar"
+        class="pLink block relative"
+      >
+        <div class="pImg">
+          <img
+            src="/sites/sgva.master/files/inline-images/aplicacion_1.png"
+            alt="p 1"
+          />
+        </div>
+        <div class="absolute bottom-0 p-4">
+          <p class="text-white text-xl md:text-3xl font-medium leading-relax">
+            VENTANAS PARA EL HOGAR
+          </p>
+        </div>
+      </a>
+      <a
+        href="/productos/aplicaciones/diseño-interior"
+        class="pLink block relative"
+      >
+        <div class="pImg">
+          <img
+            src="/sites/sgva.master/files/inline-images/aplicacion_2_0.png"
+            alt="p 2"
+          />
+        </div>
+        <div class="absolute bottom-0 p-4">
+          <p class="text-white text-xl md:text-3xl font-medium leading-relax">
+            DISEÑO DE INTERIORES
+          </p>
+        </div>
+      </a>
+      <a href="/productos/aplicaciones/fachadas" class="pLink block relative">
+        <div class="pImg">
+          <img
+            src="/sites/sgva.master/files/inline-images/aplicacion_3.png"
+            alt="p 3"
+          />
+        </div>
+        <div class="absolute bottom-0 p-4">
+          <p class="text-white text-xl md:text-3xl font-medium leading-relax">
+            FACHADAS
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>ƒ

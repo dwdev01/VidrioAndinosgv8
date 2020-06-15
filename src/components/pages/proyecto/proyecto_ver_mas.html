@@ -1,0 +1,154 @@
+<style type="text/css">
+  .project__card {
+    width: 100%;
+    max-width: 450px;
+    height: 240px;
+  }
+
+  .project__more--circle {
+    transform: translate(50%, -50%) scale(0);
+    opacity: 0;
+  }
+
+  .project__more--text {
+    opacity: 0;
+  }
+
+  .project__card:hover .project__more--text {
+    opacity: 1;
+  }
+
+  .project__card:hover .project__more--circle {
+    transform: translate(50%, -50%) scale(1.25);
+    opacity: 1;
+  }
+
+  .project__card:hover img {
+    transform: rotate(15deg) scale(1.3);
+    filter: saturate(30%);
+  }
+</style>
+
+<div id="recommendedProjects" class="container pb-12">
+  <<transition name="fade">
+    <div v-if="!loading">
+      <!-- Title -->
+      <div class="px-6 flex items-center">
+        <div class="sm:border-r border-gray-800 sm:pr-4">
+          <h3 class="uppercase text-gray-800 font-medium text-lg sm:text-2xl">
+            Vidrio Andino
+          </h3>
+
+          <p
+            class="ml-16 uppercase text-gray-800 font-medium text-xl sm:text-3xl"
+          >
+            Proyectos
+          </p>
+        </div>
+
+        <div class="ml-4">
+          <p class="text-normal font-normal text-gray-800 hidden sm:block">
+            Proyectos que te pueden interesar
+          </p>
+        </div>
+      </div>
+      <!-- Content -->
+      <ul class="grid md:grid-cols-3 gap-4 mt-8 px-4 sm:px-0">
+        <li
+          class="block my-0 mx-auto relative overflow-hidden rounded w-full h-40 lg:h-56 xl:h-full"
+          style="max-height: 240px; max-width: 450px;"
+          v-for="project in recommendedProjects"
+        >
+          <a
+            :href="project.path[0].alias"
+            class="project__card block m-0 overflow-hidden cursor-pointer"
+          >
+            <img
+              class="block transition-all duration-300 object-cover m-0"
+              :src="project.field_cover_proyecto[0].url"
+              :alt="project.field_cover_proyecto[0].alt"
+            />
+            <div
+              class="absolute w-full bg-black pl-6 text-white p-2 opacity-75 text-lg font-medium bottom-0"
+            >
+              <h3 class="font-bold uppercase">{{project.title[0].value}}</h3>
+            </div>
+            <button
+              class="project__more--text absolute font-bold inline-block text-sm top-0 right-0 transition-all duration-300 text-white mr-2 z-10 mt-6"
+            >
+              Ver más
+            </button>
+            <div
+              class="project__more--circle absolute top-0 right-0 w-32 h-32 transition-all duration-300 bg-blue-500 rounded-full shadow-lg"
+            ></div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </transition>
+</div>
+
+<script>
+  let recommendedProjects = new Vue({
+    el: "#recommendedProjects",
+    data() {
+      return {
+        recommendedProjects: null,
+        errored: null,
+        loading: true
+      };
+    },
+    mounted() {
+      axios
+        .get(`${window.location.origin}/api/proyectos?_format=json`)
+        .then(response => {
+          const data = response.data;
+
+          const proyectosReconmendadosFiltro = data;
+
+          const cantidadProyectos =
+            proyectosReconmendadosFiltro > 3
+              ? 4
+              : proyectosReconmendadosFiltro.length;
+          const proyectosRecomendados = [];
+          const indexRandom = [];
+          let i = 0;
+
+          while (indexRandom.length < cantidadProyectos) {
+            let numeroAleatorio = Math.floor(Math.random() * cantidadProyectos);
+            let existe = false;
+            for (let i = 0; i < indexRandom.length; i++) {
+              if (indexRandom[i] == numeroAleatorio) {
+                existe = true;
+                break;
+              }
+            }
+            if (!existe) {
+              indexRandom[indexRandom.length] = numeroAleatorio;
+            }
+          }
+
+          while (proyectosRecomendados.length < cantidadProyectos - 1) {
+            let indice = indexRandom[i];
+            if (
+              proyectosReconmendadosFiltro[indice].path[0].alias !==
+              window.location.pathname
+            ) {
+              proyectosRecomendados.push(proyectosReconmendadosFiltro[indice]);
+            }
+            i++;
+            if (proyectosRecomendados.length < 3) {
+              this.recommendedProjects = proyectosRecomendados;
+            } else {
+              break;
+            }
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    }
+  });
+</script>

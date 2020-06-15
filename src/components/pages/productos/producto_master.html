@@ -1,0 +1,122 @@
+<style type="text/css">
+  #container-loading {
+    height: 100%;
+    width: 100%;
+    transition: all 1s ease;
+  }
+
+  #loading {
+    border: 15px solid #e2e8f0;
+    border-top-color: #ed8936;
+    border-top-style: groove;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    margin: 0 auto;
+    animation: girar 1.5s linear infinite;
+  }
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  .productoDescription {
+    max-height: 0;
+    overflow-y: hidden;
+  }
+
+  .productoLink:hover .productoDescription {
+    max-height: 10000px;
+    padding-bottom: 1rem;
+  }
+</style>
+<div class="container pb-12" id="app">
+  <transition name="fade">
+    <section v-if="errored">
+      <p class="center">
+        Lo sentimos, no es posible obtener la información en este momento, por
+        favor intente nuevamente mas tarde
+      </p>
+    </section>
+  </transition>
+
+  <div v-if="!errored">
+    <div id="container-loading" v-if="loading">
+      <div id="loading">&nbsp;</div>
+    </div>
+    <transition name="fade">
+      <div v-if="!loading">
+        <ul
+          class="grid grid-cols-2 sm:grid-cols-3 gap-4 xl:row-gap-16 px-4 sm:px-0"
+        >
+          <li class="block mx-auto my-0" v-for="product in products">
+            <a
+              :href="product.path[0].alias"
+              class="productoLink relative block w-full m-0"
+            >
+              <img
+                :alt="product.field_portada[0].alt"
+                :src="product.field_portada[0].url"
+                class="block object-cover w-full m-0"
+              />
+              <div class="absolute bottom-0 w-full transition-all duration-300">
+                <h3
+                  class="block text-center text-base sm:text-xs md:text-lg font-medium p-1 md:p-2 bg-blue-500 text-white m-0"
+                >
+                  {{product.title[0].value}}
+                </h3>
+
+                <p
+                  class="productoDescription text-center block m-0 bg-blue-500 px-4 w-full h-full transition-all duration-300 text-white text-sm leading-relax"
+                >
+                  {{product.field_front_description[0].value}}
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </transition>
+  </div>
+</div>
+<script>
+  let products = new Vue({
+    el: "#app",
+    data() {
+      return {
+        products: null,
+        errored: false,
+        loading: true
+      };
+    },
+    mounted() {
+      axios
+        .get(`${window.location.origin}/api/productos?_format=json`)
+        .then(response => {
+          const data = response.data;
+
+          this.products = data;
+        })
+        .catch(error => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+      ƒ;
+    }
+  });
+</script>

@@ -1,0 +1,145 @@
+<style lang="scss" type="text/css">
+  #loading {
+    border: 15px solid #e2e8f0;
+    border-top-color: #ed8936;
+    border-top-style: groove;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    margin: 0 auto;
+    animation: girar 1.5s linear infinite;
+  }
+
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+<div id="errored" class="text-base center leading-relax text-gray-800"></div>
+<div id="container-loading">
+  <div id="loading">&nbsp;</div>
+</div>
+<div
+  id="gridContainer"
+  class="opacity-0 transition-all duration-300 grid sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 sm:px-0"
+>
+  <!-- columns -->
+  <div class="grid-col grid-col--1"></div>
+  <div class="grid-col grid-col--2 hidden sm:block"></div>
+  <div class="grid-col grid-col--3 hidden md:block"></div>
+  <!-- items -->
+</div>
+
+<script src="https://unpkg.com/colcade@0/colcade.js"></script>
+<script>
+  const grid = document.querySelector("#gridContainer");
+  let fragment = document.createDocumentFragment();
+
+  function formatDate(date) {
+    moment.locale("es");
+    return moment(date).format("MMM DD YYYY");
+  }
+  const tags = {
+    tag9: "Bienestar",
+    tag10: "Vidrio Andino",
+    tag11: "Decoración",
+    tag12: "Interiores",
+    tag13: "Proyectos",
+    tag14: "Cocinas",
+    tag15: "Vecinos Bienestar",
+  };
+  axios({
+    method: "GET",
+    url: `${window.location.origin}/api/noticias?_format=json`,
+  })
+    .then((res) => {
+      const taxonomy =
+        window.location.pathname.split("/")[2] === "categorias"
+          ? "news_categories"
+          : window.location.pathname.split("/")[2];
+
+      let filter = res.data.filter((filter) => {
+        let isTrue = false;
+        filter[`field_${taxonomy}`].map((category) => {
+          if (category.url == window.location.pathname) {
+            isTrue = true;
+          }
+        });
+        if (isTrue) {
+          return filter;
+        }
+      });
+
+      errored = filter.length;
+      filter.forEach((noticia) => {
+        item = document.createElement("div");
+        item.classList.add("grid-item", "mb-6", "mx-auto");
+
+        item.innerHTML = `
+      <a href="${
+        noticia.path[0].alias
+      }" class="block m-0 rounded overflow-hidden">
+        <div>
+          <img
+            class="block w-full m-0 object-cover"
+            src="${noticia.field_image[0].url}"
+            alt="${noticia.field_image[0].alt}"
+          />
+        </div>
+        <div class="flex flex-col bg-gray-200 pt-3 px-4">
+          <time
+            :datetime="${noticia.field_article_date[0].value}"
+            class="text-gray-600 text-sm capitalize"
+            >${formatDate(noticia.field_article_date[0].value)}
+          </time>
+          <h3 class="font-bold text-lg mt-1">
+            ${noticia.title[0].value}
+          </h3>
+          <p class="text-sm text-gray-700 leading-relax mt-3">
+            ${noticia.field_article_description[0].value}
+          </p>
+        </div>
+        <div class="flex flex-wrap bg-gray-200 my-4">
+          ${noticia.field_tags.map((tag, i) => {
+            let tagID = "tag" + tag.target_id;
+            let bg;
+            let bgHover;
+            if (tagID === "tag9") {
+              bg = "bg-orange-500";
+              bgHover = "hover:bg-orange-600";
+            } else if (tagID === "tag10") {
+              bg = "bg-blue-600";
+              bgHover = "hover:bg-blue-700";
+            } else {
+              bg = "bg-gray-500";
+              bgHover = "hover:bg-gray-600";
+            }
+            return `<a class="inline-block mr-1 rounded-full text-white text-xs px-2 py-1 transition duration-200 item-${i} ${bg} ${bgHover}" href="${tag.url}">${tags[tagID]}</a>`;
+          })}</div></a>`;
+        fragment.appendChild(item);
+      });
+      grid.appendChild(fragment);
+      // selector string as first argument
+      let colc = new Colcade("#gridContainer", {
+        columns: ".grid-col",
+        items: ".grid-item",
+      });
+      document.querySelectorAll(".item-0").forEach((item) => {
+        const content = item.textContent.replace(",", "");
+        item.textContent = content;
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      document.querySelector("#errored").textContent =
+        "Lo sentimos, no es posible obtener la información en este momento, por favor intente nuevamente mas tarde";
+    })
+    .finally(() => {
+      document.querySelector("#loading").classList.add("hidden");
+      document.querySelector("#gridContainer").classList.remove("opacity-0");
+    });
+</script>
