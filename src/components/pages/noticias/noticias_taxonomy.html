@@ -119,7 +119,8 @@
               bg = "bg-gray-500";
               bgHover = "hover:bg-gray-600";
             }
-            return `<a class="inline-block mr-1 rounded-full text-white text-xs px-2 py-1 transition duration-200 item-${i} ${bg} ${bgHover}" href="${tag.url}">${tags[tagID]}</a>`;
+            return `<a class="inline-block mr-1 rounded-full mb-2 text-white text-xs px-2 py-1 transition duration-200 tag-noticia ${bg} ${bgHover}"
+                  href="${tag.url}">${tags[tagID]}</a>`;
           })}</div></a>`;
         fragment.appendChild(item);
       });
@@ -129,7 +130,7 @@
         columns: ".grid-col",
         items: ".grid-item",
       });
-      document.querySelectorAll(".item-0").forEach((item) => {
+       document.querySelectorAll(".tag-noticia").forEach(item => {
         const content = item.textContent.replace(",", "");
         item.textContent = content;
       });
