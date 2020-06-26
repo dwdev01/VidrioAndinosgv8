@@ -38,19 +38,52 @@
     transition: all .2s;
   }
 
-  .subActive {
+  .sub_active {
     max-height: 1000000px !important;
     opacity: 1 !important;
   }
 
-  .subLink:hover>a {
-    background-color: #4299e1 !important;
-    color: white !important;
+  .subLink {
+    line-height: 50px !important
   }
 
   @media (min-width: 1280px) {
-    #linkProducts {
-      transform: translateY(420px);
+    .product_container:hover {
+      background-color: #4299e2;
+    }
+
+    .product_container:hover>a {
+      color: #fff;
+    }
+
+    #linkProducts:hover {
+      overflow: visible;
+    }
+
+    .sub_container {
+      min-width: 620px;
+      display: none
+    }
+    .sub_container a {
+      line-height: 60px !important;
+    }
+
+    .sub_title i {
+      opacity: 0;
+      transition: all .3;
+    }
+
+    .sub_main:hover>.sub_title {
+      color: #4299e2;
+      font-weight: 500;
+    }
+
+    .sub_main:hover>.sub_title i {
+      opacity: 1;
+    }
+
+    .sub_main:hover>.sub_container {
+      display: block;
     }
 
     .subLink:hover #linkProducts {
@@ -70,11 +103,76 @@
     <a href="/" class="vd-menu__icon p-1 text-gray-800 hover:text-blue-500 text-sm">
       <i class="icon-home"></i>
     </a>
-    <li class="relative xl:static subLink block m-0">
+    <li class="relative xl:static subLink block m-0 product_container">
       <a href="/productos">Productos</a>
       <button id="btnSub" class="xl:hidden absolute right-0 top-0 p-3 outline-none border-0"><i class="icon-down-open"></i></button>
-      <div id="linkProducts" class="xl:absolute trasition-all duration-200 bottom-0 bg-white grid w-full xl:grid-cols-4">
-
+      <div id="linkProducts" class="xl:absolute trasition-all duration-200 bg-white ">
+        <div class="relative">
+          <div class="sub_main">
+            <h3 class="sub_title px-4 py-2 border-b">Vidrio para fachadas <i class="ml-2 icon-right-open"></i></h3>
+            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
+              <div class="grid grid-cols-3">
+                <a href="/productos/cool-lite-r-sknknt">COOL LITE ® SKN/KNT</a>
+                <a href="/productos/cool-lite-r-ststb">COOL LITE ® ST/STB</a>
+                <a href="/productos/bienestar-r">BienEstar ® Control Solar</a>
+                <a href="/productos/parsol-r">Parsol®</a>
+                <a href="/productos/vidrio-laminado">Vidrio Laminado</a>
+                <a href="/productos/bioclean-r">BIOCLEAN ®</a>
+                <a href="/productos/diamant-r">DIAMANT ®</a>
+              </div>
+            </div>
+          </div>
+          <div class="sub_main">
+            <h3 class="sub_title px-4 py-2 border-b">Vidrio para ventanas <i class="ml-2 icon-right-open"></i></h3>
+            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
+              <div class="grid grid-cols-3">
+                <a href="/productos/bienestar-r">BienEstar ® Control Solar</a>
+                <a href="/productos/cool-lite-r-ststb">COOL LITE ® ST/STB</a>
+                <a href="/productos/parsol-r">Parsol®</a>
+                <a href="/productos/vidrio-incoloro-r">Vidrio Incoloro</a>
+              </div>
+            </div>
+          </div>
+          <div class="sub_main">
+            <h3 class="sub_title px-4 py-2 border-b">Vidrio para diseño interior <i class="ml-2 icon-right-open"></i></h3>
+            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
+              <div class="grid grid-cols-3">
+                <a href="/productos/decorglass-r">DECORGLASS ®</a>
+                <a href="/productos/master-carre-r">MASTER-CARRE ®</a>
+                <a href="/productos/master-lens-r">MASTER-LENS ®</a>
+                <a href="/productos/master-ray-r">MASTER-RAY ®</a>
+                <a href="/productos/mastersoft-r">MASTERSOFT ®</a>
+                <a href="/productos/waveline-fluid-r">WAVELINE FLUID ®</a>
+                <a href="/productos/parsol-r">Parsol®</a>
+                <a href="/productos/planilaque-r">PLANILAQUE ®</a>
+                <a href="/productos/vidrio-incoloro-r">Vidrio Laminado Incoloro</a>
+                <a href="/productos/vidrio-laminado-de-color">Vidrio Laminado de Color</a>
+                <a href="/productos/mirage-r">MIRAGE ®</a>
+                <a href="/productos/picto-r">PICTO ®</a>
+                <a href="/productos/diamant-r">DIAMANT ®</a>
+              </div>
+            </div>
+          </div>
+          <div class="sub_main">
+            <h3 class="sub_title px-4 py-2 border-b">Vidrio para industria refrigeración <i class="ml-2 icon-right-open"></i></h3>
+            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
+              <div class="grid grid-cols-3">
+                <a href="/productos/eko-pro-r">EKO PRO ®</a>
+                <a href="/productos/planitherm-r">PLANITHERM ®</a>
+              </div>
+            </div>
+          </div>
+          <div class="sub_main">
+            <h3 class="sub_title px-4 py-2 border-b">Complementos para vidrio <i class="ml-2 icon-right-open"></i></h3>
+            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
+              <div class="grid grid-cols-3">
+                <a href="#">Silicona Multiuso</a>
+                <a href="#">Silicona Neutra</a>
+                <a href="#">Adhesivo Fija Espejo</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </li>
     {% for item in items %}
@@ -88,31 +186,3 @@
   </ul>
   {% endif %}
   {% endmacro %}
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const linkFragment = document.createDocumentFragment()
-      axios({
-          method: "GET",
-          url: `${window.location.origin}/api/productos?_format=json`,
-        })
-        .then((res) => {
-          const data = res.data
-          data.map(item => {
-            const link = document.createElement('a')
-            link.classList.add('block', 'm-0', 'transition', 'duration-200', 'hover:bg-blue-500', 'hover:text-white')
-            link.setAttribute('href', item.path[0].alias)
-            link.textContent = item.title[0].value
-            linkFragment.appendChild(link)
-          })
-          document.getElementById('linkProducts').appendChild(linkFragment)
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-
-      document.getElementById('btnSub').addEventListener('click', () => {
-        document.querySelector('#linkProducts').classList.toggle('subActive')
-      })
-    })
-  </script>
