@@ -122,13 +122,25 @@
       axios
         .get(`${window.location.origin}/api/proyectos?_format=json`)
         .then(response => {
-          const taxonomy =
+          let  taxonomy =
             window.location.pathname.split("/")[2] === "aplicacion"
               ? "aplicaciones"
               : window.location.pathname.split("/")[2];
+
+          if (window.location.pathname.split("/")[2] === "aplicacion") {
+            taxonomy = 'aplicaciones_proyecto'
+          } else if (window.location.pathname.split("/")[2] === "vidrio") {
+            taxonomy = 'vidrio'
+          } else if (window.location.pathname.split("/")[2] === "tipo") {
+            taxonomy = 'tipo'
+          } else if (window.location.pathname.split("/")[2] === "tonalidad") {
+            taxonomy = 'tonalidad'
+          } else {
+            taxonomy = window.location.pathname.split("/")[2] + "_proyecto"
+          }
           let filter = response.data.filter(filter => {
             let isTrue = false;
-            filter[`field_${taxonomy}_proyecto`].map(category => {
+            filter[`field_${taxonomy}`].map(category => {
               if (category.url == window.location.pathname) {
                 isTrue = true;
               }
