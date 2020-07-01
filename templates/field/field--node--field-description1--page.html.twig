@@ -55,7 +55,7 @@
     {% endfor %}
   {% endif %}
 {% else %}
-  <div {{ attributes }}>
+  <div {{ attributes }} class="hidden">
     <div {{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
     {% if multiple %}
       <div>

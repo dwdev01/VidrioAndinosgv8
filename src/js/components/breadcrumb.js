@@ -1,41 +1,44 @@
 export default function breadCrumb() {
-  const breadcrumbList =
+  const breadCrumbList =
     document.getElementById("breadcrumbList") != null
       ? document.getElementById("breadcrumbList")
       : null;
-  const breadcrumbChilds =
-    breadcrumbList != null ? Array.from(breadcrumbList.children) : null;
 
-  const pathFormated = window.location.pathname.split("/");
-  let pathTitle = pathFormated[pathFormated.length - 1];
-  if (pathTitle.includes("-")) {
-    pathTitle = pathTitle.split("-");
-    pathTitle = pathTitle.join(" ");
+  if (breadCrumbList) {
+    for (let i = 0; i < breadCrumbList.childElementCount; i++) {
+      if (i == 0) {
+        breadCrumbList.children[0].firstElementChild.innerHTML = `<i class="icon-home"></i>`;
+      }
+
+      if (i != breadCrumbList.childElementCount - 1) {
+        breadCrumbList.children[
+          i
+        ].innerHTML += `<i class="icon-right-big mr-1"></i>`;
+      }
+    }
+
+    if (document.getElementById("breadcrumbContainer") != null) {
+      setTimeout(function() {
+        document
+          .getElementById("breadcrumbContainer")
+          .classList.remove("opacity-0");
+      }, 100);
+    }
   }
-
-  const breadcrumbTitle =
-    document.getElementById("breadcrumbTitle") != null
-      ? document.getElementById("breadcrumbTitle").innerHTML
-      : pathTitle;
-
-  if (breadcrumbList) {
-    breadcrumbList.firstElementChild.firstElementChild.innerHTML = `<i class="icon-home"></i>`;
-  }
-
-  if (breadcrumbChilds) {
-    breadcrumbChilds.forEach(child => {
-      child.innerHTML += `<i class="icon-right-big mr-1"></i>`;
-    });
-    breadcrumbList.innerHTML += `<li class="capitalize">${breadcrumbTitle}</li>`;
-  }
-  const breadcrumbDescription =
-    document.getElementById("breadcrumbDescription") != null
-      ? document.getElementById("breadcrumbDescription")
-      : null;
 
   const breadcrumbContent =
     document.getElementById("breadcrumbContent") != null
       ? document.getElementById("breadcrumbContent")
+      : null;
+
+  const breadcrumbTitle =
+    document.getElementById("breadcrumbTitle") != null
+      ? document.getElementById("breadcrumbTitle").innerHTML
+      : breadCrumbList.lastElementChild.textContent;
+
+  const breadcrumbDescription =
+    document.getElementById("breadcrumbDescription") != null
+      ? document.getElementById("breadcrumbDescription")
       : null;
 
   if (breadcrumbContent) {
@@ -55,12 +58,4 @@ export default function breadCrumb() {
   } else {
     document.getElementById("breadcrumbContent").classList.add("hidden");
   }
-}
-
-if (document.getElementById("breadcrumbContainer") != null) {
-  setTimeout(function() {
-    document
-      .getElementById("breadcrumbContainer")
-      .classList.remove("opacity-0");
-  }, 100);
 }
