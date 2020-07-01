@@ -31,6 +31,7 @@
 {% if items %}
 {% if menu_level == 0 %}
 <style>
+  .sub_container,
   #linkProducts {
     max-height: 0;
     overflow: hidden;
@@ -38,9 +39,19 @@
     transition: all .2s;
   }
 
+  .subItem_active,
   .sub_active {
     max-height: 1000000px !important;
     opacity: 1 !important;
+  }
+
+  .subItem_active {
+    color: #4299e2;
+    font-weight: 500;
+  }
+
+  .subItem_active i {
+    transform: rotate(90deg);
   }
 
   .subLink {
@@ -62,8 +73,12 @@
 
     .sub_container {
       min-width: 620px;
-      display: none
+      display: none;
+      max-height: 100%;
+      overflow: visible;
+      opacity: 1;
     }
+
     .sub_container a {
       line-height: 60px !important;
     }
@@ -105,13 +120,13 @@
     </a>
     <li class="relative xl:static subLink block m-0 product_container">
       <a href="/productos">Productos</a>
-      <button id="btnSub" class="xl:hidden absolute right-0 top-0 p-3 outline-none border-0"><i class="icon-down-open"></i></button>
+      <button id="btnSub" class="icon-right-open xl:hidden absolute right-0 top-0 px-3 outline-none border-0 transform"></button>
       <div id="linkProducts" class="xl:absolute trasition-all duration-200 bg-white ">
         <div class="relative">
           <div class="sub_main">
-            <h3 class="sub_title px-4 py-2 border-b">Vidrio para fachadas <i class="ml-2 icon-right-open"></i></h3>
-            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
-              <div class="grid grid-cols-3">
+            <h3 class="sub_title px-4 py-2 border-b">Vidrio para fachadas <i class="ml-2 icon-right-open inline-block transition-all duration-200"></i></h3>
+            <div class="sub_container xl:absolute right-0 top-0 bg-white xl:transform xl:translate-x-full h-full">
+              <div class="grid xl:grid-cols-3 px-6 xl:px-0">
                 <a href="/productos/cool-lite-r-sknknt">COOL LITE ® SKN/KNT</a>
                 <a href="/productos/cool-lite-r-ststb">COOL LITE ® ST/STB</a>
                 <a href="/productos/bienestar-r">BienEstar ® Control Solar</a>
@@ -123,9 +138,9 @@
             </div>
           </div>
           <div class="sub_main">
-            <h3 class="sub_title px-4 py-2 border-b">Vidrio para ventanas <i class="ml-2 icon-right-open"></i></h3>
-            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
-              <div class="grid grid-cols-3">
+            <h3 class="sub_title px-4 py-2 border-b">Vidrio para ventanas <i class="ml-2 icon-right-open inline-block transition-all duration-200"></i></h3>
+            <div class="sub_container xl:absolute right-0 top-0 bg-white xl:transform xl:translate-x-full h-full">
+              <div class="grid xl:grid-cols-3 px-6 xl:px-0">
                 <a href="/productos/bienestar-r">BienEstar ® Control Solar</a>
                 <a href="/productos/cool-lite-r-ststb">COOL LITE ® ST/STB</a>
                 <a href="/productos/parsol-r">Parsol®</a>
@@ -134,9 +149,9 @@
             </div>
           </div>
           <div class="sub_main">
-            <h3 class="sub_title px-4 py-2 border-b">Vidrio para diseño interior <i class="ml-2 icon-right-open"></i></h3>
-            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
-              <div class="grid grid-cols-3">
+            <h3 class="sub_title px-4 py-2 border-b">Vidrio para diseño interior <i class="ml-2 icon-right-open inline-block transition-all duration-200"></i></h3>
+            <div class="sub_container xl:absolute right-0 top-0 bg-white xl:transform xl:translate-x-full h-full">
+              <div class="grid xl:grid-cols-3 px-6 xl:px-0">
                 <a href="/productos/decorglass-r">DECORGLASS ®</a>
                 <a href="/productos/master-carre-r">MASTER-CARRE ®</a>
                 <a href="/productos/master-lens-r">MASTER-LENS ®</a>
@@ -154,18 +169,18 @@
             </div>
           </div>
           <div class="sub_main">
-            <h3 class="sub_title px-4 py-2 border-b">Vidrio para industria refrigeración <i class="ml-2 icon-right-open"></i></h3>
-            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
-              <div class="grid grid-cols-3">
+            <h3 class="sub_title px-4 py-2 border-b">Vidrio para industria refrigeración <i class="ml-2 icon-right-open inline-block transition-all duration-200"></i></h3>
+            <div class="sub_container xl:absolute right-0 top-0 bg-white xl:transform xl:translate-x-full h-full">
+              <div class="grid xl:grid-cols-3 px-6 xl:px-0">
                 <a href="/productos/eko-pro-r">EKO PRO ®</a>
                 <a href="/productos/planitherm-r">PLANITHERM ®</a>
               </div>
             </div>
           </div>
           <div class="sub_main">
-            <h3 class="sub_title px-4 py-2 border-b">Complementos para vidrio <i class="ml-2 icon-right-open"></i></h3>
-            <div class="sub_container absolute right-0 top-0 bg-white transform translate-x-full h-full">
-              <div class="grid grid-cols-3">
+            <h3 class="sub_title px-4 py-2 border-b">Complementos para vidrio <i class="ml-2 icon-right-open inline-block transition-all duration-200"></i></h3>
+            <div class="sub_container xl:absolute right-0 top-0 bg-white xl:transform xl:translate-x-full h-full">
+              <div class="grid xl:grid-cols-3 px-6 xl:px-0">
                 <a href="#">Silicona Multiuso</a>
                 <a href="#">Silicona Neutra</a>
                 <a href="#">Adhesivo Fija Espejo</a>
@@ -186,3 +201,33 @@
   </ul>
   {% endif %}
   {% endmacro %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('btnSub').addEventListener('click', (e) => {
+        document.getElementById('linkProducts').classList.toggle('sub_active')
+        document.getElementById('btnSub').previousElementSibling.classList.toggle('bg-blue-500')
+        document.getElementById('btnSub').previousElementSibling.classList.toggle('text-white')
+        document.getElementById('btnSub').previousElementSibling.classList.toggle('px-4')
+        e.target.classList.toggle("text-white")
+        e.target.classList.toggle("bg-blue-500")
+        e.target.classList.toggle("rotate-90")
+      })
+
+      function resposive(x) {
+        if (x.matches) {
+          document.querySelectorAll('.sub_title').forEach(item => {
+            item.addEventListener('click', (e) => {
+              if (e.target.localName == "h3") {
+                e.target.classList.toggle('subItem_active')
+                e.target.nextElementSibling.classList.toggle('subItem_active')
+              }
+            })
+          })
+
+        }
+      }
+      const x = window.matchMedia("(max-width: 1280px)")
+      resposive(x)
+    })
+  </script>
