@@ -75,13 +75,13 @@
               />
               <div class="absolute bottom-0 w-full transition-all duration-300">
                 <h3
-                  class="block text-center text-base sm:text-xs md:text-lg font-medium p-1 md:p-2 bg-blue-500 text-white m-0"
+                  :class="[product.field_categoria[0].value == 'Bienestar' ? 'bg-orange-500' : 'bg-blue-500' ,'block text-center text-base sm:text-xs md:text-lg font-medium p-1 md:p-2 text-white m-0']"
                 >
                   {{product.title[0].value}}
                 </h3>
 
                 <p
-                  class="productoDescription text-center block m-0 bg-blue-500 px-4 w-full h-full transition-all duration-300 text-white text-sm leading-relax"
+                  :class="[product.field_categoria[0].value == 'Bienestar' ? 'bg-orange-500' : 'bg-blue-500', 'productoDescription text-center block m-0 px-4 w-full h-full transition-all duration-300 text-white text-sm leading-relax']"
                 >
                   {{product.field_front_description[0].value}}
                 </p>
@@ -109,7 +109,23 @@
         .then(response => {
           const data = response.data;
 
-          this.products = data;
+          let filter = data.sort(function (a, b) {
+            if (a.title[0].value > b.title[0].value) {
+              return 1
+            } else if (a.title[0].value < b.title[0].value) {
+              return -1
+            } else {
+              return 0
+            }
+          });
+
+          this.products = filter.sort(function (a) {
+            if (a.field_categoria[0].value == "Bienestar") {
+              return -1
+            } else {
+              return 0
+            }
+          });
         })
         .catch(error => {
           console.log(error);
