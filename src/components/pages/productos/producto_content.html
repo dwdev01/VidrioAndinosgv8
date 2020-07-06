@@ -123,6 +123,7 @@
             <div
               :style="'max-height:' + slideMaxH + 'px'"
               class="slides w-full overflow-hidden relative mb-6"
+              v-if="content.field_slider[0]"
             >
               <ul
                 :style="'width: ' + content.field_slider.length * 100 + '%;' + 'margin-left: -' + slideIndex + '%'"
@@ -153,7 +154,7 @@
               </div>
             </div>
             <!-- Posibilidades de transformación -->
-            <div class="p-4 border-b-2 boder-gray-400 mb-6">
+            <div v-if="content.field_transformacion[0]" class="p-4 border-b-2 boder-gray-400 mb-6">
               <h3 class="text-lg font-bold mb-4">
                 Posibilidades de Transformación
               </h3>
@@ -180,8 +181,7 @@
               </ul>
             </div>
             <!-- Beneficios -->
-
-            <div class="p-4 mb-6">
+            <div v-if="content.field_beneficios[0]" class="p-4 mb-6">
               <h3 class="text-lg font-bold mb-4">Beneficios</h3>
 
               <ul class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4">
@@ -220,7 +220,6 @@
               </ul>
             </div>
             <!-- Descargas -->
-
             <div
               class="p-4 border-t-2 boder-gray-400 mb-6"
               v-if="content.field_articulos_de_prensa[0] || content.field_ficha_tecnica[0]"
@@ -264,7 +263,6 @@
               </ul>
             </div>
           </div>
-
           <div>
             <!-- Descripcion -->
             <div
@@ -287,7 +285,6 @@
               </div>
             </div>
             <!-- Ventajas -->
-
             <div
               :class="[acordion[1].open ? 'open' : '' ,'faq mb-4']"
               v-on:click=" toggleOpen(1)"
@@ -312,7 +309,6 @@
               </div>
             </div>
             <!-- Aplicaciones -->
-
             <div
               :class="[acordion[2].open ? 'open' : '' ,'faq mb-6']"
               v-on:click=" toggleOpen(2)"
@@ -337,14 +333,13 @@
               </div>
             </div>
             <!-- Formulario -->
-
             <div class="bg-blue-500 p-4 mb-6">
               <h4 class="text-white text-center text-xl font-bold">
                 ¿Quieres más información?
               </h4>
 
               <h4 class="text-white text-center text-xl font-bold">
-                ¡Escribenos!
+                ¡Escríbenos!
               </h4>
 
               <div class="mt-4 w-2/3 mx-auto">
@@ -430,7 +425,6 @@
               </div>
             </div>
             <!-- Bienestar -->
-
             <div v-if="content.field_categoria[0].value === 'Bienestar'">
               <div class="bg-blue-500 w-full p-4">
                 <h3 class="text-white font-bold text-xl text-center">
@@ -532,78 +526,79 @@
             name: "Confort Térmico",
             color: "bn-mustard",
             image:
-              "/sites/sgva.master/files/inline-images/icon-confort-termico.png"
+              "/sites/sgva.master/files/inline-images/icon-confort-termico.png",
           },
           b31: {
             name: "Protección UV",
             color: "bn-orange",
-            image: "/sites/sgva.master/files/inline-images/icon-proteccion.png"
+            image: "/sites/sgva.master/files/inline-images/icon-proteccion.png",
           },
           b32: {
             name: "Confort Visual",
             color: "bn-blue",
-            image: "/sites/sgva.master/files/inline-images/Confort%20Visual.png"
+            image:
+              "/sites/sgva.master/files/inline-images/Confort%20Visual.png",
           },
           b33: {
             name: "Confort Acústico",
             color: "bn-purple",
             image:
-              "/sites/sgva.master/files/inline-images/Confort%20Acu%CC%81stico.png"
+              "/sites/sgva.master/files/inline-images/Confort%20Acu%CC%81stico.png",
           },
           b34: {
             name: "Ahorro Energético",
             color: "bn-darkblue",
             image:
-              "/sites/sgva.master/files/inline-images/Ahorro%20Energe%CC%81tico.png"
+              "/sites/sgva.master/files/inline-images/Ahorro%20Energe%CC%81tico.png",
           },
           b35: {
             name: "Medio Ambiente",
             color: "bn-green",
             image:
-              "/sites/sgva.master/files/inline-images/Proteccio%CC%81n%20del%20medio%20ambiente.png"
+              "/sites/sgva.master/files/inline-images/Proteccio%CC%81n%20del%20medio%20ambiente.png",
           },
           b36: {
             name: "Seguridad",
             color: "bn-magenta",
-            image: "/sites/sgva.master/files/inline-images/Seguridad.png"
+            image: "/sites/sgva.master/files/inline-images/Seguridad.png",
           },
           b37: {
             name: "Privacidad",
             color: "bn-gray",
-            image: "/sites/sgva.master/files/inline-images/Privacidad.png"
+            image: "/sites/sgva.master/files/inline-images/Privacidad.png",
           },
           b38: {
             name: "Diseño Estético",
             color: "bn-darkpurple",
             image:
-              "/sites/sgva.master/files/inline-images/Disen%CC%83o%20Este%CC%81tico.png"
+              "/sites/sgva.master/files/inline-images/Disen%CC%83o%20Este%CC%81tico.png",
           },
           b39: {
             name: "Protección contra el fuego",
             color: "bn-yellow",
             image:
-              "/sites/sgva.master/files/inline-images/Proteccio%CC%81n%20contra%20el%20fuego.png"
-          }
+              "/sites/sgva.master/files/inline-images/Proteccio%CC%81n%20contra%20el%20fuego.png",
+          },
         },
         form: {
           nombre: null,
           email: null,
-          mensaje: null
+          mensaje: null,
         },
         slideIndex: 0,
         slideMaxH: 420,
         tutorialBg:
-          "https://sgvad8.vidrioandino.com/sites/sgva.master/files/inline-images/background-paises%20%281%29.png"
+          "https://sgvad8.vidrioandino.com/sites/sgva.master/files/inline-images/background-paises%20%281%29.png",
       };
     },
     mounted() {
       axios
         .get(`${window.location.origin}/api/productos?_format=json`)
-        .then(response => {
+        .then((response) => {
           const data = response.data;
 
           const contentData = data.find(
-            item => item.path[0].alias == window.location.pathname
+            (item) => item.path[0].alias == window.location.pathname
           );
           this.content = contentData;
           this.acordion = [
@@ -611,23 +606,23 @@
               title: `Descripción`,
               icon: "",
               content: contentData.field_description[0].processed,
-              open: false
+              open: false,
             },
             {
               title: "Ventajas",
               icon: "",
               content: contentData.field_ventajas,
-              open: false
+              open: false,
             },
             {
               title: "Aplicaciones",
               icon: "",
               content: contentData.field_aplicaciones,
-              open: false
-            }
+              open: false,
+            },
           ];
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
           this.errored = true;
         })
@@ -663,7 +658,7 @@
           return;
         }
         this.slideIndex += 100;
-      }
-    }
+      },
+    },
   });
 </script>
