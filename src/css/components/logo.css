@@ -1,16 +1,14 @@
 .vd-logo {
-  --width: auto;
-  --heigth: 70px;
-  width: var(--width);
-  height: var(--heigth);
+  width: auto;
+  height: 70px;
   border-radius: 10px 10px 0 0;
   background-color: #fff;
 }
 
 @media (min-width: 1280px) {
   .vd-logo {
-    --width: 157px;
-    --heigth: 118px;
+    width: 157px;
+    height: 118px;
     background-color: transparent;
   }
   .vd-logo::before,
@@ -49,6 +47,6 @@
   }
   .vd-logo-icon,
   .vd-logo-text {
-    width: var(--width);
+    width: 157px;
   }
 }
