@@ -123,7 +123,16 @@
       axios
         .get(`${window.location.origin}/api/proyectos?_format=json`)
         .then(response => {
-          this.projects = response.data;
+          this.projects = response.data.sort(function(a, b) {
+            if (a.field_fecha_de_creacion[0].value < b.field_fecha_de_creacion[0].value) {
+              return 1;
+            }
+            if (a.field_fecha_de_creacion[0].value > b.field_fecha_de_creacion[0].value) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
         })
         .catch(error => {
           console.log(error);
