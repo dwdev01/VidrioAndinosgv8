@@ -115,32 +115,32 @@
       return {
         projects: null,
         loading: true,
-        errored: false
+        errored: false,
       };
     },
     mounted() {
       axios
         .get(`${window.location.origin}/api/proyectos?_format=json`)
-        .then(response => {
-          let  taxonomy =
+        .then((response) => {
+          let taxonomy =
             window.location.pathname.split("/")[2] === "aplicacion"
               ? "aplicaciones"
               : window.location.pathname.split("/")[2];
 
           if (window.location.pathname.split("/")[2] === "aplicacion") {
-            taxonomy = 'aplicaciones_proyecto'
+            taxonomy = "aplicaciones_proyecto";
           } else if (window.location.pathname.split("/")[2] === "vidrio") {
-            taxonomy = 'vidrio'
+            taxonomy = "vidrio";
           } else if (window.location.pathname.split("/")[2] === "tipo") {
-            taxonomy = 'tipo'
+            taxonomy = "tipo";
           } else if (window.location.pathname.split("/")[2] === "tonalidad") {
-            taxonomy = 'tonalidad'
+            taxonomy = "tonalidad";
           } else {
-            taxonomy = window.location.pathname.split("/")[2] + "_proyecto"
+            taxonomy = window.location.pathname.split("/")[2] + "_proyecto";
           }
-          let filter = response.data.filter(filter => {
+          let filter = response.data.filter((filter) => {
             let isTrue = false;
-            filter[`field_${taxonomy}`].map(category => {
+            filter[`field_${taxonomy}`].map((category) => {
               if (category.url == window.location.pathname) {
                 isTrue = true;
               }
@@ -149,13 +149,28 @@
               return filter;
             }
           });
-          this.projects = filter;
+          this.projects = filter.sort(function(a, b) {
+            if (
+              a.field_fecha_de_creacion[0].value <
+              b.field_fecha_de_creacion[0].value
+            ) {
+              return 1;
+            }
+            if (
+              a.field_fecha_de_creacion[0].value >
+              b.field_fecha_de_creacion[0].value
+            ) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
           this.errored = true;
         })
         .finally(() => (this.loading = false));
-    }
+    },
   });
 </script>
