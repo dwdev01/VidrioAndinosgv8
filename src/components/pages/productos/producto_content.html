@@ -1,664 +1,301 @@
 <style type="text/css">
-  #container-loading {
-    height: 100%;
-    width: 100%;
-    transition: all 1s ease;
-  }
-
-  #loading {
-    border: 15px solid #e2e8f0;
-    border-top-color: #ed8936;
-    border-top-style: groove;
-    height: 80px;
-    width: 80px;
-    border-radius: 100%;
-    margin: 0 auto;
-    animation: girar 1.5s linear infinite;
-  }
-
-  @keyframes girar {
-    from {
-      transform: rotate(0deg);
+    .hero {
+        max-height: 250px;
     }
-    to {
-      transform: rotate(360deg);
+    
+    @media (min-width: 768px) {
+        .hero {
+            max-height: 500px;
+        }
     }
-  }
-
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s;
-  }
-
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
-
-  .faq .question {
-    position: relative;
-    transition: all 0.4s linear;
-  }
-
-  .icon-down-open {
-    position: absolute;
-    top: 50%;
-    right: 0px;
-    transform: translateY(-50%) rotate(0deg);
-    transition: all 0.4s ease-out;
-  }
-
-  .faq .answer {
-    opacity: 0;
-    max-height: 0;
-    overflow-y: hidden;
-    transition: all 0.4s ease-out;
-  }
-
-  .open .question,
-  .answer p,
-  .answer li {
-    margin-bottom: 1rem;
-  }
-
-  .open .icon-down-open {
-    transform: translateY(-50%) rotate(-180deg);
-  }
-
-  .open .answer {
-    opacity: 1;
-    max-height: 10000px;
-  }
-
-  .videoYT {
-    width: 100%;
-    max-width: 560px;
-    height: 100%;
-    min-height: 160px;
-    max-height: 315px;
-  }
-
-  @media (min-width: 640px) {
-    .videoYT {
-      min-height: 315px;
+    
+    .lineDot:first-of-type::before {
+        content: "";
+        display: block;
+        width: 50%;
+        height: 4px;
+        margin-left: auto;
+        border-top: 5px dotted #9f7aea;
+        margin-top: 16px;
     }
-  }
-
-  .productoDescription {
-    max-height: 0;
-    overflow-y: hidden;
-  }
-
-  .productoLink:hover .productoDescription {
-    max-height: 10000px;
-    padding-bottom: 1rem;
-  }
+    
+    .lineDot:last-of-type::before {
+        content: "";
+        display: block;
+        width: 50%;
+        height: 4px;
+        margin-right: auto;
+        border-top: 5px dotted #9f7aea;
+        margin-top: 16px;
+    }
+    
+    .lineDot:nth-child(2)::before,
+    .lineDot:nth-child(3)::before {
+        content: "";
+        display: block;
+        width: 50%;
+        height: 4px;
+        margin-left: auto;
+        border-top: 5px dotted #9f7aea;
+        margin-top: 16px;
+    }
+    
+    @media (min-width: 768px) {
+        .lineDot:nth-child(2)::before,
+        .lineDot:nth-child(3)::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 4px;
+            margin-left: auto;
+            border-top: 5px dotted #9f7aea;
+            margin-top: 16px;
+        }
+    }
 </style>
-<section id="app">
-  <transition name="fade">
-    <section v-if="errored">
-      <p class="center">
-        Lo sentimos, no es posible obtener la información en este momento, por
-        favor intente nuevamente mas tarde
-      </p>
-    </section>
-  </transition>
-
-  <div v-if="!errored">
-    <div id="container-loading" v-if="loading">
-      <div id="loading">&nbsp;</div>
+<div class="hero relative overflow-hidden" id="disableBread"><img alt="Vidrio andino Confort Acústico" data-entity-type="file" data-entity-uuid="ceeb1dc9-ee91-46d2-a8ef-7206ec778008" src="/sites/vidrioandino.com/files/inline-images/confort-acustico-web.png">
+    <div class="container mx-auto px-4">
+        <h1 class="block opacity-75 absolute bottom-0 text-xl md:text-3xl text-white mb-12 md:mb-32 px-4 md:px-6 py-6 md:py-8 border-l-8 " style="background-color: #6D67AC; border-color: hsl(225, 29%, 34%)">CONFORT ACÚSTICO</h1>
     </div>
-    <transition name="fade">
-      <div v-if="!loading">
-        <div class="flex justify-center">
-          <span
-            class="text-xl font-medium border-b-2 border-blue-500 rounded-sm pb-1"
-            >{{content.title[0].value}}</span
-          >
+</div>
+<!-- DESCRIPTION -->
+
+<div class="description w-full bg-gray-200 text-gray-700 text-sm md:text-base sm:text-lg leading-relax mb-8">
+    <p class="block container mx-auto py-4 sm:py-6 px-4">Los edificios MULTI COMFORT tienen entornos acústicos que están bien equilibrados, bloquean el ruido no deseado y dañino y mejoran los sonidos que queremos y de hecho necesitamos escuchar.</p>
+</div>
+<!-- TITLE -->
+
+<div class="my-8">
+    <div class="container px-4 grid md:grid-cols-2 gap-4" id="disableBread">
+        <div>
+            <div class="container px-4 pl-4 h-8 font-semibold flex font-light text-gray-800 text-lg sm:text-xl items-center border-l-8" style="border-color: #6D67AC;">
+                <h2>¿Qué es el CONFORT VISUAL?</h2>
+            </div>
+
+            <p class="text-sm md:text-base text-gray-700 leading-relax mt-4">COMODIDAD ACÚSTICA es el bienestar y la sensación de los ocupantes de un edificio u hogar con respecto al entorno acústico (transporte, equipo, actividad, vecindario que produce ruido). Proporcionar comodidad acústica consiste en minimizar
+                el ruido intruso y mantener la satisfacción entre los residentes (hogar y espacio de trabajo).
+            </p>
         </div>
 
-        <div class="container grid lg:grid-cols-2 gap-6 mt-12">
-          <div>
-            <!-- Slider de imagenes -->
-            <div
-              :style="'max-height:' + slideMaxH + 'px'"
-              class="slides w-full overflow-hidden relative mb-6"
-              v-if="content.field_slider[0]"
-            >
-              <ul
-                :style="'width: ' + content.field_slider.length * 100 + '%;' + 'margin-left: -' + slideIndex + '%'"
-                class="slides-inner flex transition-all duration-300"
-              >
-                <li
-                  :style="'max-height:' + slideMaxH + 'px'"
-                  class="slide flex justify-center items-center w-full"
-                  v-for="slide in content.field_slider"
-                >
-                  <img :src="slide.url" alt="1" />
-                </li>
-              </ul>
-
-              <div
-                class="absolute z-10 top-0 bottom-0 flex justify-between items-center px-4 w-full"
-              >
-                <span
-                  :class="[this.slideIndex === 0 ? 'opacity-50' : '','p-4 text-xl bg-blue-500 hover:bg-blue-600 transitin duration-200 transform rotate-180 text-white rounded']"
-                  v-on:click="goToPrev"
-                  ><i class="icon-right-open"></i
-                ></span>
-                <span
-                  :class="[this.slideIndex / 100 === this.content.field_slider.length - 1 ? 'opacity-50' : '','p-4 text-xl bg-blue-500 hover:bg-blue-600 transitin duration-200 transform text-white rounded']"
-                  v-on:click="goToNext"
-                  ><i class="icon-right-open"></i
-                ></span>
-              </div>
-            </div>
-            <!-- Posibilidades de transformación -->
-            <div v-if="content.field_transformacion[0]" class="p-4 border-b-2 boder-gray-400 mb-6">
-              <h3 class="text-lg font-bold mb-4">
-                Posibilidades de Transformación
-              </h3>
-
-              <ul class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4">
-                <li
-                  class="block w-full"
-                  v-for="item in content.field_transformacion"
-                >
-                  <a
-                    :href="item.url"
-                    class="flex mx-auto flex-col items-center text-gray-900 hover:text-blue-500"
-                  >
-                    <img
-                      :alt="item.url.split('-')[2]"
-                      :src="'/sites/sgva.master/files/inline-images/' + item.url.split('/')[3] + '.png'"
-                      class="w-16"
-                    />
-                    <span class="capitalize mt-2 text-sm font-medium"
-                      >{{item.url.split('/')[3]}}</span
-                    >
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <!-- Beneficios -->
-            <div v-if="content.field_beneficios[0]" class="p-4 mb-6">
-              <h3 class="text-lg font-bold mb-4">Beneficios</h3>
-
-              <ul class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4">
-                <li
-                  class="flex flex-col items-center mx-auto"
-                  v-for="item in content.field_beneficios"
-                >
-                  <a
-                    :href="item.url"
-                    class="flex flex-col items-center text-gray-900 hover:text-blue-500"
-                  >
-                  </a>
-
-                  <div
-                    :class="[beneficios['b' + item.target_id].color, 'p-4 w-24 flex justify-center items-center mb-3 rounded']"
-                    style="background-color: var(--bg);"
-                  >
-                    <a
-                      :href="item.url"
-                      class="flex flex-col items-center text-gray-900 hover:text-blue-500"
-                      ><img
-                        :src="beneficios['b' + item.target_id].image"
-                        class="object-contain"
-                      />
-                    </a>
-                  </div>
-                  <a
-                    :href="item.url"
-                    class="flex flex-col items-center text-gray-900 hover:text-blue-500"
-                  >
-                    <span class="text-sm font-medium text-center"
-                      >{{ beneficios['b' + item.target_id].name }}</span
-                    >
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <!-- Descargas -->
-            <div
-              class="p-4 border-t-2 boder-gray-400 mb-6"
-              v-if="content.field_articulos_de_prensa[0] || content.field_ficha_tecnica[0]"
-            >
-              <h3 class="text-lg font-bold mb-4">Descargas</h3>
-
-              <ul class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4">
-                <li class="block mx-auto" v-if="content.field_ficha_tecnica[0]">
-                  <a
-                    :href="content.field_ficha_tecnica[0].url"
-                    class="flex flex-col justify-center items-center text-sm text-gray-900 hover:text-blue-500 font-medium"
-                    download=""
-                  >
-                    <img
-                      alt="Artículos de prensa"
-                      class="object-contain"
-                      src="/sites/sgva.master/files/inline-images/ficha-icon.png"
-                    />
-                    <span class="mt-3 text-center"
-                      >Guía práctica de instalación y limpieza</span
-                    >
-                  </a>
-                </li>
-                <li
-                  class="block mx-auto"
-                  v-if="content.field_articulos_de_prensa[0]"
-                >
-                  <a
-                    :href="content.field_articulos_de_prensa[0].url"
-                    class="flex flex-col justify-center items-center text-sm text-gray-900 hover:text-blue-500 font-medium"
-                    download=""
-                  >
-                    <img
-                      alt="Artículos de prensa"
-                      class="object-contain"
-                      src="/sites/sgva.master/files/inline-images/article-icon.png"
-                    />
-                    <span class="mt-3 text-center">Artículos de prensa</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <!-- Descripcion -->
-            <div
-              :class="[acordion[0].open ? 'open' : '' ,'faq  mb-4']"
-              v-on:click=" toggleOpen(0)"
-            >
-              <h3
-                class="question m-0 text-lg font-semibold block py-6 bg-gray-200 px-4"
-              >
-                <i class="icon-th-list mr-1"></i> {{acordion[0].title}}
-              </h3>
-
-              <div class="answer">
-                <div
-                  class="text-base px-4 bg-blue-500 py-4 text-white leading-relaxed"
-                  v-html="acordion[0].content"
-                >
-                  &nbsp;
-                </div>
-              </div>
-            </div>
-            <!-- Ventajas -->
-            <div
-              :class="[acordion[1].open ? 'open' : '' ,'faq mb-4']"
-              v-on:click=" toggleOpen(1)"
-            >
-              <h3
-                class="question m-0 text-lg font-semibold block py-6 bg-gray-200 px-4"
-              >
-                <i class="icon-thumbs-up mr-1"></i> {{acordion[1].title}}
-              </h3>
-
-              <div class="answer">
-                <ul class="block px-4 py-4 bg-blue-500 text-white text-base">
-                  <li
-                    :key="i"
-                    class="flex"
-                    v-for="(item, i) in acordion[1].content"
-                  >
-                    <i class="icon-ok-circled mr-1"></i>
-                    <span>{{item.value}}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- Aplicaciones -->
-            <div
-              :class="[acordion[2].open ? 'open' : '' ,'faq mb-6']"
-              v-on:click=" toggleOpen(2)"
-            >
-              <h3
-                class="question m-0 text-lg font-semibold block py-6 bg-gray-200 px-4"
-              >
-                <i class="icon-hand-paper-o mr-1"></i> {{acordion[2].title}}
-              </h3>
-
-              <div class="answer">
-                <ul class="block px-4 py-4 bg-blue-500 text-white text-base">
-                  <li
-                    :key="i"
-                    class="flex"
-                    v-for="(item, i) in acordion[2].content"
-                  >
-                    <i class="icon-ok-circled mr-1"></i>
-                    <span>{{item.value}}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- Formulario -->
-            <div class="bg-blue-500 p-4 mb-6">
-              <h4 class="text-white text-center text-xl font-bold">
-                ¿Quieres más información?
-              </h4>
-
-              <h4 class="text-white text-center text-xl font-bold">
-                ¡Escríbenos!
-              </h4>
-
-              <div class="mt-4 w-2/3 mx-auto">
-                <div class="flex flex-col mb-3">
-                  <label class="text-white text-lg mb-1" for="formName"
-                    >Nombre</label
-                  >
-                  <input
-                    class="border-none rounded py-3 px-4 text-black"
-                    id="formName"
-                    required=""
-                    type="text"
-                    v-model="form.nombre"
-                  />
-                </div>
-
-                <div class="flex flex-col mb-3">
-                  <label class="text-white text-lg mb-1" for="formEmail"
-                    >Correo Electrónico</label
-                  >
-                  <input
-                    class="border-none rounded py-3 px-4 text-black"
-                    id="formEmail"
-                    required=""
-                    type="email"
-                    v-model="form.email"
-                  />
-                </div>
-
-                <div class="mb-4">
-                  <label class="text-white text-lg mb-1" for="formMenssaje"
-                    >Cuéntanos más</label
-                  >
-
-                  <div>
-                    <textarea
-                      class="border-none rounded text-black px-4 py-3 h-24 w-full"
-                      required=""
-                      v-model="form.mensaje"
-                    ></textarea>
-                  </div>
-                </div>
-                <button
-                  class="block w-full py-3 bg-orange-500 hover:bg-orange-600 text-center text-white font-medium text-base uppercase transition duration-200 mb-3"
-                  v-on:click="sendMessaje()"
-                >
-                  Enviar</button
-                ><span
-                  class="block w-full mb-2 text-center text-white text-base font-medium"
-                  >También puedes
-                  <a
-                    class="text-orange-300 hover:text-orange-400"
-                    href="/contacto"
-                    >contactarnos aquí</a
-                  ></span
-                >
-              </div>
-            </div>
-            <!-- Share Buttons -->
-            <div class="my-6 ml-4 sm:ml-0">
-              <span class="block text-lg text-black font-medium mb-4"
-                >Compartir:</span
-              >
-              <div class="text-white">
-                <a
-                  class="bg-blue-700 hover:bg-blue-800 transition duration-200 p-2 mr-2 text-2xl rounded"
-                  :href="'https://www.facebook.com/sharer/sharer.php?u=' + urlOrigin"
-                  target="_blank"
-                  ><i class="icon-facebook"></i
-                ></a>
-                <a
-                  class="bg-green-500 hover:bg-green-600 transition duration-200 p-2 mr-2 text-2xl rounded"
-                  :href="'https://api.whatsapp.com/send?text=' + urlOrigin"
-                  target="_blank"
-                  ><i class="icon-whatsapp"></i
-                ></a>
-                <a
-                  class="bg-blue-500 hover:bg-blue-600 transition duration-200 p-2 mr-2 text-2xl rounded"
-                  :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + urlOrigin"
-                  target="_blank"
-                  ><i class="icon-linkedin"></i
-                ></a>
-              </div>
-            </div>
-            <!-- Bienestar -->
-            <div v-if="content.field_categoria[0].value === 'Bienestar'">
-              <div class="bg-blue-500 w-full p-4">
-                <h3 class="text-white font-bold text-xl text-center">
-                  ¿Tienes un negocio de vidrio?
-                </h3>
-
-                <h3 class="text-white font-bold text-xl text-center">
-                  ¡Haz parte de nuestra comunidad!
-                </h3>
-                <a class="flex justify-center mt-3" href="/vecinos"
-                  ><img
-                    alt="Vecinos Bienestar"
-                    src="/sites/sgva.master/files/inline-images/Vecinos-Bienestar-lg.png"
-                  />
-                </a>
-              </div>
-
-              <div class="bg-orange-500 w-full p-4 my-6">
-                <h3 class="text-white font-bold text-xl text-center">
-                  ¿Eres Vecino Bienestar?
-                </h3>
-
-                <h3 class="text-white font-bold text-xl text-center">
-                  Ingresa a tu programa de reconocimientos AndiPuntos
-                </h3>
-                <a
-                  class="flex justify-center mt-3"
-                  target="_blanck"
-                  rel="noreferrer noopener"
-                  href="http://andipuntos.vidriosbienestar.com/"
-                  ><img
-                    alt="Andipuntos"
-                    class="h-48"
-                    src="/sites/sgva.master/files/inline-images/img-andipuntos_0.png"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
+        <div>
+            <div class="block mx-auto object-contain flex justify-center"><img alt="1.1" data-entity-type="file" data-entity-uuid="44833174-7a3a-45ab-9ad8-5c2148590def" src="/sites/vidrioandino.com/files/inline-images/ima%205-01.png"></div>
         </div>
-        <!-- Video Tutorial -->
-        <div
-          :style="'background-image: url(' + tutorialBg + ');'"
-          class="bg-center bg-no-repeat bg-cover bg-gray-200 py-12 mt-8"
-          v-if="content.field_video_tutorial[0]"
-        >
-          <div class="container">
-            <div class="px-6 flex items-center">
-              <div class="sm:border-r border-gray-800 sm:pr-4">
-                <h3
-                  class="uppercase text-gray-800 font-medium text-lg sm:text-2xl"
-                >
-                  Vidrio Andino
-                </h3>
+    </div>
+</div>
+<!-- PARTE 1 -->
 
-                <p
-                  class="ml-16 uppercase text-gray-800 font-medium text-xl sm:text-3xl"
-                >
-                  Tutoriales
-                </p>
-              </div>
+<div class="h-2 w-16 rounded mx-auto" style="background-color: #6D67AC;">&nbsp;</div>
 
-              <div class="ml-4">
-                <p
-                  class="text-normal font-normal text-gray-800 hidden sm:block"
-                >
-                  Vidrios Corporativos
-                </p>
-              </div>
-            </div>
-
-            <div class="flex justify-center mt-8 px-4">
-              <iframe
-                :src="content.field_video_tutorial[0].value"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen=""
-                class="videoYT"
-                frameborder="0"
-              ></iframe>
-            </div>
-          </div>
+<div class="container my-8 px-4">
+    <!-- TITLE -->
+    <div>
+        <div class="container px-4 pl-4 h-8 font-semibold flex font-light text-gray-800 text-lg sm:text-xl items-center border-l-8" style="border-color: #6D67AC;">
+            <h2>¿COMO FUNCIONA?</h2>
         </div>
-      </div>
-    </transition>
-  </div>
-</section>
-<script>
-  let app = new Vue({
-    el: "#app",
-    data() {
-      return {
-        content: null,
-        acordion: null,
-        loading: true,
-        errored: false,
-        urlOrigin: window.location.href,
-        beneficios: {
-          b30: {
-            name: "Confort Térmico",
-            color: "bn-mustard",
-            image:
-              "/sites/sgva.master/files/inline-images/icon-confort-termico.png",
-          },
-          b31: {
-            name: "Protección UV",
-            color: "bn-orange",
-            image: "/sites/sgva.master/files/inline-images/icon-proteccion.png",
-          },
-          b32: {
-            name: "Confort Visual",
-            color: "bn-blue",
-            image:
-              "/sites/sgva.master/files/inline-images/Confort%20Visual.png",
-          },
-          b33: {
-            name: "Confort Acústico",
-            color: "bn-purple",
-            image:
-              "/sites/sgva.master/files/inline-images/Confort%20Acu%CC%81stico.png",
-          },
-          b34: {
-            name: "Ahorro Energético",
-            color: "bn-darkblue",
-            image:
-              "/sites/sgva.master/files/inline-images/Ahorro%20Energe%CC%81tico.png",
-          },
-          b35: {
-            name: "Medio Ambiente",
-            color: "bn-green",
-            image:
-              "/sites/sgva.master/files/inline-images/Proteccio%CC%81n%20del%20medio%20ambiente.png",
-          },
-          b36: {
-            name: "Seguridad",
-            color: "bn-magenta",
-            image: "/sites/sgva.master/files/inline-images/Seguridad.png",
-          },
-          b37: {
-            name: "Privacidad",
-            color: "bn-gray",
-            image: "/sites/sgva.master/files/inline-images/Privacidad.png",
-          },
-          b38: {
-            name: "Diseño Estético",
-            color: "bn-darkpurple",
-            image:
-              "/sites/sgva.master/files/inline-images/Disen%CC%83o%20Este%CC%81tico.png",
-          },
-          b39: {
-            name: "Protección contra el fuego",
-            color: "bn-yellow",
-            image:
-              "/sites/sgva.master/files/inline-images/Proteccio%CC%81n%20contra%20el%20fuego.png",
-          },
-        },
-        form: {
-          nombre: null,
-          email: null,
-          mensaje: null,
-        },
-        slideIndex: 0,
-        slideMaxH: 420,
-        tutorialBg:
-          "https://sgvad8.vidrioandino.com/sites/sgva.master/files/inline-images/background-paises%20%281%29.png",
-      };
-    },
-    mounted() {
-      axios
-        .get(`${window.location.origin}/api/productos?_format=json`)
-        .then((response) => {
-          const data = response.data;
+    </div>
 
-          const contentData = data.find(
-            (item) => item.path[0].alias == window.location.pathname
-          );
-          this.content = contentData;
-          this.acordion = [
-            {
-              title: `Descripción`,
-              icon: "",
-              content: contentData.field_description[0].processed,
-              open: false,
-            },
-            {
-              title: "Ventajas",
-              icon: "",
-              content: contentData.field_ventajas,
-              open: false,
-            },
-            {
-              title: "Aplicaciones",
-              icon: "",
-              content: contentData.field_aplicaciones,
-              open: false,
-            },
-          ];
-        })
-        .catch((error) => {
-          console.log(error);
-          this.errored = true;
-        })
-        .finally(() => (this.loading = false));
-    },
-    methods: {
-      toggleOpen: function(index) {
-        this.acordion = this.acordion.map((item, i) => {
-          if (index === i) {
-            item.open = !item.open;
-          } else {
-            item.open = false;
-          }
-          return item;
-        });
-      },
-      sendMessaje: function() {
-        document.getElementById("edit-nombre").value = this.form.nombre;
-        document.getElementById(
-          "edit-correo-electronico"
-        ).value = this.form.email;
-        document.getElementById("edit-cuentanos-mas").value = this.form.mensaje;
-        return document.forms[0].submit();
-      },
-      goToPrev: function() {
-        if (this.slideIndex === 0) {
-          return;
-        }
-        this.slideIndex -= 100;
-      },
-      goToNext: function() {
-        if (this.slideIndex / 100 === this.content.field_slider.length - 1) {
-          return;
-        }
-        this.slideIndex += 100;
-      },
-    },
-  });
-</script>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
+        <div>
+            <div class="object-contain mx-auto flex justify-center md:justify-end md:pl-16"><img alt="2.1" data-entity-type="file" data-entity-uuid="2bdb80a7-2aa5-436e-ace0-a6153a01ed1e" src="/sites/vidrioandino.com/files/inline-images/2.1_2.png"></div>
+
+            <div class="object-contain mx-auto flex hidden md:block justify-start mt-12 pr-16"><img alt="2.4" data-entity-type="file" data-entity-uuid="eef4f54a-be81-48a1-bb38-8c5719931f9d" src="/sites/vidrioandino.com/files/inline-images/2.4_1.png"></div>
+        </div>
+
+        <div>
+            <div class="object-contain mx-auto flex justify-center"><img alt="2.2" data-entity-type="file" data-entity-uuid="7cd6ee5b-033a-4660-b4a8-2d3407a104eb" src="/sites/vidrioandino.com/files/inline-images/2.2_2.png"></div>
+        </div>
+
+        <div class="col-span-2 md:col-span-1 flex flex-col">
+            <p class="text-sm md:text-base text-gray-700 leading-relax mt-4">Lo que está claro es que cuando estamos acústicamente cómodos, cuando el ruido no deseado está bloqueado y podemos escuchar claramente sonidos beneficiosos, somos más productivos, más felices y experimentamos menos problemas de salud.
+            </p>
+
+            <div class="object-contain mx-auto flex justify-center mt-4"><img alt="2.3" data-entity-type="file" data-entity-uuid="69200ae4-aa5c-4c43-bd73-4da4c64ad4c7" src="/sites/vidrioandino.com/files/inline-images/2.3_2.png"></div>
+        </div>
+    </div>
+</div>
+<!-- PARTE 2 -->
+
+<div class="h-2 w-16 rounded mx-auto" style="background-color: #6D67AC;">&nbsp;</div>
+
+<div class="container grid md:grid-cols-7 gap-4 my-8 px-4">
+    <div class="md:col-span-2 flex flex-col">
+        <div class="block mx-auto object-contain flex justify-center"><img alt="3.1" data-entity-type="file" data-entity-uuid="37db4afc-96a2-4908-820c-e9bc36218c19" src="/sites/vidrioandino.com/files/inline-images/3.1_1.png"></div>
+
+        <p class="text-sm md:text-base text-gray-700 leading-relax mt-4">Lo que está claro es que cuando estamos acústicamente cómodos, cuando el ruido no deseado está bloqueado y podemos escuchar claramente sonidos beneficiosos, somos más productivos, más felices y experimentamos menos problemas de salud.
+        </p>
+    </div>
+
+    <div class="md:col-span-5">
+        <div class="block mx-auto object-contain flex justify-center"><img alt="3.2" data-entity-type="file" data-entity-uuid="a82de689-6121-4697-917c-f4e962846260" src="/sites/vidrioandino.com/files/inline-images/3.2_1.png"></div>
+
+        <p class="block w-64 ml-auto text-sm md:text-base text-gray-700 leading-relax mt-4">Lo que está claro es que cuando estamos acústicamente cómodos, cuando el ruido no deseado está bloqueado y podemos escuchar claramente sonidos beneficiosos, somos más productivos, más felices y experimentamos menos problemas de salud.
+        </p>
+    </div>
+</div>
+<!-- PARTE 3 -->
+
+<div class="h-2 w-16 rounded mx-auto" style="background-color: #6D67AC;">&nbsp;</div>
+
+<div class="relative container">
+    <div class="md:absolute grid md:grid-cols-2 gap-4 my-8 px-4">
+        <div class="grid grid-cols-3 gap-2">
+            <div class="col-span-2 block mx-auto object-contain flex justify-center"><img alt="4.1" data-entity-type="file" data-entity-uuid="122b2831-a769-4ed1-bcc3-1825bcd28627" src="/sites/vidrioandino.com/files/inline-images/4.1_0.png"></div>
+
+            <div class="block mx-auto object-contain flex justify-center"><img alt="4.2" data-entity-type="file" data-entity-uuid="134d6014-dda9-467f-b3bd-3bb66dc4751e" src="/sites/vidrioandino.com/files/inline-images/4.2_0.png"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2">
+            <div class="flex flex-col-reverse">
+                <p class="text-sm md:text-base text-gray-700 text-center md:text-left leading-relax mt-4">Lo que está claro es que cuando estamos acústicamente cómodos, cuando el ruido no deseado está bloqueado y podemos escuchar claramente sonidos beneficiosos, somos más productivos, más felices y experimentamos menos problemas de salud.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden md:flex mx-auto object-contain justify-end"><img alt="4.3" data-entity-type="file" data-entity-uuid="5b026663-1cb4-4231-85f4-bcd84d96197c" src="/sites/vidrioandino.com/files/inline-images/4.3_0.png"></div>
+
+    <div class="container mt-4 px-4">
+        <div class="block mx-auto object-contain flex justify-center"><img alt="4.4" data-entity-type="file" data-entity-uuid="2795e3a4-99ee-4448-9fe6-c0e7650d0473" src="/sites/vidrioandino.com/files/inline-images/4.4_0.png"></div>
+    </div>
+</div>
+<!-- SECCION 3 -->
+
+<div class="mt-24" style="background-color: #6D67AC;">
+    <div class="container px-4 grid md:grid-cols-2 gap-8 py-12">
+        <div>
+            <div class="flex justify-between items-center text-white font-bold text-xl mb-3">
+                <h3>¿SABÍAS QUE?</h3>
+
+                <div class="w-8 h-8 rounded-full bg-white"><img src="" alt="icon 1<"></div>
+            </div>
+
+            <p class="text-white leading-relax text-sm md:text-base">Los estudios epidemiológicos han demostrado, por ejemplo, que el riesgo de ataque cardíaco para las personas que viven cerca de calles de uso frecuente es aproximadamente un 20% mayor que para los residentes de calles más tranquilas, y que
+                el riesgo de obesidad aumenta con la proximidad de un aeropuerto.</p>
+        </div>
+
+        <div>
+            <div class="flex justify-between items-center text-white font-bold text-xl mb-3">
+                <h3>¿SABÍAS QUE?</h3>
+
+                <div class="w-8 h-8 rounded-full bg-white"><img src="" alt="icon 1<"></div>
+            </div>
+
+            <p class="text-white leading-relax text-sm md:text-base">Un estudio realizado en 1998 encontró que hubo una caída de hasta un 66% en el rendimiento de una tarea de "memoria para la poesía" cuando los participantes estuvieron expuestos a diferentes tipos de ruido de fondo. </p>
+        </div>
+    </div>
+</div>
+<!-- SECCION 4 -->
+
+<div class="container px-4 py-12">
+    <!-- TITLE -->
+    <div class="container px-4 pl-4 h-8 flex font-semibold  text-gray-800 text-lg sm:text-xl items-center border-l-8" style="border-color: #6D67AC;">
+        <h2>¿Qué contribuye al CONFORT ACÚSTICO?</h2>
+    </div>
+
+    <div class="relative">
+        <div class="grid lg:grid-cols-2 gap-8 mt-8">
+            <div>
+                <p class="text-sm md:text-base text-gray-700 leading-relax">La aceptación de cualquier sonido depende de muchos factores que varían según el tipo de edificio, el tipo de actividad que se realiza y los hábitos sociales y culturales de los ocupantes. La calidad del sonido en cualquier espacio interior
+                    determinado está determinada por las fuentes del sonido o ruido y la calidad de la envolvente del edificio, que incluyen:</p>
+            </div>
+
+            <div>
+                <div class="pb-4 grid sm:grid-cols-2 row-gap-4">
+                    <div class="flex sm:justify-center">
+                        <div><img src="/sites/vidrioandino.com/files/inline-images/acustico1.png"></div>
+                        <span class="ml-2 text-sm md:text-base text-gray-700 leading-relax w-64 lg:w-48">Ruido
+                            exterior (tráfico cercano, vecinos …) </span>
+                    </div>
+
+                    <div class="flex sm:justify-center">
+                        <div><img src="/sites/vidrioandino.com/files/inline-images/acustico2.png"></div>
+                        <span class="ml-2 text-sm md:text-base text-gray-700 leading-relax w-64 lg:w-48">Ruido
+                            de
+                            impacto (pasos …)</span>
+                    </div>
+
+                    <div class="flex sm:justify-center">
+                        <div><img src="/sites/vidrioandino.com/files/inline-images/acustico3.png"></div>
+                        <span class="ml-2 text-sm md:text-base text-gray-700 leading-relax w-64 lg:w-48">Ruido
+                            de
+                            equipos (sistemas de ventilación, equipos electrónicos, tuberías, ascensores
+                            …)</span>
+                    </div>
+
+                    <div class="flex sm:justify-center">
+                        <div><img src="/sites/vidrioandino.com/files/inline-images/acustico4.png"></div>
+                        <span class="ml-2 text-sm md:text-base text-gray-700 leading-relax w-64 lg:w-48">Ruido
+                            interior (música, conversaciones telefónicas …)</span>
+                    </div>
+
+                    <div class="flex sm:justify-center">
+                        <div><img src="/sites/vidrioandino.com/files/inline-images/acustico5.png"></div>
+                        <span class="ml-2 text-sm md:text-base text-gray-700 leading-relax w-64 lg:w-48">Vibraciones
+                            sonoras a través de la estructura.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute hidden lg:block h-24 w-1 bg-gray-300 top-0 mx-auto right-0 left-0 rounded">
+            &nbsp;</div>
+    </div>
+</div>
+<!-- SECCION 5 -->
+
+<div class="py-12 px-4 relative text-gray-200" style="background-color: #333333">
+    <div class="container">
+        <h3 class="font-medium text-2xl mb-8 text-center">¿Cómo podemos diseñar para COMODIDAD ACÚSTICA?
+        </h3>
+
+        <p class="text-xs md:text-base leading-relaxed text-center">Considerando los tipos de ruidos y arquitectura
+        </p>
+
+        <p class="text-xs md:text-base leading-relaxed text-center">Los ruidos pueden transmitirse a través del aire o a través del tejido del edificio (a través de la envolvente), verticalmente (de piso a piso) o lateralmente (a través de particiones internas). El confort acústico en un edificio depende de las
+            características acústicas del tejido del edificio, en lo que respecta a la transmisión y absorción acústica. Al diseñar hoy para la comodidad acústica, debemos tener en cuenta una variedad de factores externos y arquitectónicos:</p>
+
+        <ul class="mt-6 list-disc">
+            <li class="text-xs md:text-base leading-relaxed">Los tipos de ruido que se deben gestionar, desde proteger a los usuarios del edificio de los niveles de ruido entrantes, pero también tal vez de contaminar el medio ambiente con el ruido producido por el edificio, así como gestionar el ruido
+                interno dentro del edificio.</li>
+            <li class="text-xs md:text-base leading-relaxed">El espectro de ruido a gestionar (bajas o altas frecuencias)
+            </li>
+            <li class="text-xs md:text-base leading-relaxed">El sistema de construcción y los materiales. La actividad del edificio: dormir, trabajar, enseñar o cuidar la salud.</li>
+        </ul>
+        <div class="grid grid-cols-2 md:grid-cols-4 my-12 gap-1">
+            <div class="lineDot text-white relative">
+                <div class="inline-block h-8 w-8 mx-auto mb-4  flex justify-center items-center bg-purple-500 rounded-full absolute top-0 right-0 left-0 ">
+                    1</div>
+                <span class="text-xs md:text-base leading-relaxed text-center block w-40 mx-auto mt-4 mb-0">
+                    Ruido
+                    exterior del tráfico cercano </span>
+            </div>
+
+            <div class="lineDot text-white relative">
+                <div class="inline-block h-8 w-8 mx-auto mb-4  flex justify-center items-center bg-purple-500 rounded-full absolute top-0 right-0 left-0 ">
+                    2</div>
+                <span class="text-xs md:text-base leading-relaxed text-center block w-40 mx-auto mt-4 mb-0">
+                    Ruido
+                    interior </span>
+            </div>
+
+            <div class="lineDot text-white relative">
+                <div class="inline-block h-8 w-8 mx-auto mb-4  flex justify-center items-center bg-purple-500 rounded-full absolute top-0 right-0 left-0 ">
+                    3</div>
+                <span class="text-xs md:text-base leading-relaxed text-center block w-40 mx-auto mt-4 mb-0">
+                    Ruido
+                    de impacto </span> <span class="text-sm md:text-xs leading-relaxed text-center block w-40 mx-auto">((como
+                    pasos)</span>
+            </div>
+
+            <div class="lineDot text-white relative">
+                <div class="inline-block h-8 w-8 mx-auto mb-4  flex justify-center items-center bg-purple-500 rounded-full absolute top-0 right-0 left-0 ">
+                    4</div>
+                <span class="text-xs md:text-base leading-relaxed text-center block w-40 mx-auto mt-4 mb-0">
+                    Ruido
+                    de fondo </span> <span class="text-sm md:text-xs leading-relaxed text-center block w-40 mx-auto">(de
+                    electrodomésticos,
+                    sistemas de ventilación o equipos electrónicos)</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

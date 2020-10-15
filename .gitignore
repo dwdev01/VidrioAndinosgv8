@@ -11,3 +11,6 @@ src/test
 /package-lock.json
 /yarn.lock
 /server_commands
+
+src/components/fragments/datos.json
+src/components/fragments/lugares_filter.html

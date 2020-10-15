@@ -2,15 +2,6 @@
   @apply grid gap-2;
 }
 
-@media (min-width: 420px) {
-  .vd-formYourProjecy form  {
-    @apply grid-cols-2;
-  }
-  .vd-formYourProjecy div:nth-child(5),
-  .vd-formYourProjecy div:nth-child(6) {
-    @apply col-span-2;
-  }
-}
 .vd-formYourProjecy div {
   @apply flex flex-col;
 }
@@ -20,11 +11,11 @@
 }
 .vd-formYourProjecy select,
 .vd-formYourProjecy input {
-  @apply block appearance-none w-full py-2 px-4 pr-8 rounded leading-tight bg-white;
+  @apply block appearance-none w-full py-2 px-4 pr-8 rounded leading-tight bg-white mb-2;
 }
 
 .vd-formYourProjecy input[type="submit"] {
-  @apply bg-orange-500 uppercase text-white font-medium cursor-pointer transition duration-300;
+  @apply bg-orange-500 uppercase text-white font-medium cursor-pointer transition duration-300 mt-4 mb-6;
 }
 
 .vd-formYourProjecy input[type="submit"]:hover {
