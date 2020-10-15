@@ -51,7 +51,6 @@
     width: 100%;
     transition: all 1s ease;
   }
-
   #loading {
     border: 15px solid #e2e8f0;
     border-top-color: #ed8936;
@@ -62,61 +61,50 @@
     margin: 0 auto;
     animation: girar 1.5s linear infinite;
   }
-
   @keyframes girar {
     from {
       transform: rotate(0deg)
     }
-
     to {
       transform: rotate(360deg)
     }
   }
-
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity .5s
   }
-
   .fade-enter,
   .fade-leave-to {
     opacity: 0
   }
-
   .productoDescription {
     max-height: 0;
     overflow-y: hidden;
   }
-
   .productoLink:hover .productoDescription {
     max-height: 10000px;
     padding-bottom: 1rem;
   }
-
   .activeBtn {
     background-color: #ed8936;
     color: #fff;
   }
-
   @media (max-width: 1024px) {
     .asideContent {
       max-height: 0;
       overflow: hidden;
       opacity: 0;
     }
-
     .asideContentActive {
       max-height: 100000px !important;
       opacity: 1;
     }
-
     .filterContent {
       max-height: 0;
       opacity: 0;
       transition: all .3s;
       overflow: hidden;
     }
-
     .filterContentActive {
       max-height: 10000px !important;
       opacity: 1;
@@ -168,24 +156,6 @@
     </main>
     {% endif %}
   </div>
-  
-  {# {% if page.footer %} #}
-  <footer role="footer" class="py-6 bg-gray-900 text-white">
-    <div class="container px-6 py-6 md:px-4 sm:flex sm:flex-col md:grid md:grid-cols-3 md:gap-24">
-      <div class="pb-6">
-        {{ page.footer_firts }}
-      </div>
-      <div class="pb-6">
-        {{ page.footer_second }}
-      </div>
-      <div>
-        {{ page.footer_third }}
-      </div>
-    </div>
-    {{ page.footer }}
-  </footer>
-  {# {% endif %} #}
-
 </div>{# /.layout-container #}
 <footer role="footer" class="py-6 bg-gray-900 text-white">
   <div class="container px-6 py-6 md:px-4 sm:flex sm:flex-col md:grid md:grid-cols-3 md:gap-24">
@@ -209,7 +179,6 @@
       asideContent = document.getElementById('asideContent');
     document.querySelectorAll('aside .views-element-container').forEach(item => {
       item.classList.add('filterItem')
-
       item.addEventListener('click', (e) => {
         if (document.querySelector('.filterContentActive') && document.querySelector('.filterContentActive').parentElement.parentElement.id != item.id) {
           document.querySelector('.filterContentActive').classList.remove('filterContentActive')
@@ -222,12 +191,10 @@
       document.getElementById('breadcrumbContainer').classList.add('hidden')
       document.getElementById('breadcrumbContainer').classList.remove('md:block')
     }
-
     if (btnFilter) {
       btnFilter.addEventListener('click', (e) => {
         e.target.classList.toggle('activeBtn')
         e.target.classList.toggle('bg-gray-200')
-
         asideContent.classList.toggle('asideContentActive')
       })
     }
